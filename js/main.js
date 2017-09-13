@@ -1,105 +1,90 @@
-if(_ != undefined) {
-
-var apiRoot = "https://api.github.com/repos/jelko/digitalehilfe/issues";
-var feedElem = document.querySelector("#feed");
-var feed = [];
-
-
+var apiRoot = "https://api.github.com/repos/jelko/digitalehilfe";
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
 };
 
-function loadJSON(path, success, error)
-{
-    var xhr = new XMLHttpRequest();
+
+//MODELS
+
+var Question = Backbone.Model.extend({
+  defaults: {
+      title: 'test',
+      answers:
+  },
   
-    xhr.onreadystatechange = function()
-    {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                if (success)
-                    success(JSON.parse(xhr.responseText));
-            } else {
-                if (error)
-                    error(xhr);
-            }
-        }
-    };
-    xhr.open("GET", path, true);
-    xhr.setRequestHeader("Accept","application/vnd.github.v3.html+json");
-    xhr.send();
-}
+  initialize: function () {
 
-function renderTemplate(templateId, data) {
-  var templateString = document.querySelector("template[id='" + templateId + "']").innerHTML;
-  var templateFunction = _.template(templateString);
-  return templateFunction(data);
-}
-
-
-function createQuestion(elem) {
-  return {
-    id: elem.id,
-    title_de: elem.title,
-    title_en: elem.body,
-    comments: [],
-    render: function() {
-      var s = "";
-      s += renderTemplate("questionBegin", this);
-      _.each(this.comments, function(answer) {
-        s += answer.render();
-        console.log(s);
-      });
-      s += renderTemplate("questionEnd", this)
-
-      return s;
-    }
-  }
-}
-
-function createAnswer(elem) {
-  var answerArray = elem.body_html.split("|");
-  return {
-    text: elem.body_html,
-    render: function() {
-      return renderTemplate("answer", this)
-    }
-  }
-}
-
-function loadQuestions() {
-  loadJSON(apiRoot, function(response) {
-    console.log(response[0].title);
-    _.each(response, function(elem) {
-      var question = createQuestion(elem);
       
-      loadAnswers(question, elem.comments_url);
-      feed.push(question);
-      feedElem.innerHTML = question.render();
-      //console.log(elem);
-      
-    })
-//    var htmlString = render("question", { title: response[0].title}); 
-//    feedElem.innerHTML = htmlString;
-  }, function (response) {
-    
-  })
-}
-
-function loadAnswers(question, url) {
+  },
   
-  loadJSON(url, function(response) {
-    _.each(response, function(elem) {
-      console.log(elem);
-      question.comments.push(createAnswer(elem))
+  parse: function (response) {
+    console.log(response);
+    response.answers = new AnswerCollection([], { apiUrl : response.comments_url }).fetch({
       
-      //rerender
-      question.render();
+      reset: true
     });
-  }, function(response) {});
-}
+    
+    return response;
+  }
 
 
-loadQuestions();
+});
 
+var Answer = Backbone.Model.extend({
+  
+});
+
+
+//COLLECTIONS
+
+var AnswerCollection = Backbone.Collection.extend({
+  initialize: function(models, options) {
+    this.apiUrl = options.apiUrl
+  },
+  model: Answer,
+  url: function () {
+    return String(this.apiUrl);
+  }
+})
+
+var QuestionCollection = Backbone.Collection.extend({
+  model: Question,
+  url: apiRoot + "/issues",
+  parse: function(response) {
+        return response;
+    }
+  
+})
+
+//VIEW
+
+var Feed = Backbone.View.extend({
+  tagName: "div",
+  className: "feed",
+  el: "#feed",
+  initialize: function() {
+    this.collection = new QuestionCollection();
+    this.collection.bind('all', this.render, this);
+    this.collection.fetch();
+
+
+  },
+  template: compileTemplate("question"),
+  render: function() {
+    console.log(this.collection.toJSON());
+    this.$el.html(this.template(this.collection.toJSON()));
+    return this;
+  }
+  
+
+})
+
+
+var feedView = new Feed({collection: QuestionCollection});
+
+//HELPERS
+
+function compileTemplate(templateId) {
+  var templateString = document.querySelector("script[id='" + templateId + "']").innerHTML;
+  return _.template(templateString);
 }
