@@ -1,86 +1,120 @@
 var apiRoot = "https://api.github.com/repos/jelko/digitalehilfe";
-_.templateSettings = {
-  interpolate: /\{\{(.+?)\}\}/g
+var feedElem = document.querySelector("#feed");
+
+Backbone.Model.prototype.toJSON = function() {
+  var json = _.clone(this.attributes);
+  for(var attr in json) {
+    if((json[attr] instanceof Backbone.Model) || (json[attr] instanceof Backbone.Collection)) {
+      json[attr] = json[attr].toJSON();   
+    }
+  }
+  return json;
 };
 
 
 //MODELS
 
-var Question = Backbone.Model.extend({
-  defaults: {
-      title: 'test',
-      answers:
-  },
-  
-  initialize: function () {
+var QuestionModel = Backbone.Model.extend({
 
-      
+  initialize: function () {
+    this.answers = new AnswerCollection();
+    this.answers.question = this;
+    this.answers.fetch({
+      success: function () {
+        feed.render();
+      }
+    });   
   },
   
   parse: function (response) {
-    console.log(response);
-    response.answers = new AnswerCollection([], { apiUrl : response.comments_url }).fetch({
-      
-      reset: true
-    });
-    
+    this.title = response.title;
     return response;
+  },
+  
+  toJSON: function() {
+    var r = _.extend(
+      _.pick(this.attributes, 'title', '', 'type'),
+      { answers: this.answers.toJSON() }
+    );
+    console.log(r)
+    return r;
   }
-
 
 });
 
-var Answer = Backbone.Model.extend({
+var AnswerModel = Backbone.Model.extend({
+  initialize: function() {
+    
+  },
   
+  parse: function(response) {
+    return response
+  }
 });
 
 
 //COLLECTIONS
 
 var AnswerCollection = Backbone.Collection.extend({
-  initialize: function(models, options) {
-    this.apiUrl = options.apiUrl
-  },
-  model: Answer,
+  model: AnswerModel,
   url: function () {
-    return String(this.apiUrl);
+    return this.question.get("comments_url");
   }
 })
 
 var QuestionCollection = Backbone.Collection.extend({
-  model: Question,
+  model: QuestionModel,
   url: apiRoot + "/issues",
-  parse: function(response) {
-        return response;
-    }
+
   
 })
 
 //VIEW
 
-var Feed = Backbone.View.extend({
+var QuestionView = Backbone.View.extend({
   tagName: "div",
-  className: "feed",
+  template: compileTemplate("question"),
+  initialize: function() {
+    this.render();
+    _.bindAll(this, 'render');
+    this.model.bind('change', this.render);
+  },
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()))
+    return this;
+  }
+});
+
+var FeedView = Backbone.View.extend({
   el: "#feed",
   initialize: function() {
     this.collection = new QuestionCollection();
-    this.collection.bind('all', this.render, this);
-    this.collection.fetch();
+    this.collection.fetch({reset: true});
+    // Ensure our methods keep the `this` reference to the view itself
+    _.bindAll(this, 'render');
 
-
+    // Bind collection changes to re-rendering
+    this.collection.bind('reset', this.render);
+    this.collection.bind('add', this.render);
+    this.collection.bind('remove', this.render);
   },
-  template: compileTemplate("question"),
-  render: function() {
-    console.log(this.collection.toJSON());
-    this.$el.html(this.template(this.collection.toJSON()));
-    return this;
-  }
-  
+  render: function() { 
+    var self = this
+    self.el.innerHTML = "";
+    console.log(self.el);
 
+    this.collection.each(function(question) {
+      var qv = new QuestionView({model: question})
+//      feedElem.el.appendChild(qv.render().el);
+      self.el.appendChild( qv.render().el );
+    })
+  }
 })
 
+var feed = new FeedView();
+feed.render();
 
-var feedView = new Feed({collection: QuestionCollection});
+
 
 //HELPERS
 

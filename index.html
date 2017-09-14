@@ -29,7 +29,11 @@
       
         <script id="question" type="text/template">
           <div class="question">
+          <h2><%= title %></h2>
             
+            <% _.each(answers, function(answer) { %>
+              <p><%= answer.body %></p>
+            <% }); %>
           </div>
         </script>
 
