@@ -1,46 +1,50 @@
 import React, { Component } from 'react';
+import Answer from './Answer.js';
+import Button from './Button.js'
+
+
 
 class Question extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: props.data,
-    };
-   
+    
+    this.clickHandler = this.clickHandler.bind(this);
+    this.closeHandler = this.closeHandler.bind(this);
   }
   
-  componentDidMount() {
-    fetch(this.state.data.comments_url)
-      .then(response => {
-        if(!response.ok) {
-          throw Error("Network request failed");
-        }
-      
-        return response;
-      })
-      .then(d => d.json())
-      .then(d => {
-        this.setState((prevState) => {
-          prevState.data.answers = d;
-          return prevState;
-        });
-      }, () => {
-        this.props.requestFailedHandler();
-      })
+  clickHandler(e) {
+    if(!this.hasAnswers() || this.isSelected()) return;
+    this.props.onQuestionSelected(this.props.data.id);
+  }
+  
+  isSelected() {
+    return this.props.selectedQuestionId === this.props.data.id;
+  }
+  
+  closeHandler() {
+    return this.props.onQuestionSelected(undefined);
+  }
+  
+  hasAnswers() {
+    return this.props.data.answers.length !== 0;
+  }
+  
+  getClassName() {
+    return `question${this.hasAnswers() ? " question-has-answers" : ""}${this.isSelected() ? " selected" : ""}`
   }
   
   render() {
-    if(!this.state.data.answers) return <div className="question-placeholder">...</div>
-    
-    
-    let answerList = this.state.data.answers.map((c) => {
-      return <p key={c.id} dangerouslySetInnerHTML={{__html: c.body}}></p>
+
+    let answerList = this.props.data.answers.map((c) => {
+      return <Answer key={c.id} data={c}></Answer>
     });
-    
+        
     return (
-      <div>
-        <h3>{this.state.data.title}</h3>
-        <div>{answerList}</div>
+      <div className={this.getClassName()}>
+        {this.props.data.title !== "" && <h2 onClick={this.clickHandler} className="question-title de">{this.props.data.title}</h2>}
+        {this.props.data.body !== "" && <h2 onClick={this.clickHandler} className="question-title en">{this.props.data.body}</h2>}
+        {(this.isSelected()) && <div className="answer-list">{answerList}</div>}
+        {(this.isSelected()) && <Button onClose={this.closeHandler} text="back to the list"></Button>}              
       </div>
     );
   }

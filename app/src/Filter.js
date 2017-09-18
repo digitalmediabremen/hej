@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {githubApiRequest, isFilterInArray} from './Helpers.js';
+
+let excludedLabels = ["public", "pinned"];
 
 class Filter extends Component {
   constructor(props) {
@@ -9,16 +12,10 @@ class Filter extends Component {
   }
   
   componentDidMount() {
-    fetch(`${this.props.apiUrl}/labels`)
-      .then(response => {
-        if(!response.ok) {
-          throw Error("Network request failed");
-        }
-      
-        return response;
-      })
-      .then(d => d.json())
+    githubApiRequest("labels", "?sort=issues")
       .then(d => {
+        //filter public tag
+        d = d.filter(filter => !excludedLabels.includes(filter.name));
         this.setState({
           data: d
         });
@@ -30,62 +27,30 @@ class Filter extends Component {
   clickHandler(label, e) {
     e.preventDefault();
     
-    if(this.state.selected === label.id) {
-      this.setState({selected: undefined});
-      this.props.filterSettings.clearFilter();
-      
-    } else {
-      this.setState({
-        selected: label.id
-      });
-      this.props.filterSettings.setFilter(label.name);
-
-    }
+    if(isFilterInArray(this.props.filters, label)) this.props.onFilterChange([]);
+    else this.props.onFilterChange([label])
     
-    this.props.filterHandler(this.props.filterSettings)
   }
   
-  isActive(id) {
-    return (id === this.state.selected) ? "selected" : "";
+  getClassName(label) {
+    return `filter${isFilterInArray(this.props.filters, label) ? " selected" : ""}`;
   }
   
   render() {
     if(!this.state.data) return <p>...</p>
     
+        
     let labelList = this.state.data.map((l) =>
-      <li key={l.id}><a href="#filter" onClick={ (evt)=> this.clickHandler(l, evt)} className={this.isActive(l.id)}>{l.name}</a></li>
+      <li key={l.id} className={this.getClassName(l)}><a href="#filter" onClick={ (evt)=> this.clickHandler(l, evt)}>{l.name}</a></li>
     );
     
     
     return (
-      <ul>{labelList}</ul>
+      <ul className="filter-list">{labelList}</ul>
     );
   }
 }
 
 
-class FilterSettings {
-  constructor() {
-    this.filters = [];
-    this.language = "de";
-  }
 
-  setFilter(filter) {
-    if(0 <= this.filters.findIndex( (f) => f === filter)) {
-      this.filters = [];
-    } else {
-      this.filters = [filter];
-    }
-  }
-  
-  clearFilter(filter) {
-    this.filters = [];
-  }
-  
-  encodeFilters() {
-    return this.filters.join(',');
-  }
-
-}
-
-export {Filter, FilterSettings};
+export default Filter;

@@ -1,56 +1,75 @@
 import React, { Component } from 'react';
-import Question from './Question.js'
+import Question from './Question.js';
+import {githubApiRequest, areFiltersInArray} from './Helpers.js';
+
+
+
 
 class Feed extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      apiUrl: `${this.props.apiUrl}/issues`,
-      filterSettings: this.props.filterSettings
-    };
-   
+
+    this.state = {}
+    
+    this.questionSelectedHandler = this.questionSelectedHandler.bind(this);
   }
-  
-  componentWillReceiveProps(newProps) {
-    this.setState({filterSettings: newProps.filterSettings});
-  }
-  
+
   componentDidMount() {
-    fetch(this.state.apiUrl)
-      .then(response => {
-        if(!response.ok) {
-          throw Error("Network request failed");
-        }
-      
-        return response;
-      })
-      .then(d => d.json())
+    var promises = [];
+
+    githubApiRequest("issues", "?labels=public")
       .then(d => {
-        this.setState({
-          data: d
-        })
+        d.forEach(q => {
+          promises.push( 
+            githubApiRequest(q.comments_url).then(a => {
+              q.answers = a; 
+              return q;
+            })
+          )
+        });
+        Promise.all(promises).then(d => {
+          this.setState({
+            data: d
+          })
+        }, () => {
+          this.props.onRequestFailed();
+        });  
       }, () => {
-        this.props.requestFailedHandler();
-      })
+        this.props.onRequestFailed();
+      });
   }
   
- 
+    
+  questionSelectedHandler(questionId) {
+    this.setState({
+      selectedQuestionId: questionId
+    });
+  }
+  
+  sortQuestions(q1, q2) {
+    let q1Pinned = 0 <= q1.labels.findIndex(l => l.name === "pinned") ? true : false;
+    let q2Pinned = 0 <= q2.labels.findIndex(l => l.name === "pinned") ? true : false;
+    
+    return q1Pinned === q2Pinned ? 0 : (q1Pinned ? -1 : 1);
+  }  
+  
   
   render() {
     if(!this.state.data) return <p>loading...</p>
-    let filteredQuestions = this.state.data
-      .filter((question) => { 
-        if(this.state.filterSettings.filters.length === 0) return true;
-        return (0 <= question.labels.findIndex((label) => {
-          return this.state.filterSettings.encodeFilters() === label.name;
-          
-        }))
-      });
-    if(filteredQuestions.length === 0) return <p>no questions for label "{this.state.filterSettings.encodeFilters()}" found.</p>
     
-   let html = filteredQuestions.map((q) => {
-      return <Question data={q} key={q.id} requestFailedHandler={this.props.requestFailedHandler}></Question>
-    });
+
+    let filteredQuestions = this.state.data
+      .filter(q => areFiltersInArray(this.props.filters, q.labels));
+    
+    
+    if(filteredQuestions.length === 0) return <p>no questions found.</p>
+
+    
+    let html = filteredQuestions
+      .sort(this.sortQuestions)
+      .map(q => {
+        return <Question data={q} key={q.id} filters={this.props.filters} onQuestionSelected={this.questionSelectedHandler} selectedQuestionId={this.state.selectedQuestionId}></Question>
+      });
     
     return (
       <div>{html}</div>

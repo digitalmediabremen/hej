@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import Feed from './Feed.js';
-import {Filter, FilterSettings} from './Filter.js'
+import Filter from './Filter.js';
+import Input from './Input.js';
 import logo from './logo.svg';
 import './App.css';
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       requestFailed: false,
-      apiUrl: `https://api.github.com/repos/jelko/digitalehilfe`,
-      filterSettings: new FilterSettings()
+      filters: []
     }
     
     this.requestFailedHandler = this.requestFailedHandler.bind(this);
-    this.filterHandler = this.filterHandler.bind(this);
+    this.filterChangedHandler = this.filterChangedHandler.bind(this);
   }
   
   requestFailedHandler() {
@@ -23,9 +24,9 @@ class App extends Component {
     })
   }
   
-  filterHandler(filterSettings) {
+  filterChangedHandler(filters) {
     this.setState({
-      filterSettings: filterSettings 
+      filters: filters
     });
   }
   
@@ -33,16 +34,19 @@ class App extends Component {
     if(this.state.requestFailed) return <h2>Network Error.</h2>
     return (
       <div className="App">
-        <Filter 
-          requestFailedHandler={this.requestFailedHandler} 
-          apiUrl={this.state.apiUrl}
-          filterSettings={this.state.filterSettings}
-          filterHandler={this.filterHandler}></Filter>
+        <div className="side">
+          <Filter 
+            onRequestFailed={this.requestFailedHandler} 
+            filters={this.state.filters}
+            onFilterChange={this.filterChangedHandler}></Filter>
+        </div>
+        <div className="main">
+          <Input></Input>
 
-        <Feed 
-          requestFailedHandler={this.requestFailedHandler}
-          apiUrl={this.state.apiUrl}
-          filterSettings={this.state.filterSettings}></Feed>
+          <Feed 
+            onRequestFailed={this.requestFailedHandler}
+            filters={this.state.filters}></Feed>
+        </div>
       </div>
     );
   }
