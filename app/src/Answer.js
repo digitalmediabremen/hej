@@ -5,12 +5,7 @@ import TimeAgo from 'react-timeago'
 
 
 
-class Answer extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
-  
+class Answer extends Component {  
   render() { 
 
     return (

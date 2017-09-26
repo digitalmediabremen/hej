@@ -5,13 +5,13 @@ import Question from './Question.js';
 import {githubApiRequest, areFiltersInArray} from './Helpers.js';
 
 
-
-
 class Feed extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
+    this.state = {
+      selectedQuestionId: window.location.hash === "#" ? undefined : parseInt( window.location.hash.substring(1))
+    }
     
     this.questionSelectedHandler = this.questionSelectedHandler.bind(this);
   }
@@ -45,9 +45,12 @@ class Feed extends Component {
   questionSelectedHandler(questionId) {
     this.setState({
       selectedQuestionId: questionId
-    });
+    }, () => {
+         window.location.hash = (this.state.selectedQuestionId === undefined) ? "" : this.state.selectedQuestionId
     let noscroll = this.state.selectedQuestionId === undefined ? true : false;
-    document.body.classList.toggle('noscroll', noscroll);
+    document.body.classList.toggle('noscroll', noscroll); 
+  
+    });
   }
   
   sortQuestions(q1, q2) {
@@ -69,7 +72,7 @@ class Feed extends Component {
     if(filteredQuestions.length === 0) {
       return (this.props.filters.length === 0) ? <p>no questions found.</p> : <p>no questions found for filter <span className="filter">{this.props.filters[0].name}</span></p>;
     }
-     
+    
   
     let html = filteredQuestions
       .sort(this.sortQuestions)

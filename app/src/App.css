@@ -161,12 +161,41 @@ img {
   font-style: italic;
 }
 
+
+
 .question {
   margin: 0 0 1.5em 0;
 }
 
-.question:not(.has-answers) {
+
+.question h2::before {
+  font-size: 0.8em;
+  padding-right: 0.5em;
+  display: inline-block;
+}
+
+.question h2:hover::before {
   
+  text-decoration: none !important;
+}
+
+.question.pinned h2::before {
+  content: "📌 "
+}
+
+.question.pinned:not(.has-answers) h2::before {
+  content: "📌 ";
+}
+
+.question:not(.has-answers) h2::before {
+  display: none;
+}
+
+
+.question:not(.has-answers) h2 {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 @media only screen and (min-width : 768px) {
@@ -174,7 +203,7 @@ img {
     margin: 0 0 2em 0;
   }
   
-  .question.has-answers:not(.selected):hover .question-title {
+  .question.has-answers:not(.selected):hover h2 {
     text-decoration: underline;
     cursor: pointer;
   }
@@ -215,6 +244,7 @@ img {
   font-style: italic;
   font-size: 0.8em;
   color: rgba(0,0,0,0.4);
+  display: block;
 }
 
 .answer {
@@ -239,6 +269,10 @@ img {
 
   margin: 0 -1em 1.5em -1em;
   color: rgba(0,0,0,0.4);
+}
+
+.input-placeholder:hover {
+  cursor: pointer;
 }
 
 @media only screen and (min-width : 768px) {
@@ -295,4 +329,65 @@ img {
 
 .close {
   text-decoration: underline;
+}
+
+/* CURSORS ============================================ */
+
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 1.2em;
+  letter-spacing: -0.25em;
+  margin-left: -0.2em;
+  color: #000;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
 }

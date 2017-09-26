@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import Answer from './Answer.js';
 import Button from './Button.js'
 import TimeAgo from 'react-timeago'
+import {isFilterNameInArray} from './Helpers.js';
+
 
 
 
@@ -18,11 +20,15 @@ class Question extends Component {
   
   clickHandler(e) {
     if(!this.hasAnswers() || this.isSelected()) return;
-    this.props.onQuestionSelected(this.props.data.id);
+    this.props.onQuestionSelected(this.props.data.number);
   }
   
   isSelected() {
-    return this.props.selectedQuestionId === this.props.data.id;
+    return this.props.selectedQuestionId === this.props.data.number;
+  }
+  
+  isPinned() {
+    return isFilterNameInArray(this.props.data.labels, "pinned");
   }
   
   closeHandler() {
@@ -40,11 +46,15 @@ class Question extends Component {
   }
   
   getClassName() {
-    return `question${this.hasAnswers() ? " has-answers" : ""}${this.isSelected() ? " selected" : ""}`
+    var styleClass = "question"
+    if(this.hasAnswers()) styleClass += " has-answers" 
+    if(this.isSelected()) styleClass += " selected" 
+    if(this.isPinned()) styleClass += " pinned"
+  
+    return styleClass
   }
   
   getTitle() {
-    if(!this.hasAnswers()) return `++ ${this.props.data.title}`
     return this.props.data.title;
   }
   
@@ -67,7 +77,8 @@ class Question extends Component {
     
     return (
       <div className={this.getClassName()}>
-        {this.props.data.title !== "" && <h2 onClick={this.clickHandler} className="question-title de">{this.getTitle()}</h2>}             
+        {this.props.data.title !== "" && <h2 onClick={this.clickHandler} className="question-title de">{this.getTitle()}</h2>} 
+        {(!this.isSelected() && this.hasAnswers()) && <span className="answer-date">answered <TimeAgo date={new Date(this.getNewestAnswer().updated_at)}></TimeAgo></span>}
       </div>
     );
         

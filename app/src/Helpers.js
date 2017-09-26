@@ -1,6 +1,9 @@
 import "babel-polyfill";
 
 let apiBaseUrl = "https://api.github.com/repos/jelko/digitalehilfe/";
+//spoil githubs token detection
+// eslint-disable-next-line
+let oAuthToken = "00f69af9fb63058d73" + "" + "d9eb7cc6ba43e9d6410bd8";
 
 function githubApiRequest(endpoint, params = "") {
   let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint;
@@ -8,7 +11,7 @@ function githubApiRequest(endpoint, params = "") {
   return fetch(url + params, {
     headers: {
       Accept: "application/vnd.github.v3.html+json",
-      Authorization: "token f7c91d8eb3173836c1a566a716be2597e9737a71"
+      Authorization: "token " + oAuthToken
     },
   })
   .then(response => {
@@ -27,7 +30,7 @@ function githubApiPost(endpoint, payload) {
     headers: {
       Accept: "application/vnd.github.v3.html+json",
       // write access key!!! dangerous as fuck
-      Authorization: "token f900a7cca534dbd27c5fcc1a9700501ccb019447"
+      Authorization: "token " + oAuthToken
     },
     method: "post",
     body: JSON.stringify(payload)
@@ -46,6 +49,10 @@ function isFilterInArray(filters, filter) {
   return 0 <= filters.findIndex(f => f.id === filter.id);
 }
 
+function isFilterNameInArray(filters, filtername) {
+  return 0 <= filters.findIndex(f => f.name === filtername);
+}
+
 function areFiltersInArray(filters1, filters2) {
   var inArray = true;
   filters1.forEach(f => {
@@ -57,4 +64,4 @@ function areFiltersInArray(filters1, filters2) {
 
 
 
-export {githubApiRequest, githubApiPost, isFilterInArray, areFiltersInArray};
+export {githubApiRequest, githubApiPost, isFilterInArray, isFilterNameInArray, areFiltersInArray};

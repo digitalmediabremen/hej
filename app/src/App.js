@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import Feed from './Feed.js';
 import Filter from './Filter.js';
 import Input from './Input.js';
-import logo from './logo.svg';
 import './App.css';
+
 
 
 class App extends Component {
@@ -45,9 +45,9 @@ class App extends Component {
         </div>
         <div className="main">
           <div className="intro">
-            <h1>Welcome to the digital media gang.</h1>
+            <h1>Welcome to the first week of digital media. 🚀</h1>
             <p>
-              This will help you survive the first week in Bremen.
+              This Initializer will help you survive the first week in Bremen.
               <br /> We have a great program for you lined up.
             </p>
           </div>

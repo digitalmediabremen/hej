@@ -112,7 +112,7 @@ class Input extends Component {
       {!this.state.focused && 
         <div className="input-placeholder" onClick={this.focusHandler}>
           <h2>Why is the universe so large?</h2>
-          <p>Ask us anything. Its free, anonymous and nice for everybody.</p>
+          <p>Ask us anything. Ask in german or english.</p>
         </div>
       }
       </div>
