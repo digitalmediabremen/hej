@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 import React, { Component } from 'react';
 import TimeAgo from 'react-timeago'
 
@@ -10,12 +12,12 @@ class Answer extends Component {
   
   
   render() { 
-        console.log(this.props.data);
 
     return (
-      <div className="answer" >
-        <p dangerouslySetInnerHTML={{__html: this.props.data.body}}></p>
-        answered <TimeAgo date={new Date(this.props.data.updated_at)}></TimeAgo> by {this.props.data.user.login}
+      <div className="answer">
+        <div dangerouslySetInnerHTML={{__html: this.props.data.body_html}}></div>
+        <span className="answer-date"><TimeAgo date={new Date(this.props.data.updated_at)}></TimeAgo></span>
+
       </div>
     )
             

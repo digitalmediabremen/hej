@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 import React, { Component } from 'react';
 import Question from './Question.js';
 import {githubApiRequest, areFiltersInArray} from './Helpers.js';
@@ -44,6 +46,8 @@ class Feed extends Component {
     this.setState({
       selectedQuestionId: questionId
     });
+    let noscroll = this.state.selectedQuestionId === undefined ? true : false;
+    document.body.classList.toggle('noscroll', noscroll);
   }
   
   sortQuestions(q1, q2) {
@@ -62,9 +66,11 @@ class Feed extends Component {
       .filter(q => areFiltersInArray(this.props.filters, q.labels));
     
     
-    if(filteredQuestions.length === 0) return <p>no questions found.</p>
-
-    
+    if(filteredQuestions.length === 0) {
+      return (this.props.filters.length === 0) ? <p>no questions found.</p> : <p>no questions found for filter <span className="filter">{this.props.filters[0].name}</span></p>;
+    }
+     
+  
     let html = filteredQuestions
       .sort(this.sortQuestions)
       .map(q => {

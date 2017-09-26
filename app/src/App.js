@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 import React, { Component } from 'react';
 import Feed from './Feed.js';
 import Filter from './Filter.js';
@@ -33,7 +35,8 @@ class App extends Component {
   render() {
     if(this.state.requestFailed) return <h2>Network Error.</h2>
     return (
-      <div className="App">
+      <div className="App wrapper">
+       
         <div className="side">
           <Filter 
             onRequestFailed={this.requestFailedHandler} 
@@ -41,6 +44,13 @@ class App extends Component {
             onFilterChange={this.filterChangedHandler}></Filter>
         </div>
         <div className="main">
+          <div className="intro">
+            <h1>Welcome to the digital media gang.</h1>
+            <p>
+              This will help you survive the first week in Bremen.
+              <br /> We have a great program for you lined up.
+            </p>
+          </div>
           <Input></Input>
 
           <Feed 
