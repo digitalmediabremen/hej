@@ -3,42 +3,32 @@ import "babel-polyfill";
 import React, { Component } from 'react';
 import Question from './Question.js';
 import {githubApiRequest, areFiltersInArray} from './Helpers.js';
+import DataStore from "./DataStore.js";
+import { Link } from 'react-router-dom'
 
 
 class Feed extends Component {
   constructor(props) {
     super(props);
+    this.dataStore = DataStore.getInstance();
+
 
     this.state = {
-      selectedQuestionId: window.location.hash === "#" ? undefined : parseInt( window.location.hash.substring(1))
+      selectedQuestionId: undefined,
+      data: this.dataStore.getQuestions()
     }
     
+    
     this.questionSelectedHandler = this.questionSelectedHandler.bind(this);
+    this.updateQuestions = this.updateQuestions.bind(this);
   }
 
   componentDidMount() {
-    var promises = [];
-
-    githubApiRequest("issues", "?labels=public")
-      .then(d => {
-        d.forEach(q => {
-          promises.push( 
-            githubApiRequest(q.comments_url).then(a => {
-              q.answers = a; 
-              return q;
-            })
-          )
-        });
-        Promise.all(promises).then(d => {
-          this.setState({
-            data: d
-          })
-        }, () => {
-          this.props.onRequestFailed();
-        });  
-      }, () => {
-        this.props.onRequestFailed();
-      });
+    this.dataStore.subscribe(this.updateQuestions);
+  }
+  
+  componentWillUnmount() {
+    this.dataStore.unsubscribe(this.updateQuestions);
   }
   
     
@@ -46,10 +36,8 @@ class Feed extends Component {
     this.setState({
       selectedQuestionId: questionId
     }, () => {
-         window.location.hash = (this.state.selectedQuestionId === undefined) ? "" : this.state.selectedQuestionId
-    let noscroll = this.state.selectedQuestionId === undefined ? true : false;
-    document.body.classList.toggle('noscroll', noscroll); 
-  
+      let noscroll = this.state.selectedQuestionId === undefined ? false : true;
+      document.body.classList.toggle('noscroll', noscroll); 
     });
   }
   
@@ -58,7 +46,11 @@ class Feed extends Component {
     let q2Pinned = 0 <= q2.labels.findIndex(l => l.name === "pinned") ? true : false;
     
     return q1Pinned === q2Pinned ? 0 : (q1Pinned ? -1 : 1);
-  }  
+  } 
+  
+  updateQuestions() {
+    this.setState({data: this.dataStore.getQuestions()})
+  }
   
   
   render() {
@@ -73,11 +65,12 @@ class Feed extends Component {
       return (this.props.filters.length === 0) ? <p>no questions found.</p> : <p>no questions found for filter <span className="filter">{this.props.filters[0].name}</span></p>;
     }
     
-  
     let html = filteredQuestions
       .sort(this.sortQuestions)
       .map(q => {
-        return <Question data={q} key={q.id} filters={this.props.filters} onQuestionSelected={this.questionSelectedHandler} selectedQuestionId={this.state.selectedQuestionId}></Question>
+        return (
+          <Question data={q} key={q.id} onQuestionSelected={this.questionSelectedHandler} selectedQuestionId={this.state.selectedQuestionId}></Question>
+        )
       });
     
     return (

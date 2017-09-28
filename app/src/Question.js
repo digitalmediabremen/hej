@@ -5,8 +5,8 @@ import Answer from './Answer.js';
 import Button from './Button.js'
 import TimeAgo from 'react-timeago'
 import {isFilterNameInArray} from './Helpers.js';
-
-
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -16,11 +16,13 @@ class Question extends Component {
     
     this.clickHandler = this.clickHandler.bind(this);
     this.closeHandler = this.closeHandler.bind(this);
+
   }
-  
+
   clickHandler(e) {
     if(!this.hasAnswers() || this.isSelected()) return;
-    this.props.onQuestionSelected(this.props.data.number);
+    //this.props.onQuestionSelected(this.props.data.number);
+    this.props.history.push("/" + this.props.data.number);
   }
   
   isSelected() {
@@ -32,7 +34,9 @@ class Question extends Component {
   }
   
   closeHandler() {
-    return this.props.onQuestionSelected(undefined);
+    this.props.history.push("/");
+
+    //return this.props.onQuestionSelected(undefined);
   }
   
   hasAnswers() {
@@ -70,7 +74,7 @@ class Question extends Component {
           {this.props.data.title !== "" && <h2 onClick={this.clickHandler} className="question-title de">{this.getTitle()}</h2>}
           {(!this.isSelected() && this.hasAnswers()) && <span className="answer-date">answered <TimeAgo date={new Date(this.getNewestAnswer().updated_at)}></TimeAgo></span>}
           {(this.isSelected()) && <div className="answer-list">{answerList}</div>}
-          {(this.isSelected()) && <Button onPress={this.closeHandler} text="back to the list"></Button>}  
+          {(this.isSelected()) && <Button text="back to the list" onPress={this.closeHandler}></Button>}  
         </div>
       </div>
     )
@@ -93,4 +97,4 @@ class Question extends Component {
   }
 }
 
-export default Question;
+export default withRouter(Question);

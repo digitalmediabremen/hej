@@ -1,8 +1,8 @@
 import "babel-polyfill";
-
 import React, { Component } from 'react';
 import Button from './Button.js'
 import {githubApiPost} from './Helpers.js';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -10,14 +10,12 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      focused: false,
       input: "",
       sending: false,
       requestFailed: false
     };
     
     this.changeHandler = this.changeHandler.bind(this);
-    this.focusHandler = this.focusHandler.bind(this);
     this.closeHandler = this.closeHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
   }
@@ -34,6 +32,7 @@ class Input extends Component {
       requestFailed: false,
       input: ""
     })
+    this.props.history.push("/");
   }
   
   submitHandler() {
@@ -51,12 +50,14 @@ class Input extends Component {
           focused: false,
           sending: false
         })
+        this.props.history.push("/");
       
       }, () => {
         this.setState({ 
           requestFailed: true,
           sending: false,
-        }) 
+        });
+
       });
   }
   
@@ -90,34 +91,19 @@ class Input extends Component {
     return `input${(this.state.focused ? " selected" : "")}`;
   }
   
-  focusHandler(e) {
-    this.setState({
-      focused: true
-    })
-  }
-  
-  
   render() { 
     return (
-      <div className={this.getClassName()}>
-      {this.state.focused && 
+      <div className="input">
         <div className="wrapper">
           <h1>{this.getHeadlineText()}</h1>
           <textarea rows="5" autoFocus style={{resize: "none"}} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>
-          <Button onPress={this.submitHandler} styleClass="button-send" disabled={this.getSendButtonStatus()} text={this.getSendButtonText()}></Button>
-          <Button onPress={this.closeHandler} disabled={this.getCancelButtonStatus()} text="clear and back to the list"></Button>
-
-       </div>
-      }
-      {!this.state.focused && 
-        <div className="input-placeholder" onClick={this.focusHandler}>
-          <h2>Why is the universe so large?</h2>
-          <p>Ask us anything. Ask in german or english.</p>
-        </div>
-      }
+          {this.checkInput() && <Button onPress={this.submitHandler} styleClass="button-send" disabled={this.getSendButtonStatus()} text={this.getSendButtonText()}></Button>}
+          {!this.checkInput() && <Button onPress={this.closeHandler} disabled={this.getCancelButtonStatus()} text="back to the list"></Button>}
+        </div> 
       </div>
     );
   }
 }
 
-export default Input;
+export default withRouter(Input);
+

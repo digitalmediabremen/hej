@@ -9,7 +9,7 @@ body {
 
 }
 
-.App {
+.wrapper {
   padding: 2em 1em 1em 1em;
   min-height: 100vh;
   font-family: "Times New Roman";
@@ -18,7 +18,7 @@ body {
 }
 
 @media only screen and (min-width : 768px) {
-  .App {
+  .wrapper {
     padding: 2em 1em 1em 1em;
     font-size: 22px;
   }    
@@ -292,15 +292,10 @@ img {
   font-style: italic;
 }
 
-.input.selected {
-  margin: 0;
-  top: 0;
-  left: 0;
-  overflow-y: scroll;
-  bottom: 0;
-  position: fixed;
-  width: 100%;
-  min-height: 100%;
+.input {
+
+  width: 100vw;
+  height: 100vh;
   background-color: #000;
   color: #ddd;
   padding: 2em 1em 1em 1em;
