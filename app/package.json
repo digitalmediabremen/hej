@@ -9,7 +9,8 @@
     "react-history": "^0.18.2",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.13",
-    "react-timeago": "^3.4.3"
+    "react-timeago": "^3.4.3",
+    "recompose": "^0.25.1"
   },
   "scripts": {
     "start": "NODE_PATH=src react-scripts start",
