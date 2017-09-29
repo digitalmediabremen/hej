@@ -1,29 +1,19 @@
 import "babel-polyfill";
 
 import React, { Component } from 'react';
-import {githubApiRequest, isFilterInArray} from './Helpers.js';
+import {isFilterInArray} from 'utils/Helpers.js';
+import withData from "utils/withData.js";
 
-let excludedLabels = ["public", "pinned"];
 
 class Filter extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     
     this.clickHandler = this.clickHandler.bind(this);
   }
   
   componentDidMount() {
-    githubApiRequest("labels", "?sort=issues")
-      .then(d => {
-        //filter public tag
-        d = d.filter(filter => !excludedLabels.includes(filter.name));
-        this.setState({
-          data: d
-        });
-      }, () => {
-        this.props.requestFailedHandler();
-      })
+   
   }
   
   clickHandler(label, e) {
@@ -39,10 +29,10 @@ class Filter extends Component {
   }
   
   render() {
-    if(!this.state.data) return <p>...</p>
+    if(!this.props.data) return <p>...</p>
     
         
-    let labelList = this.state.data.map((l) =>
+    let labelList = this.props.data.map((l) =>
       <li key={l.id} className={this.getClassName(l)}><a href="#filter" onClick={ (evt)=> this.clickHandler(l, evt)}>{l.name}</a></li>
     );
     
@@ -55,4 +45,4 @@ class Filter extends Component {
 
 
 
-export default Filter;
+export default withData(Filter,(DataStore, props) => DataStore.getFilters());

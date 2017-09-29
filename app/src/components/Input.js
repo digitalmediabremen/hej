@@ -1,7 +1,7 @@
 import "babel-polyfill";
 import React, { Component } from 'react';
-import Button from './Button.js'
-import {githubApiPost} from './Helpers.js';
+import Button from 'components/Button.js'
+import {githubApiPost} from 'utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
 
 
@@ -18,6 +18,14 @@ class Input extends Component {
     this.changeHandler = this.changeHandler.bind(this);
     this.closeHandler = this.closeHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
+  }
+  
+  componentDidMount() {
+    document.body.classList.toggle('noscroll', true); 
+  }
+  
+  componentWillUnmount() {
+    document.body.classList.toggle('noscroll', false); 
   }
   
   changeHandler(e) {

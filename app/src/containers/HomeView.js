@@ -1,14 +1,13 @@
 import "babel-polyfill";
 
 import React, { Component } from 'react';
-import Feed from './Feed.js';
-import Filter from './Filter.js';
-import InputPlaceholder from './InputPlaceholder.js';
-import './App.css';
+import QuestionList from 'components/QuestionList.js';
+import Filter from 'components/Filter.js';
+import InputPlaceholder from 'components/InputPlaceholder.js';
 
 
 
-class Main extends Component {
+export default class HomeView extends Component {
   constructor() {
     super();
     this.state = {
@@ -52,13 +51,12 @@ class Main extends Component {
         </div>
         <InputPlaceholder></InputPlaceholder>
 
-        <Feed 
+        <QuestionList 
           onRequestFailed={this.requestFailedHandler}
-          filters={this.state.filters}></Feed>
+          filters={this.state.filters}></QuestionList>
       </div>
     </div>
     );
   }
 }
 
-export default Main;

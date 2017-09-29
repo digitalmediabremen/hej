@@ -1,16 +1,21 @@
 import "babel-polyfill";
 
 import {EventEmitter} from 'events';
-import {githubApiRequest, areFiltersInArray} from './Helpers.js';
+import {githubApiRequest} from 'utils/Helpers.js';
 
 
 export default class DataStore {
   static myInstance = null;
+  static excludedLabels = ["public", "pinned"];
+
+
   
   constructor() {
     this.emitter = new EventEmitter();
-    this.questions = [];
+    this.questions = undefined;
+    this.filters = undefined;
     this.initQuestions();
+    this.initFilters();
   }
 
   static getInstance() {
@@ -25,20 +30,29 @@ export default class DataStore {
     return this.questions;
   }
 
-  getQuestion(id) {
-    return this.questions.filter(q => q.number === parseInt(id))[0];
+  getQuestion(number) {
+    if(!this.questions) return;
+    return this.questions.filter(q => q.number === parseInt(number, 10))[0];
   }
 
-  subscribe(callback) {
+  getQuestionIdByNumber(number) {
+    return this.questions.filter(q => q.number === parseInt(number, 10))[0].id;
+  }
+
+  addChangeListener(callback) {
     this.emitter.addListener('update', callback);
   }
  
-  unsubscribe(callback) {
+  removeChangeListener(callback) {
     this.emitter.removeListener('update', callback);
   }
 
   newQuestion() {
     
+  }
+
+  getFilters() {
+    return this.filters;
   }
 
   initQuestions() {
@@ -63,5 +77,17 @@ export default class DataStore {
       }, () => {
         console.log("failed");
     });
+  }
+
+  initFilters() {
+    githubApiRequest("labels", "?sort=issues")
+      .then(d => {
+        //filter public tag
+        d = d.filter(filter => !DataStore.excludedLabels.includes(filter.name));
+        this.filters = d;
+        this.emitter.emit("update");
+      }, () => {
+        console.log("failed");
+      })
   }
 }

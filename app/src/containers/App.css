@@ -163,7 +163,7 @@ img {
 
 
 
-.question {
+.question.list-item {
   margin: 0 0 1.5em 0;
 }
 
@@ -187,23 +187,22 @@ img {
   content: "📌 ";
 }
 
-.question:not(.has-answers) h2::before {
-  display: none;
-}
-
-
 .question:not(.has-answers) h2 {
   font-size: 0.9em;
   text-transform: uppercase;
   font-weight: bold;
 }
 
+.question:not(.has-answers) h2::before {
+  font-size: 1em;
+}
+
 @media only screen and (min-width : 768px) {
-  .question {
+  .question.list-item {
     margin: 0 0 2em 0;
   }
   
-  .question.has-answers:not(.selected):hover h2 {
+  .question.list-item.has-answers:hover h2 {
     text-decoration: underline;
     cursor: pointer;
   }
@@ -211,24 +210,14 @@ img {
 }
 
 
-.question.selected {
-  margin: 0;
-  top: 0;
-  left: 0;
-  overflow-y: scroll;
-  bottom: 0;
-  position: fixed;
-  width: 100%;
+.question.full {
+  
   min-height: 100%;
   background-color: rgb(255,232,0);
-  padding: 2em 1em 1em 1em;
-  z-index: 100;
-  -webkit-overflow-scrolling: touch;
-
 } 
 
 
-.question.selected h2 {
+.question.full h2 {
   margin-bottom: 2em;
 }
 
@@ -298,7 +287,6 @@ img {
   height: 100vh;
   background-color: #000;
   color: #ddd;
-  padding: 2em 1em 1em 1em;
   z-index: 100;
 }
 
@@ -309,7 +297,7 @@ img {
   color: white;
   background: black;
   font-size: 1.3em;
-  font-family: Courier,"Courier New",monospace;
+  font-family: "Inconsolata",monospace;
   color: rgb(255,232,0);
   margin: 2em 0;
 }
