@@ -35,7 +35,7 @@ export default class HomeView extends Component {
           <h1>Welcome to the first week of digital media. 🚀</h1>
           <p>
             This Initializer will help you survive the first week in Bremen.
-            <br /> We have a great program for you lined up.
+            <br /> We have a great program for you lined up!
           </p>
         </div>
         <InputPlaceholder></InputPlaceholder>
