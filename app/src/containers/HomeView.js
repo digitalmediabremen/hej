@@ -12,11 +12,9 @@ export default class HomeView extends Component {
     super();
     this.state = {
       requestFailed: false,
-      filters: []
     }
     
     this.requestFailedHandler = this.requestFailedHandler.bind(this);
-    this.filterChangedHandler = this.filterChangedHandler.bind(this);
   }
   
   requestFailedHandler() {
@@ -25,21 +23,12 @@ export default class HomeView extends Component {
     })
   }
   
-  filterChangedHandler(filters) {
-    this.setState({
-      filters: filters
-    });
-  }
-  
   render() {
     if(this.state.requestFailed) return <h2>Network Error.</h2>
     return (
     <div className="wrapper">
       <div className="side">
-        <Filter 
-          onRequestFailed={this.requestFailedHandler} 
-          filters={this.state.filters}
-          onFilterChange={this.filterChangedHandler}></Filter>
+        <Filter></Filter>
       </div>
       <div className="main">
         <div className="intro">
@@ -50,10 +39,7 @@ export default class HomeView extends Component {
           </p>
         </div>
         <InputPlaceholder></InputPlaceholder>
-
-        <QuestionList 
-          onRequestFailed={this.requestFailedHandler}
-          filters={this.state.filters}></QuestionList>
+        <QuestionList></QuestionList>
       </div>
     </div>
     );

@@ -9,6 +9,8 @@ export default function withData(WrappedComponent, selectData) {
       
       this.handleChange = this.handleChange.bind(this)
       this.dataStore = DataStore.getInstance();
+      
+      
       this.state = {
         data: selectData(this.dataStore, this.props),
         initialLoading: true

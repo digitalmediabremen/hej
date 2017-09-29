@@ -14,6 +14,7 @@ export default class DataStore {
     this.emitter = new EventEmitter();
     this.questions = undefined;
     this.filters = undefined;
+    this.selectedFilters = [];
     this.initQuestions();
     this.initFilters();
   }
@@ -47,12 +48,29 @@ export default class DataStore {
     this.emitter.removeListener('update', callback);
   }
 
+  addFilterChangeListener(callback) {
+    this.emitter.addListener('update-selected-filters', callback);
+  }
+ 
+  removeFilterChangeListener(callback) {
+    this.emitter.removeListener('update-selected-filters', callback);
+  }
+
   newQuestion() {
     
   }
 
   getFilters() {
     return this.filters;
+  }
+
+  getSelectedFilters() {
+    return this.selectedFilters;
+  }
+
+  setSelectedFilters(filters) {
+    this.selectedFilters = filters;
+    this.emitter.emit("update-selected-filters");
   }
 
   initQuestions() {

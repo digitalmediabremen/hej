@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import QuestionItem from 'components/QuestionItem.js';
 import {areFiltersInArray} from 'utils/Helpers.js';
 import withData from "utils/withData.js";
+import withSelectedFilters from "utils/withSelectedFilters.js";
 
 class QuestionList extends Component {
   
@@ -40,4 +41,4 @@ class QuestionList extends Component {
   }
 }
 
-export default withData(QuestionList, (DataStore, props) => DataStore.getQuestions());
+export default withSelectedFilters(withData(QuestionList, (DataStore, props) => DataStore.getQuestions()));
