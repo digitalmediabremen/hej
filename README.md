@@ -1,7 +1,7 @@
 # Initializer
 Interactive question and answers webapplication to ease the start of digital media bremens study program.
 
-## How to install locally
+## How to install locally (Mac OSX)
 
 you need to have npm installed. if not do `brew install npm`. if you dont have brew installed [have a look here](https://docs.brew.sh/Installation.html)
 
