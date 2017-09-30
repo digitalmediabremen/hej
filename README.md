@@ -1,2 +1,2 @@
-
-# Interactive question and answers app build on github pages
+# Initializer
+Interactive question and answers webapplication to ease the start of digital media bremens study program.
