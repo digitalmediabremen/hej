@@ -1,4 +1,4 @@
-# Initializer
+# Hej
 Interactive question and answers webapplication to ease the start of digital media bremens study program.
 
 ## How to install locally (Mac OSX)
