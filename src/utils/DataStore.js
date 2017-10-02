@@ -1,7 +1,7 @@
 import "babel-polyfill";
 
 import {EventEmitter} from 'events';
-import {githubApiRequest} from 'utils/Helpers.js';
+import {githubApiRequest, githubApiResourceChanged} from 'utils/Helpers.js';
 
 
 export default class DataStore {
@@ -15,8 +15,15 @@ export default class DataStore {
     this.questions = undefined;
     this.filters = undefined;
     this.selectedFilters = [];
-    this.initQuestions();
-    this.initFilters();
+    
+    localStorage.setItem("e-tag", undefined);
+    
+    this.resourceChanged = this.resourceChanged.bind(this);
+    
+    this.updateQuestions();
+    this.updateFilters();
+    
+    setInterval(this.resourceChanged, 6 * 1000);
   }
 
   static getInstance() {
@@ -56,10 +63,6 @@ export default class DataStore {
     this.emitter.removeListener('update-selected-filters', callback);
   }
 
-  newQuestion() {
-    
-  }
-
   getFilters() {
     return this.filters;
   }
@@ -73,14 +76,14 @@ export default class DataStore {
     this.emitter.emit("update-selected-filters");
   }
 
-  initQuestions() {
+  updateQuestions() {
     var promises = [];
 
-    githubApiRequest("issues", "?labels=public")
+    githubApiRequest("issues", "?labels=public&" + Date.now().toString())
       .then(d => {
         d.forEach(q => {
           promises.push( 
-            githubApiRequest(q.comments_url).then(a => {
+            githubApiRequest(q.comments_url, "?" + Date.now().toString()).then(a => {
               q.answers = a; 
               return q;
             })
@@ -97,15 +100,28 @@ export default class DataStore {
     });
   }
 
-  initFilters() {
-    githubApiRequest("labels", "?sort=issues")
+  updateFilters() {
+    githubApiRequest("labels", "?sort=issues&" + Date.now().toString())
       .then(d => {
         //filter public tag
-        d = d.filter(filter => !DataStore.excludedLabels.includes(filter.name));
-        this.filters = d;
+        this.filters = d.filter(filter => !DataStore.excludedLabels.includes(filter.name));
         this.emitter.emit("update");
       }, () => {
         console.log("failed");
       })
   }
+
+
+  resourceChanged(callBack) {
+    let self = this;
+    if(!localStorage) return true;
+    
+    githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
+      localStorage.setItem("e-tag", eTag);
+      if(interval) console.log("got interval: " + interval);
+      self.updateQuestions();
+      self.updateFilters();
+    })
+  }
+
 }

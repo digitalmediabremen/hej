@@ -5,23 +5,50 @@ let apiBaseUrl = "https://api.github.com/repos/jelko/digitalehilfe/";
 // eslint-disable-next-line
 let oAuthToken = "00f69af9fb63058d73" + "" + "d9eb7cc6ba43e9d6410bd8";
 
-function githubApiRequest(endpoint, params = "") {
+function githubApiRequest(endpoint, params = "", headers = {}, headerCallback) {
   let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint;
+  
+  headers = Object.assign({
+    Accept: "application/vnd.github.v3.html+json",
+    Authorization: "token " + oAuthToken
+  }, headers);
 
   return fetch(url + params, {
-    headers: {
-      Accept: "application/vnd.github.v3.html+json",
-      Authorization: "token " + oAuthToken
-    },
+    headers: headers,
   })
   .then(response => {
     if(!response.ok) {
       throw Error("Network request failed");
     }
+    if(headerCallback) headerCallback(response.headers)
 
     return response;
   })
   .then(d => d.json())
+}
+
+function githubApiResourceChanged(endpoint, eTag, callBack) { 
+  let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint;
+  
+  let headers = {
+    Accept: "application/vnd.github.v3.html+json",
+    Authorization: "token " + oAuthToken,
+    "If-None-Match": eTag
+  }
+
+  fetch(url, {
+    headers: headers,
+  })
+  .then(response => {
+    if(response.status !== 304) {
+      console.log(response.headers.forEach((i,d) => {console.log(i,d)}));
+      if(callBack) callBack(response.headers.get("ETag"), response.headers.get("X-Poll-Interval"))
+    }
+    return response
+  }, () => {
+    console.error("error");
+  })
+  
 }
 
 function githubApiPost(endpoint, payload) {
@@ -39,7 +66,7 @@ function githubApiPost(endpoint, payload) {
     if(!response.ok) {
       throw Error("Network request failed");
     }
-
+  
     return response;
   })
   .then(d => d.json())
@@ -64,4 +91,4 @@ function areFiltersInArray(filters1, filters2) {
 
 
 
-export {githubApiRequest, githubApiPost, isFilterInArray, isFilterNameInArray, areFiltersInArray};
+export {githubApiRequest, githubApiPost, isFilterInArray, isFilterNameInArray, areFiltersInArray, githubApiResourceChanged};
