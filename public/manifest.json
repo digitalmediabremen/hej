@@ -1,6 +1,6 @@
 {
-  "short_name": "Woche1",
-  "name": "questions and announcements in the first week of uni",
+  "short_name": "Hej",
+  "name": "questions and announcements in the first week of studying digital medie in bremen.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./200.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

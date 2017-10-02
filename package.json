@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "hej",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "start": "NODE_PATH=src react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
-    "eject": "NODE_PATH=src react-scripts eject"
+    "eject": "NODE_PATH=src react-scripts eject",
+    "deploy": "npm run build && mv ./build/index.html ./build/200.html && surge ./build hej-tool.surge.sh"
   }
 }
