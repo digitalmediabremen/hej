@@ -1,6 +1,6 @@
 import "babel-polyfill";
 
-let apiBaseUrl = "https://api.github.com/repos/jelko/digitalehilfe/";
+let apiBaseUrl = "https://api.github.com/repos/digitalmediabremen/hej/";
 //spoil githubs token detection
 // eslint-disable-next-line
 let oAuthToken = "00f69af9fb63058d73" + "" + "d9eb7cc6ba43e9d6410bd8";
@@ -41,7 +41,6 @@ function githubApiResourceChanged(endpoint, eTag, callBack) {
   })
   .then(response => {
     if(response.status !== 304) {
-      console.log(response.headers.forEach((i,d) => {console.log(i,d)}));
       if(callBack) callBack(response.headers.get("ETag"), response.headers.get("X-Poll-Interval"))
     }
     return response

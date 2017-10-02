@@ -12,18 +12,17 @@ export default class DataStore {
   
   constructor() {
     this.emitter = new EventEmitter();
+    this.emitter.setMaxListeners(100);
     this.questions = undefined;
     this.filters = undefined;
     this.selectedFilters = [];
+    this.interval = 60;
     
     localStorage.setItem("e-tag", undefined);
     
     this.resourceChanged = this.resourceChanged.bind(this);
     
-    this.updateQuestions();
-    this.updateFilters();
-    
-    setInterval(this.resourceChanged, 6 * 1000);
+    this.resourceChanged();
   }
 
   static getInstance() {
@@ -118,10 +117,12 @@ export default class DataStore {
     
     githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
       localStorage.setItem("e-tag", eTag);
-      if(interval) console.log("got interval: " + interval);
+      if(interval) self.interval = interval;
       self.updateQuestions();
       self.updateFilters();
     })
+    
+    setTimeout(self.resourceChanged, self.interval * 1000)
   }
 
 }
