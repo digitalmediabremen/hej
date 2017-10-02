@@ -135,10 +135,10 @@ export default class DataStore {
 
     } else {
       //load from remote resource
-      this.updateQuestions();
-      this.updateFilters();
       
-      setTimeout(this.updateData, 60 * 1000);
+      //clear e-tag in case of inconsistencies in cache
+      localStorage.setItem("e-tag", undefined)
+      this.updateData();
     }
   }
 
