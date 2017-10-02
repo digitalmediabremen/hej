@@ -135,24 +135,24 @@ export default class DataStore {
 
     } else {
       //load from remote resource
-      this.updateQuestions();
-      this.updateFilters();
       
-      setTimeout(this.updateData, 60 * 1000);
+      //clear e-tag in case of inconsistencies in cache
+      localStorage.setItem("e-tag", undefined)
+      this.updateData();
     }
   }
 
   updateData() {
     githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
       localStorage.setItem("e-tag", eTag);
-      let nextInterval = interval !== null ? interval : 60;
+      let nextInterval = interval !== undefined ? interval : 60;
       
       this.updateQuestions();
       this.updateFilters();
       
       setTimeout(this.updateData, nextInterval * 1000)
     }, (interval) => {
-      let nextInterval = interval !== null ? interval : 60;
+      let nextInterval = interval !== undefined ? interval : 60;
       
       setTimeout(this.updateData, nextInterval * 1000)
     })
