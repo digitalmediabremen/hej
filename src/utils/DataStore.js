@@ -145,14 +145,14 @@ export default class DataStore {
   updateData() {
     githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
       localStorage.setItem("e-tag", eTag);
-      let nextInterval = interval !== null ? interval : 60;
+      let nextInterval = interval !== undefined ? interval : 60;
       
       this.updateQuestions();
       this.updateFilters();
       
       setTimeout(this.updateData, nextInterval * 1000)
     }, (interval) => {
-      let nextInterval = interval !== null ? interval : 60;
+      let nextInterval = interval !== undefined ? interval : 60;
       
       setTimeout(this.updateData, nextInterval * 1000)
     })
