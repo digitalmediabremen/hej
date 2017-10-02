@@ -1,6 +1,6 @@
 import "babel-polyfill";
 
-let apiBaseUrl = "https://github.com/digitalmediabremen/Initializer/";
+let apiBaseUrl = "https://api.github.com/repos/jelko/digitalehilfe/";
 //spoil githubs token detection
 // eslint-disable-next-line
 let oAuthToken = "00f69af9fb63058d73" + "" + "d9eb7cc6ba43e9d6410bd8";
