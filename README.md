@@ -7,7 +7,7 @@ you need to have npm installed. if not do `brew install npm`. if you dont have b
 
 then do:
 ```
-git clone https://github.com/digitalmediabremen/Initializer.git
+git clone https://github.com/digitalmediabremen/hej.git
 npm install
 npm start
 ```
