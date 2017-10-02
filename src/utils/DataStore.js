@@ -16,13 +16,10 @@ export default class DataStore {
     this.questions = undefined;
     this.filters = undefined;
     this.selectedFilters = [];
-    this.interval = 60;
+        
+    this.updateData = this.updateData.bind(this);
     
-    localStorage.setItem("e-tag", undefined);
-    
-    this.resourceChanged = this.resourceChanged.bind(this);
-    
-    this.resourceChanged();
+    this.initData();
   }
 
   static getInstance() {
@@ -90,6 +87,7 @@ export default class DataStore {
         });
         Promise.all(promises).then(d => {
           this.questions = d;
+          if(localStorage) localStorage.setItem("questions", JSON.stringify(d));
           this.emitter.emit("update");
         }, () => {
           console.log("failed");
@@ -104,25 +102,61 @@ export default class DataStore {
       .then(d => {
         //filter public tag
         this.filters = d.filter(filter => !DataStore.excludedLabels.includes(filter.name));
+        if(localStorage) localStorage.setItem("filters", JSON.stringify(this.filters));
+
         this.emitter.emit("update");
       }, () => {
         console.log("failed");
       })
   }
 
-
-  resourceChanged(callBack) {
-    let self = this;
-    if(!localStorage) return true;
+  initData() {
+    //load directly if localstorage is not supported
+    if(!localStorage) {
+      this.updateQuestions()
+      this.updateFilters()
+      
+      setTimeout(this.updateData, 60 * 1000);
+    }
     
+    //try to load from cache 
+    if(localStorage.getItem("filters") && localStorage.getItem("questions")) {
+      //load from cache
+      console.log("from cache")
+
+      this.questions = JSON.parse(localStorage.getItem("questions"));
+      this.filters = JSON.parse(localStorage.getItem("filters"));
+      //fire data changed event
+      this.emitter.emit("update");
+      this.emitter.emit("update-selected-filters");
+      
+      //directly check for a newer version
+      this.updateData();
+
+    } else {
+      //load from remote resource
+      this.updateQuestions();
+      this.updateFilters();
+      
+      setTimeout(this.updateData, 60 * 1000);
+    }
+  }
+
+  updateData() {
     githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
       localStorage.setItem("e-tag", eTag);
-      if(interval) self.interval = interval;
-      self.updateQuestions();
-      self.updateFilters();
+      let nextInterval = interval !== null ? interval : 60;
+      
+      this.updateQuestions();
+      this.updateFilters();
+      
+      setTimeout(this.updateData, nextInterval * 1000)
+    }, (interval) => {
+      let nextInterval = interval !== null ? interval : 60;
+      
+      setTimeout(this.updateData, nextInterval * 1000)
     })
     
-    setTimeout(self.resourceChanged, self.interval * 1000)
   }
 
 }

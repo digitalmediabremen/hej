@@ -27,7 +27,7 @@ function githubApiRequest(endpoint, params = "", headers = {}, headerCallback) {
   .then(d => d.json())
 }
 
-function githubApiResourceChanged(endpoint, eTag, callBack) { 
+function githubApiResourceChanged(endpoint, eTag, callbackYes, callbackNo) { 
   let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint;
   
   let headers = {
@@ -41,7 +41,9 @@ function githubApiResourceChanged(endpoint, eTag, callBack) {
   })
   .then(response => {
     if(response.status !== 304) {
-      if(callBack) callBack(response.headers.get("ETag"), response.headers.get("X-Poll-Interval"))
+      if(callbackYes) callbackYes(response.headers.get("ETag"), response.headers.get("X-Poll-Interval"))
+    } else {
+      if(callbackNo) callbackNo(response.headers.get("X-Poll-Interval"));
     }
     return response
   }, () => {
