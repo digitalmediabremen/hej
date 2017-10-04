@@ -13,16 +13,16 @@ export default class HomeView extends Component {
     this.state = {
       requestFailed: false,
     }
-    
+
     this.requestFailedHandler = this.requestFailedHandler.bind(this);
   }
-  
+
   requestFailedHandler() {
     this.setState({
       requestFailed: true
     })
   }
-  
+
   render() {
     if(this.state.requestFailed) return <h2>Network Error.</h2>
     return (
@@ -32,10 +32,8 @@ export default class HomeView extends Component {
       </div>
       <div className="main">
         <div className="intro">
-          <h1>Welcome to first week of digital media. 🚀</h1>
-          <p>
-            This Initializer will help you survive the first week in Bremen.
-            <br /> We have a great program for you lined up!
+          <h1>Welcome to your first week of digital media. 🚀</h1>
+          <p>Nice to have you! This programme is your guide into the orientation days of studying digital media. We are happy answer your questions here and share them with everybody.<br/>Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br/>Have a great start and a lot of fun!
           </p>
         </div>
         <InputPlaceholder></InputPlaceholder>
@@ -45,4 +43,3 @@ export default class HomeView extends Component {
     );
   }
 }
-

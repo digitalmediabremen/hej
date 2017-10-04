@@ -21,7 +21,7 @@ body {
   .wrapper {
     padding: 2em 1em 1em 1em;
     font-size: 22px;
-  }    
+  }
 }
 
 
@@ -29,7 +29,7 @@ body {
   .wrapper {
     width: 680px;
     margin: 0 auto;
-  }    
+  }
 }
 
 
@@ -117,7 +117,7 @@ img {
 @media only screen and (min-width : 768px) {
   .side {
     display: flex;
-  }    
+  }
 }
 
 .filter {
@@ -125,7 +125,7 @@ img {
   font-style: italic;
 }
 
-.filter a {
+a, a:hover, a:visited, a:active {
   color: black;
   text-decoration: none;
 
@@ -175,7 +175,7 @@ img {
 }
 
 .question h2:hover::before {
-  
+
   text-decoration: none !important;
 }
 
@@ -201,20 +201,20 @@ img {
   .question.list-item {
     margin: 0 0 2em 0;
   }
-  
+
   .question.list-item.has-answers:hover h2 {
     text-decoration: underline;
     cursor: pointer;
   }
-  
+
 }
 
 
 .question.full {
-  
+
   min-height: 100%;
   background-color: rgb(255,232,0);
-} 
+}
 
 
 .question.full h2 {
@@ -303,7 +303,7 @@ img {
 }
 
 .button-send {
-  
+
 }
 
 
