@@ -6,6 +6,8 @@ import {githubApiRequest, githubApiResourceChanged} from 'utils/Helpers.js';
 
 export default class DataStore {
   static myInstance = null;
+  static defaultPollInterval = 30;
+  static lastFailedPollInterval = 10;
   static excludedLabels = ["public", "pinned"];
 
 
@@ -145,16 +147,19 @@ export default class DataStore {
   updateData() {
     githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
       localStorage.setItem("e-tag", eTag);
-      let nextInterval = interval !== null ? interval : 60;
+      let nextInterval = interval !== null ? interval : DataStore.defaultPollInterval;
       
       this.updateQuestions();
       this.updateFilters();
       
       setTimeout(this.updateData, nextInterval * 1000)
     }, (interval) => {
-      let nextInterval = interval !== null ? interval : 60;
+      let nextInterval = interval !== null ? interval : DataStore.defaultPollInterval;
       
       setTimeout(this.updateData, nextInterval * 1000)
+    }).then(() => {}, () => {
+      setTimeout(this.updateData, DataStore.lastFailedPollInterval * 1000);
+
     })
     
   }

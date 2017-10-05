@@ -36,7 +36,7 @@ function githubApiResourceChanged(endpoint, eTag, callbackYes, callbackNo) {
     "If-None-Match": eTag
   }
 
-  fetch(url, {
+  return fetch(url, {
     headers: headers,
   })
   .then(response => {
@@ -46,8 +46,6 @@ function githubApiResourceChanged(endpoint, eTag, callbackYes, callbackNo) {
       if(callbackNo) callbackNo(response.headers.get("X-Poll-Interval"));
     }
     return response
-  }, () => {
-    console.error("error");
   })
   
 }
