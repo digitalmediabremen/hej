@@ -131,6 +131,11 @@ a, a:hover, a:visited, a:active {
 
 }
 
+.answer a, a:visited, a:active {
+  text-decoration: underline;
+
+}
+
 .filter a:hover {
   text-decoration: underline;
 }
