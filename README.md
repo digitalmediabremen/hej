@@ -24,7 +24,7 @@ Commit any changes to our repo before deploying.
 
 ### deploy to live server
 
-After you have checked for errors in your local environment do `npn run deploy` to push the latest code to the server.
+After you have checked for errors in your local environment do `npm run deploy` to push the latest code to the server.
 Be aware that you will be asked for credentials and therefore need to have a surge.sh account with rights to publish to hej.digitalmedia-bremen.de.
 
 ## How to use Hej
