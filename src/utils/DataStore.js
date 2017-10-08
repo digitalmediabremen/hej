@@ -1,7 +1,7 @@
 import "babel-polyfill";
 
 import {EventEmitter} from 'events';
-import {githubApiRequest, githubApiResourceChanged} from 'utils/Helpers.js';
+import {githubApiRequest, githubApiResourceChanged,isFilterInArray} from 'utils/Helpers.js';
 
 
 export default class DataStore {
@@ -9,6 +9,7 @@ export default class DataStore {
   static defaultPollInterval = 30;
   static lastFailedPollInterval = 10;
   static excludedLabels = ["public", "pinned"];
+  static staticLabels = ["bachelor", "master"];
 
 
   
@@ -16,8 +17,11 @@ export default class DataStore {
     this.emitter = new EventEmitter();
     this.emitter.setMaxListeners(100);
     this.questions = undefined;
-    this.filters = undefined;
+    this.filters = [];
+  
+   
     this.selectedFilters = [];
+    this.selectedStaticFilters = [];
         
     this.updateData = this.updateData.bind(this);
     
@@ -62,17 +66,57 @@ export default class DataStore {
   }
 
   getFilters() {
-    return this.filters;
+    return this.filters.filter(filter => !DataStore.staticLabels.includes(filter.name));
+  }
+
+  getStaticFilters() {
+    return this.filters.filter(filter => DataStore.staticLabels.includes(filter.name));
   }
 
   getSelectedFilters() {
-    return this.selectedFilters;
+    return this.selectedFilters.concat(this.selectedStaticFilters);
   }
 
   setSelectedFilters(filters) {
-    this.selectedFilters = filters;
+  
+    
+    let newSelectedStaticFilters = []
+    let newSelectedFilters = []
+    
+    filters.forEach((newFilter) => {
+      let isStatic = 0 <= DataStore.staticLabels.findIndex(f => f === newFilter.name)
+      
+      if(isStatic) {
+        newSelectedStaticFilters.push(newFilter)
+        this.selectedStaticFilters = newSelectedStaticFilters;
+      } else {
+        newSelectedFilters.push(newFilter)
+        this.selectedFilters = newSelectedFilters;
+
+      }
+    }) 
+
     this.emitter.emit("update-selected-filters");
+
+    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedFilters()))
   }
+
+  removeSelectedFilters(filters) {
+    filters.forEach((newFilter) => {
+      let isStatic = 0 <= DataStore.staticLabels.findIndex(f => f === newFilter.name)
+
+      if(isStatic) {
+        this.selectedStaticFilters = [];
+      } else {
+        this.selectedFilters = [];
+
+      }
+    }) 
+    
+    this.emitter.emit("update-selected-filters");
+    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedFilters()))
+  }
+
 
   updateQuestions() {
     var promises = [];
@@ -124,10 +168,21 @@ export default class DataStore {
     //try to load from cache 
     if(localStorage.getItem("filters") && localStorage.getItem("questions")) {
       //load from cache
-      console.log("from cache")
 
       this.questions = JSON.parse(localStorage.getItem("questions"));
       this.filters = JSON.parse(localStorage.getItem("filters"));
+      
+      if(localStorage.getItem("selected-filters") !== null) {
+
+        try {
+          console.log("filters from cache")
+          this.setSelectedFilters(JSON.parse(localStorage.getItem("selected-filters")))
+        } catch(E) {
+          localStorage.setItem("selected-filters", undefined);
+          console.error("error while parsing selected filters")
+        }
+      }
+    
       //fire data changed event
       this.emitter.emit("update");
       this.emitter.emit("update-selected-filters");

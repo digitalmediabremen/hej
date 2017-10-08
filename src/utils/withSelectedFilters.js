@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import DataStore from "./DataStore.js";
+import {isFilterInArray} from 'utils/Helpers.js';
+
 
 export default function withSelectedFilters(WrappedComponent) {
   
@@ -10,6 +12,8 @@ export default function withSelectedFilters(WrappedComponent) {
       this.handleChange = this.handleChange.bind(this)
       this.setSelectedFilters = this.setSelectedFilters.bind(this);
       this.dataStore = DataStore.getInstance();
+      
+      console.log(props)
       
       this.state = {
         filters: this.dataStore.getSelectedFilters()
@@ -26,8 +30,11 @@ export default function withSelectedFilters(WrappedComponent) {
       this.dataStore.removeFilterChangeListener(this.handleChange);
     }
     
-    setSelectedFilters(filters) {
-      this.dataStore.setSelectedFilters(filters);
+    setSelectedFilters(label) {
+      if(isFilterInArray(this.dataStore.getSelectedFilters(), label)) { 
+        this.dataStore.removeSelectedFilters([label]);
+      }
+      else this.dataStore.setSelectedFilters([label])
     } 
     
     handleChange() {

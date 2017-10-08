@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 import QuestionList from 'components/QuestionList.js';
 import Filter from 'components/Filter.js';
 import InputPlaceholder from 'components/InputPlaceholder.js';
+import { withRouter } from 'react-router-dom';
 
 
-
-export default class HomeView extends Component {
+class HomeView extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,13 +22,24 @@ export default class HomeView extends Component {
       requestFailed: true
     })
   }
+  
+  componentDidMount() {
+    if(localStorage) {
+      if(localStorage.getItem("selected-filters") === null) {
+        this.props.history.push("/select");
+      } else {
+        console.log(localStorage.getItem("selected-filters"))
+      }
+    }
+  }
 
   render() {
     if(this.state.requestFailed) return <h2>Network Error.</h2>
     return (
     <div className="wrapper">
       <div className="side">
-        <Filter></Filter>
+        <Filter showStaticFilters={false}></Filter>
+
       </div>
       <div className="main">
         <div className="intro">
@@ -43,3 +54,5 @@ export default class HomeView extends Component {
     );
   }
 }
+
+export default withRouter(HomeView)

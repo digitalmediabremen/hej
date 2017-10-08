@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {isFilterInArray} from 'utils/Helpers.js';
 import withData from "utils/withData.js";
 import withSelectedFilters from "utils/withSelectedFilters.js";
+import { withRouter, Link } from 'react-router-dom';
 
 
 class Filter extends Component {
@@ -13,15 +14,16 @@ class Filter extends Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
   
-  componentDidMount() {
-   
-  }
   
   clickHandler(label, e) {
     e.preventDefault();
-
-    if(isFilterInArray(this.props.filters, label)) this.props.setSelectedFilters([]);
-    else this.props.setSelectedFilters([label])
+    
+    this.props.setSelectedFilters(label)
+    
+    if(this.props.showStaticFilters) {
+      this.props.history.push("/");
+      console.log("sdsdd")
+    }
     
   }
   
@@ -35,14 +37,19 @@ class Filter extends Component {
     let labelList = this.props.data.map((l) =>
       <li key={l.id} className={this.getClassName(l)}><a href="#filter" onClick={ (evt)=> this.clickHandler(l, evt)}>{l.name}</a></li>
     );
-    
+
+
     
     return (
-      <ul className="filter-list">{labelList}</ul>
+      <ul className="filter-list">{labelList}
+      <li>-</li>
+      { !this.props.showStaticFilters &&
+      <li className="filter"><Link to="/select">change Bachelor / Master</Link></li>}
+      </ul>
     );
   }
 }
 
 
 
-export default withSelectedFilters(withData(Filter,(DataStore, props) => DataStore.getFilters()));
+export default withRouter(withSelectedFilters(withData(Filter,(DataStore, props) => props.showStaticFilters ? DataStore.getStaticFilters() : DataStore.getFilters())));

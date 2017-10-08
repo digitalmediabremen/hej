@@ -312,6 +312,17 @@ a, a:hover, a:visited, a:active {
 
 }
 
+/* PRESELECT ========================================= */
+
+.preselect {
+  background: #000;
+  color: rgb(255,232,0);
+}
+
+.preselect a {
+  color: rgb(255,232,0);
+  font-size: 8em;
+}
 
 /* BUTTON ============================================ */
 
