@@ -73,8 +73,16 @@ export default class DataStore {
     return this.filters.filter(filter => DataStore.staticLabels.includes(filter.name));
   }
 
-  getSelectedFilters() {
+  getAllSelectedFilters() {
     return this.selectedFilters.concat(this.selectedStaticFilters);
+  }
+
+  getSelectedStaticFilters() {
+    return this.selectedStaticFilters;
+  }
+
+  getSelectedFilters() {
+    return this.selectedFilters;
   }
 
   setSelectedFilters(filters) {
@@ -95,10 +103,13 @@ export default class DataStore {
 
       }
     }) 
+    
+    console.log(this.getSelectedStaticFilters())
 
     this.emitter.emit("update-selected-filters");
 
-    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedFilters()))
+    //only save static filters
+    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
   }
 
   removeSelectedFilters(filters) {
@@ -109,12 +120,12 @@ export default class DataStore {
         this.selectedStaticFilters = [];
       } else {
         this.selectedFilters = [];
-
       }
     }) 
     
     this.emitter.emit("update-selected-filters");
-    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedFilters()))
+    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
+    console.log(this.getSelectedStaticFilters())
   }
 
 

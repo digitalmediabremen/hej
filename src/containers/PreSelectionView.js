@@ -1,6 +1,6 @@
 import "babel-polyfill";
 import React, { Component } from 'react';
-import Filter from "components/Filter.js"
+import StaticFilter from "components/StaticFilter.js"
 
 
 export default class InputView extends Component {
@@ -9,7 +9,7 @@ export default class InputView extends Component {
     return (
       <div className="preselect">
         <div className="wrapper">
-          <Filter showStaticFilters={true}></Filter>
+          <StaticFilter />
         </div>
       </div>
     )

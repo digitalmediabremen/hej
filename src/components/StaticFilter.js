@@ -8,26 +8,20 @@ import FilterList from "components/FilterList.js"
 import { withRouter, Link } from 'react-router-dom';
 
 
-class Filter extends Component {
+class StaticFilter extends Component {
   constructor(props) {
     super(props);
     
-    this.clickHandler = this.clickHandler.bind(this);
+    this.selectFilterHandler = this.selectFilterHandler.bind(this);
   }
   
   
-  clickHandler(label, e) {
-    e.preventDefault();
-    
-    this.props.setSelectedFilters(label)
-    
-    if(this.props.showStaticFilters) {
-      this.props.history.push("/");
-    }  
+  selectFilterHandler(label) {
+    this.props.history.push("/"); 
   }
   
   render() {
-    return <FilterList {...this.props} />
+    return <FilterList {...this.props} onFilterSelected={this.selectFilterHandler} />
   }
 }
 
@@ -35,4 +29,4 @@ class Filter extends Component {
 
 
 
-export default withRouter(withData(Filter,(DataStore, props) => DataStore.getFilters()));
+export default withRouter(withData(StaticFilter,(DataStore, props) => DataStore.getStaticFilters()));

@@ -13,7 +13,7 @@ const App = () => (
       <Switch>
         <Route exact path='/' component={HomeView}/>
         <Route path='/ask' component={InputView}/>
-        <Route path='/select' component={PreSelectionView}/>
+        <Route path='/select-your-track' component={PreSelectionView}/>
         <Route path='/:number' component={QuestionView}/>
       </Switch>
     </div>

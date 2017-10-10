@@ -324,6 +324,17 @@ a, a:hover, a:visited, a:active {
   font-size: 8em;
 }
 
+.change-track-link {
+  display: block;
+  padding-top: 20px;
+}
+
+
+.change-track-link:hover {
+  text-decoration: underline;
+}
+
+
 /* BUTTON ============================================ */
 
 
