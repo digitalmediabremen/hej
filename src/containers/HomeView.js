@@ -30,7 +30,6 @@ class HomeView extends Component {
       if(localStorage.getItem("selected-filters") === null) {
         this.props.history.push("/select-your-track");
       } else {
-        console.log(localStorage.getItem("selected-filters"))
       }
     }
   }

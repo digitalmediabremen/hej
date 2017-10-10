@@ -104,8 +104,6 @@ export default class DataStore {
       }
     }) 
     
-    console.log(this.getSelectedStaticFilters())
-
     this.emitter.emit("update-selected-filters");
 
     //only save static filters
@@ -180,16 +178,25 @@ export default class DataStore {
     if(localStorage.getItem("filters") && localStorage.getItem("questions")) {
       //load from cache
 
-      this.questions = JSON.parse(localStorage.getItem("questions"));
-      this.filters = JSON.parse(localStorage.getItem("filters"));
+      try {
+        console.log("data from cache")
+
+        this.questions = JSON.parse(localStorage.getItem("questions"));
+        this.filters = JSON.parse(localStorage.getItem("filters"));
+      } catch(E) {
+        localStorage.removeItem("questions");
+        localStorage.removeItem("filters");
+
+        console.error("error while parsing questions and filters filters")
+      }
       
       if(localStorage.getItem("selected-filters") !== null) {
 
         try {
-          console.log("filters from cache")
+          console.log("selected-filters from cache")
           this.setSelectedFilters(JSON.parse(localStorage.getItem("selected-filters")))
         } catch(E) {
-          localStorage.setItem("selected-filters", undefined);
+          localStorage.removeItem("selected-filters");
           console.error("error while parsing selected filters")
         }
       }
@@ -202,6 +209,8 @@ export default class DataStore {
       this.updateData();
 
     } else {
+      console.log("data from api")
+
       //load from remote resource
       
       //clear e-tag in case of inconsistencies in cache
@@ -215,6 +224,8 @@ export default class DataStore {
       localStorage.setItem("e-tag", eTag);
       let nextInterval = interval !== null ? interval : DataStore.defaultPollInterval;
       
+      console.log("changes detected: data from api")
+
       this.updateQuestions();
       this.updateFilters();
       
