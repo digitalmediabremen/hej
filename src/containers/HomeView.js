@@ -45,7 +45,7 @@ class HomeView extends Component {
       <div className="main">
         <div className="intro">
           <h1>Welcome to your first week of digital media. 🚀</h1>
-          <p>Nice to have you! This programme is your guide into the orientation days of studying digital media. We are happy answer your questions here and share them with everybody.<br/>Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br/>Have a great start and a lot of fun!
+          <p>Nice to have you! This programme is your guide into the orientation days of studying digital media. We are happy to answer your questions here and share them with everybody.<br/>Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br/>Have a great start and a lot of fun!
           
           <Link to="/select-your-track" className="change-track-link">
             { this.props.selectedStaticFilter && <span> change track <b>{this.props.selectedStaticFilter}</b></span>}  
