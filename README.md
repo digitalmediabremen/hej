@@ -29,4 +29,7 @@ Be aware that you will be asked for credentials and therefore need to have a sur
 
 ## How to use Hej
 
+move over to the issues tab in this github project. 
+the web app fetches all questions with the designated label and creates new ones.
+
 ## How to be Hej
