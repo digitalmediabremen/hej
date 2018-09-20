@@ -156,9 +156,10 @@ a, a:hover, a:visited, a:active {
   text-decoration: underline;
 }
 
-.filter.selected {
-  font-weight: bold;
-/*  text-decoration: underline;*/
+.filter-list .filter.selected {
+  /* font-weight: bold; */
+  text-decoration: none;
+  background: #fff;
 }
 
 .filter-list .filter.selected a:after {
