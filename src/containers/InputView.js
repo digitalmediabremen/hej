@@ -4,8 +4,12 @@ import Input from "components/Input.js"
 
 
 export default class InputView extends Component {
-  
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
-    return <Input></Input>
+    return       <div className="fullscreen input fade-in">
+    <Input></Input>
+    </div>
   } 
 }

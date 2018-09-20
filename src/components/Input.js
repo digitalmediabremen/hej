@@ -24,7 +24,9 @@ class Input extends Component {
 
   componentDidMount() {
     document.body.classList.toggle('noscroll', true);
+
   }
+
 
   componentWillUnmount() {
     document.body.classList.toggle('noscroll', false);
@@ -85,7 +87,7 @@ class Input extends Component {
 
   getHeadlineText() {
     if (this.state.requestFailed) return "Your message could not been sent."
-    if (this.state.sending) return "Thanks for your answer!"
+    if (this.state.sending) return "Thanks for your question!"
     else return "Ask us anything."
   }
 
@@ -107,7 +109,7 @@ class Input extends Component {
 
   render() {
 
-    let questionMarks = new Array(25).fill(0).map((elem,i) => {
+    let questionMarks = new Array(25).fill(0).map((elem, i) => {
       let z = Math.random();
       let x = Math.random();
       let d = Math.random();
@@ -120,13 +122,11 @@ class Input extends Component {
     });
 
     return (
-      <div className="fullscreen input">
-        <div className="wrapper">
-          <h1>{this.getHeadlineText()}</h1>
-          <textarea rows="5" autoFocus style={{ resize: "none" }} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>
-          {this.checkInput() && <Button onPress={this.submitHandler} styleClass="button-send" disabled={this.getSendButtonStatus()} text={this.getSendButtonText()}></Button>}
-          {!this.checkInput() && <Button onPress={this.closeHandler} disabled={this.getCancelButtonStatus()} text="back to the list"></Button>}
-        </div>
+      <div className="wrapper">
+        <h1>{this.getHeadlineText()}</h1>
+        <textarea rows="5" autoFocus style={{ resize: "none" }} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>
+        {this.checkInput() && <Button onPress={this.submitHandler} styleClass="button-send" disabled={this.getSendButtonStatus()} text={this.getSendButtonText()}></Button>}
+        {!this.checkInput() && <Button onPress={this.closeHandler} disabled={this.getCancelButtonStatus()} text="back to the list"></Button>}
         <div className={"questionmark-animation " + (this.state.play ? "play" : "")}>
           {questionMarks}
         </div>
