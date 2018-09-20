@@ -5,6 +5,9 @@ import TimeAgo from 'react-timeago'
 import {isFilterNameInArray} from 'utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
 import withData from 'utils/withData.js'
+import FilterList from "components/FilterList.js";
+import DataStore from "utils/DataStore.js";
+
 
 
 
@@ -50,11 +53,17 @@ class QuestionItem extends Component {
   
   render() {
     if(!this.props.data) return <p>loading...</p>
+    let labels = this.props.data.labels;
+    let exclude = DataStore.excludedLabels.concat(DataStore.staticLabels)
+    let filteredLabels =  labels.filter(filter => !exclude.includes(filter.name));
+    let FilterListWithData = withData(FilterList,(DataStore, props) => filteredLabels);
+    console.log(this.props)
    
     return (
       <div className={this.getClassName()}>
         {this.props.data.title !== "" && <h2 onClick={this.clickHandler} className="question-title de">{this.getTitle()}</h2>} 
         {this.hasAnswers() && <span className="answer-date">answered <TimeAgo date={new Date(this.getNewestAnswer().updated_at)}></TimeAgo></span>}
+        <FilterListWithData />
       </div>
     );
       

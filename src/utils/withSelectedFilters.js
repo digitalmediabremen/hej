@@ -45,7 +45,7 @@ export default function withSelectedFilters(WrappedComponent) {
       const sf = this.dataStore.getSelectedStaticFilters()
       if(sf.length === 0) return undefined;
       
-      return sf[0].name
+      return sf[0]
     }
     
     isFilterSelected(filter) {
@@ -61,9 +61,12 @@ export default function withSelectedFilters(WrappedComponent) {
     render() {
       const props = Object.assign({}, this.props, {
         isFilterSelected: this.isFilterSelected,
-        selectedStaticFilter: this.getSelectedStaticFilter()
+        selectedStaticFilter: this.getSelectedStaticFilter(),
+        onFilterSelected: this.selectFilterHandler,
+        filters: this.state.filters
       });
-      return <WrappedComponent filters={this.state.filters} {...props} onFilterSelected={this.selectFilterHandler} />;
+
+      return <WrappedComponent {...props} />;
     }
   }
   

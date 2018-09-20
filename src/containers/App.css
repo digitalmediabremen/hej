@@ -4,9 +4,16 @@
   box-sizing: border-box;
 }
 
-body {
-    background-color: rgb(255,232,0);
+:root {
+  --primary: 0,0,0; 
+  --secondary: 255, 246, 151;
+  --contrast: 255, 232, 0;
 
+}
+
+body {
+    background-color: rgb(var(--contrast));
+    color: rgb(var(--primary));
 }
 
 .wrapper {
@@ -120,19 +127,28 @@ img {
   }
 }
 
-.filter {
-  text-decoration: none;
-  font-style: italic;
-}
-
 a, a:hover, a:visited, a:active {
   color: black;
   text-decoration: none;
-
 }
 
 .answer a, a:visited, a:active {
   text-decoration: underline;
+
+}
+
+.filter {
+  text-decoration: none;
+  font-style: italic;
+  display: inline;
+}
+
+.filter-list .filter {
+  background: rgb(var(--secondary));
+  width: fit-content;
+}
+
+.filter-toggle .filter {
 
 }
 
@@ -143,12 +159,19 @@ a, a:hover, a:visited, a:active {
 .filter.selected {
   font-weight: bold;
 /*  text-decoration: underline;*/
+}
+
+.filter-list .filter.selected a:after {
+  content: "𝕏";
+  font-style: normal;
+  padding-left: 1em;
+  font-size: 0.7em;
+  display: inline-block;
 
 }
 
-.filter.selected::after {
-  content: ""
-
+.filter.selected a:after:hover {
+  text-decoration: none;
 }
 
 .filter-list {
@@ -157,7 +180,29 @@ a, a:hover, a:visited, a:active {
   margin: 0;
   padding: 0;
   font-size: 0.8em;
+  line-height: 0.8em;
+}
 
+
+
+.filter-list.inline {
+  display: inline;
+}
+
+.filter-list.block .filter {
+  padding: 0.3em 0.4em;
+  margin-bottom: 0.4em;
+  display: block;
+}
+
+.filter-list.inline .filter {
+  padding: 0em 0.2em;
+  margin-right: 0.4em;
+}
+
+.filter-toggle {
+  padding-top: 1em;
+  display: inline-block;
 }
 
 /* QUESTION ============================================ */
@@ -218,7 +263,7 @@ a, a:hover, a:visited, a:active {
 .question.full {
 
   min-height: 100%;
-  background-color: rgb(255,232,0);
+  background-color: rgb(var(--contrast));
 }
 
 
@@ -238,7 +283,7 @@ a, a:hover, a:visited, a:active {
 .answer-date {
   font-style: italic;
   font-size: 0.8em;
-  color: rgba(0,0,0,0.4);
+  color: rgba(var(--primary), 0.4);
   display: block;
 }
 
@@ -259,11 +304,11 @@ a, a:hover, a:visited, a:active {
 
 .input-placeholder {
   padding: 0.5em 1em;
-  border-top: 2px dashed rgba(0,0,0,0.2);
-  border-bottom: 2px dashed rgba(0,0,0,0.2);
+  border-top: 2px dashed rgba(var(--primary), 0.2);
+  border-bottom: 2px dashed rgba(var(--primary), 0.2);
 
   margin: 0 -1em 1.5em -1em;
-  color: rgba(0,0,0,0.4);
+  color: rgba(var(--primary), 0.4);
 }
 
 .input-placeholder:hover {
@@ -272,8 +317,8 @@ a, a:hover, a:visited, a:active {
 
 @media only screen and (min-width : 768px) {
   .input-placeholder {
-    border-left: 2px dashed rgba(0,0,0,0.2);
-    border-right: 2px dashed rgba(0,0,0,0.2);
+    border-left: 2px dashed rgba(var(--primary), 0.2);
+    border-right: 2px dashed rgba(var(--primary), 0.2);
   }
 }
 
@@ -316,11 +361,11 @@ a, a:hover, a:visited, a:active {
 
 .preselect {
   background: #000;
-  color: rgb(255,232,0);
+  color: rgb(var(--contrast));
 }
 
 .preselect a {
-  color: rgb(255,232,0);
+  color: rgb(var(--contrast));
   font-size: 8em;
 }
 
@@ -342,63 +387,47 @@ a, a:hover, a:visited, a:active {
   text-decoration: underline;
 }
 
-/* CURSORS ============================================ */
+/* ANIMATION ============================================ */
 
-
-.blinking-cursor {
-  font-weight: 100;
-  font-size: 1.2em;
-  letter-spacing: -0.25em;
-  margin-left: -0.2em;
-  color: #000;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
+.questionmark-animation {
+  position: absolute;
+  top: 0;
+  perspective: 500px;
+  perspective-origin: 50% 50%;
 }
 
-@keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
+.questionmark-animation span {
+  display: none;
+  position: absolute;
+  color: #fff;
 }
 
-@-moz-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
+
+.questionmark-animation.play span {
+  display: block;
+  animation: 3s raise ease-out calc(var(--d) * 2s);
+  animation-fill-mode: both;
 }
 
-@-webkit-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
+.questionmark-animation span:after {
+  font-family: 'Times New Roman', Times, serif;
+  content: "?";
+  font-size: 20em;
+  display: block;
+  transform: translate3d(-50%, -50%, 0);
 }
 
-@-ms-keyframes "blink" {
-  from, to {
-    color: transparent;
+@keyframes raise {
+  0% {
+    transform: translate3d(50vw, 300vh, calc(var(--z) * -600px)) ;
+    opacity: 1;
   }
-  50% {
-    color: black;
+  80% {
+    opacity: 0.8;
   }
-}
+  100% {
 
-@-o-keyframes "blink" {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
+    opacity: 0;
+    transform: translate3d(calc( 50vw + var(--x) * 100vw), -20vh, calc(var(--z) * -600px));
   }
 }

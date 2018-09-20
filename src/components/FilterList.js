@@ -1,7 +1,6 @@
 import "babel-polyfill";
 
 import React, { Component } from 'react';
-import withData from "utils/withData.js";
 import withSelectedFilters from "utils/withSelectedFilters.js";
 import { withRouter, Link } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ class FilterList extends Component {
   clickHandler(label, e) {
     e.preventDefault();
     
-    this.props.onFilterSelected(label)  
+    this.props.onFilterSelected(label) 
   }
   
   getClassName(label) {
@@ -26,13 +25,15 @@ class FilterList extends Component {
   
   render() {
     if(!this.props.data) return <p>...</p>
+
+    let c = !!this.props.styleClass ? this.props.styleClass : "inline"
     
     let labelList = this.props.data.map((l) =>
       <li key={l.id} className={this.getClassName(l)}><a href="#filter" onClick={ (evt)=> this.clickHandler(l, evt)}>{l.name}</a></li>
     );
     
     return (
-      <ul className="filter-list">
+      <ul className={"filter-list " + c}>
         {labelList}
       </ul>
     );

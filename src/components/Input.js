@@ -1,7 +1,7 @@
 import "babel-polyfill";
 import React, { Component } from 'react';
 import Button from 'components/Button.js'
-import {githubApiPost} from 'utils/Helpers.js';
+import { githubApiPost } from 'utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
 
 
@@ -12,102 +12,126 @@ class Input extends Component {
     this.state = {
       input: "",
       sending: false,
-      requestFailed: false
+      requestFailed: false,
+      play: false
+
     };
-    
+
     this.changeHandler = this.changeHandler.bind(this);
     this.closeHandler = this.closeHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
   }
-  
+
   componentDidMount() {
-    document.body.classList.toggle('noscroll', true); 
+    document.body.classList.toggle('noscroll', true);
   }
-  
+
   componentWillUnmount() {
-    document.body.classList.toggle('noscroll', false); 
+    document.body.classList.toggle('noscroll', false);
   }
-  
+
   changeHandler(e) {
-    console.log(e.target.scrollHeight);
     this.setState({ input: e.target.value });
   }
-  
+
   closeHandler() {
     this.setState({
-      focused:false,
-      sending:false,
+      focused: false,
+      sending: false,
       requestFailed: false,
-      input: ""
+      input: "",
     })
     this.props.history.push("/");
+
   }
-  
+
   submitHandler() {
-    if(!this.checkInput()) return;
-    
+    if (!this.checkInput()) return;
+
     this.setState({
       requestFailed: false,
-      sending: true 
+      sending: true
     })
-    
-    githubApiPost("issues", {title: this.state.input})
-    .then(d => {
-        this.setState({
-          input: "",
-          focused: false,
-          sending: false
-        })
-        this.props.history.push("/");
-      
+
+    this.setState({ play: true })
+
+    githubApiPost("issues", { title: this.state.input })
+      .then(d => {
+        setTimeout(() => {
+          this.setState({
+            input: "",
+            focused: false,
+            sending: false
+          })
+          this.props.history.push("/");
+        }, 3000)
+
       }, () => {
-        this.setState({ 
+        this.setState({
           requestFailed: true,
           sending: false,
         });
 
       });
   }
-  
+
   getSendButtonText() {
-    if(this.state.requestFailed) return "resend?"
-    if(this.state.sending) return "sending..."
+    if (this.state.requestFailed) return "resend?"
+    if (this.state.sending) return "sending..."
     else return "send"
   }
-  
-  
-  
+
+
+
   getHeadlineText() {
-    if(this.state.requestFailed) return "Your message could not been sent."
-    if(this.state.sending) return "Thanks for your answer!"
+    if (this.state.requestFailed) return "Your message could not been sent."
+    if (this.state.sending) return "Thanks for your answer!"
     else return "Ask us anything."
   }
-  
+
   checkInput() {
     return this.state.input.length > 5;
   }
-  
+
   getSendButtonStatus() {
     return !this.checkInput() || this.state.sending;
   }
-  
+
   getCancelButtonStatus() {
     return this.state.sending;
   }
-  
+
   getClassName() {
     return `input${(this.state.focused ? " selected" : "")}`;
   }
-  
-  render() { 
+
+  render() {
+
+    let questionMarks = new Array(25).fill(0).map((elem) => {
+      let z = Math.random();
+      let x = Math.random();
+      let d = Math.random();
+      let q = <span style={{ "--z": z, "--x": x, "--d": d }} />
+      //q.refs.style.setProperty("size", r);
+
+      return (
+        q
+      )
+    });
+
+    console.log(questionMarks)
+
     return (
       <div className="input">
         <div className="wrapper">
           <h1>{this.getHeadlineText()}</h1>
-          <textarea rows="5" autoFocus style={{resize: "none"}} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>
+          <textarea rows="5" autoFocus style={{ resize: "none" }} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>
           {this.checkInput() && <Button onPress={this.submitHandler} styleClass="button-send" disabled={this.getSendButtonStatus()} text={this.getSendButtonText()}></Button>}
           {!this.checkInput() && <Button onPress={this.closeHandler} disabled={this.getCancelButtonStatus()} text="back to the list"></Button>}
-        </div> 
+        </div>
+        <div className={"questionmark-animation " + (this.state.play ? "play" : "")}>
+          {questionMarks}
+        </div>
       </div>
     );
   }

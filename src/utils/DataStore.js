@@ -123,7 +123,6 @@ export default class DataStore {
     
     this.emitter.emit("update-selected-filters");
     if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
-    console.log(this.getSelectedStaticFilters())
   }
 
 
