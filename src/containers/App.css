@@ -360,7 +360,7 @@ a, a:hover, a:visited, a:active {
   animation: 0.4s fade-in;
 }
 @keyframes fade-in {
-  0% {
+  10% {
     transform: translateY( 10vw);
   }
   100% {
