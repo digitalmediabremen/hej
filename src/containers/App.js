@@ -8,7 +8,7 @@ import "./App.css"
 
 
 const App = () => (
-  <BrowserRouter>
+  <BrowserRouter onUpdate={() => { window.scrollTo(0, 0); console.log("sdsd"); }}>
     <div className="App">
       <Switch>
         <Route exact path='/' component={HomeView}/>

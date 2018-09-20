@@ -354,10 +354,13 @@ a, a:hover, a:visited, a:active {
   background-color: #000;
   color: #ddd;
   z-index: 100;
+}
+
+.fade-in {
   animation: 0.4s fade-in;
 }
 @keyframes fade-in {
-  0% {
+  10% {
     transform: translateY( 10vw);
   }
   100% {
