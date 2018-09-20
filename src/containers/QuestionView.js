@@ -7,6 +7,10 @@ import Question from 'components/Question.js'
 export default class QuestionView extends Component {
 
   render() {
-    return <Question number={this.props.match.params.number}></Question>
-  } 
+    return (
+      <div className="fullscreen" key="main">
+        <Question number={this.props.match.params.number}></Question>
+      </div>
+    )
+  }
 }

@@ -57,7 +57,6 @@ class QuestionItem extends Component {
     let exclude = DataStore.excludedLabels.concat(DataStore.staticLabels)
     let filteredLabels =  labels.filter(filter => !exclude.includes(filter.name));
     let FilterListWithData = withData(FilterList,(DataStore, props) => filteredLabels);
-    console.log(this.props)
    
     return (
       <div className={this.getClassName()}>

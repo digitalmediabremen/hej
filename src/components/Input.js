@@ -107,11 +107,11 @@ class Input extends Component {
 
   render() {
 
-    let questionMarks = new Array(25).fill(0).map((elem) => {
+    let questionMarks = new Array(25).fill(0).map((elem,i) => {
       let z = Math.random();
       let x = Math.random();
       let d = Math.random();
-      let q = <span style={{ "--z": z, "--x": x, "--d": d }} />
+      let q = <span key={i} style={{ "--z": z, "--x": x, "--d": d }} />
       //q.refs.style.setProperty("size", r);
 
       return (
@@ -119,10 +119,8 @@ class Input extends Component {
       )
     });
 
-    console.log(questionMarks)
-
     return (
-      <div className="input">
+      <div className="fullscreen input">
         <div className="wrapper">
           <h1>{this.getHeadlineText()}</h1>
           <textarea rows="5" autoFocus style={{ resize: "none" }} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>

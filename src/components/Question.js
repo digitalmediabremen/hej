@@ -60,7 +60,7 @@ class Question extends Component {
 
 
     return (
-      <div className="wrapper">
+      <div className="wrapper" key="main">
 
         <div className={this.getClassName()}>
           <h2 className="question-title de">{this.getTitle()}</h2>

@@ -43,22 +43,24 @@ class HomeView extends Component {
     const StaticFilterToggle = withData(FilterToggle, (DataStore, props) => DataStore.getStaticFilters());
 
     return (
-      <div className="wrapper">
-        <div className="side">
-          <Filter styleClass="block" />
-        </div>
-        <div className="main">
-          <div className="intro">
-            <h1>Welcome to your first week of digital media. 🚀</h1>
-            <p>
-              Nice to have you! This programme is your guide into the orientation days of studying digital media. We are happy to answer your questions here and share them with everybody.<br />Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br />Have a great start and a lot of fun!
-              <br />
-              <b><StaticFilterToggle /></b>
-            </p>
-
+      <div className="fullscreen" key="main">
+        <div className="wrapper">
+          <div className="side">
+            <Filter styleClass="block" />
           </div>
-          <InputPlaceholder></InputPlaceholder>
-          <QuestionList></QuestionList>
+          <div className="main">
+            <div className="intro">
+              <h1>Welcome to your first week of digital media. 🚀</h1>
+              <p>
+                Nice to have you! This programme is your guide into the orientation days of studying digital media. We are happy to answer your questions here and share them with everybody.<br />Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br />Have a great start and a lot of fun!
+              <br />
+                <b><StaticFilterToggle /></b>
+              </p>
+
+            </div>
+            <InputPlaceholder></InputPlaceholder>
+            <QuestionList></QuestionList>
+          </div>
         </div>
       </div>
     );

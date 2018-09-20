@@ -248,9 +248,21 @@ a, a:hover, a:visited, a:active {
   font-size: 1em;
 }
 
+@keyframes fade-in-tiny {
+  0% {
+    transform: translateY( 2vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY( 0vw);
+    opacity: 1;
+  }
+}
+
 @media only screen and (min-width : 768px) {
   .question.list-item {
     margin: 0 0 2em 0;
+    animation: fade-in-tiny 0.8s;
   }
 
   .question.list-item.has-answers:hover h2 {
@@ -333,14 +345,27 @@ a, a:hover, a:visited, a:active {
   font-style: italic;
 }
 
-.input {
-
+.fullscreen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.input {
   background-color: #000;
   color: #ddd;
   z-index: 100;
+  animation: 0.4s fade-in;
 }
+@keyframes fade-in {
+  0% {
+    transform: translateY( 10vw);
+  }
+  100% {
+    transform: translateY( 0vw);
+  }
+}
+
+
 
 .input-area {
   width: 100%;
