@@ -25,8 +25,7 @@ class FilterToggle extends Component {
 
     render() {
         if (!this.props.data) return <p>...</p>
-
-        let f = this.props.selectedStaticFilter;
+        let f = this.props.getSelectedStaticFilter();
         let fw = this.props.data.filter((elem) => elem.name != f.name);
         let nextF = fw.length > 0 ? fw[0] : f;
 

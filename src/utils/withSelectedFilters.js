@@ -35,20 +35,21 @@ export default function withSelectedFilters(WrappedComponent) {
         this.dataStore.removeSelectedFilters([label]);
       }
       else this.dataStore.setSelectedFilters([label])
-      
-      if(this.props.onFilterSelected) {
-        this.props.onFilterSelected(label);
-      }
+
     }
     
     getSelectedStaticFilter() {
-      const sf = this.dataStore.getSelectedStaticFilters()
-      if(sf.length === 0) return undefined;
+      let selectedStaticFilters = this.dataStore.getSelectedStaticFilters()
+      let staticFilters = this.dataStore.getStaticFilters()
+      if(!selectedStaticFilters || !staticFilters) return undefined
+      else if(staticFilters.length == 0) return undefined 
+      else if(selectedStaticFilters.length == 0) return this.dataStore.getStaticFilters()[0];
       
-      return sf[0]
+      return selectedStaticFilters[0]
     }
     
     isFilterSelected(filter) {
+      if(this.state.filters == undefined) return false;
       return isFilterInArray(this.state.filters, filter);
     }
     
@@ -61,9 +62,9 @@ export default function withSelectedFilters(WrappedComponent) {
     render() {
       const props = Object.assign({}, this.props, {
         isFilterSelected: this.isFilterSelected,
-        selectedStaticFilter: this.getSelectedStaticFilter(),
         onFilterSelected: this.selectFilterHandler,
-        filters: this.state.filters
+        filters: this.state.filters,
+        getSelectedStaticFilter: this.getSelectedStaticFilter
       });
 
       return <WrappedComponent {...props} />;

@@ -7,8 +7,6 @@ import InputPlaceholder from 'components/InputPlaceholder.js';
 import { withRouter, Link } from 'react-router-dom';
 import withSelectedFilters from "utils/withSelectedFilters.js";
 import FilterToggle from "components/FilterToggle.js"
-import StaticFilter from "components/StaticFilter.js"
-
 import withData from "utils/withData.js";
 
 
@@ -29,18 +27,12 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
-    if (localStorage) {
-      if (localStorage.getItem("selected-filters") === null) {
-        this.props.history.push("/select-your-track");
-      } else {
-      }
-    }
   }
 
   render() {
     if (this.state.requestFailed) return <h2>Network Error.</h2>
 
-    const StaticFilterToggle = withData(FilterToggle, (DataStore, props) => DataStore.getStaticFilters());
+    const StaticFilterToggle = withData(FilterToggle, (dataStore, props) => dataStore.getStaticFilters());
 
     return (
       <div className="fullscreen" key="main">

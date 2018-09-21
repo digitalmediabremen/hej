@@ -16,8 +16,7 @@ class QuestionList extends Component {
   } 
   
   render() {
-    if(!this.props.data) return <p>loading...</p>
-    
+    if(!this.props.data || !this.props.filters) return <p>loading...</p>
 
     let filteredQuestions = this.props.data
       .filter(q => areFiltersInArray(this.props.filters, q.labels));

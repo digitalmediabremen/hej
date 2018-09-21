@@ -17,7 +17,7 @@ export default class DataStore {
     this.emitter = new EventEmitter();
     this.emitter.setMaxListeners(100);
     this.questions = undefined;
-    this.filters = [];
+    this.filters = undefined;
   
    
     this.selectedFilters = [];
@@ -66,32 +66,37 @@ export default class DataStore {
   }
 
   getFilters() {
+    if(!this.filters) return undefined;
     return this.filters.filter(filter => !DataStore.staticLabels.includes(filter.name));
   }
 
   getStaticFilters() {
+    if(!this.filters) return undefined;
     return this.filters.filter(filter => DataStore.staticLabels.includes(filter.name));
   }
 
   getAllSelectedFilters() {
+    if(!this.filters) return undefined;
     return this.selectedFilters.concat(this.selectedStaticFilters);
   }
 
   getSelectedStaticFilters() {
+    if(!this.filters) return undefined;
     return this.selectedStaticFilters;
   }
 
   getSelectedFilters() {
+    if(!this.filters) return undefined;
     return this.selectedFilters;
   }
 
-  setSelectedFilters(filters) {
-  
-    
+  setSelectedFilters(selectedFilters) {  
+    if(!this.filters) return undefined;
+
     let newSelectedStaticFilters = []
     let newSelectedFilters = []
     
-    filters.forEach((newFilter) => {
+    selectedFilters.forEach((newFilter) => {
       let isStatic = 0 <= DataStore.staticLabels.findIndex(f => f === newFilter.name)
       
       if(isStatic) {
@@ -100,7 +105,6 @@ export default class DataStore {
       } else {
         newSelectedFilters.push(newFilter)
         this.selectedFilters = newSelectedFilters;
-
       }
     }) 
     
@@ -111,6 +115,8 @@ export default class DataStore {
   }
 
   removeSelectedFilters(filters) {
+    if(!this.filters) return undefined;
+
     filters.forEach((newFilter) => {
       let isStatic = 0 <= DataStore.staticLabels.findIndex(f => f === newFilter.name)
 
@@ -158,6 +164,7 @@ export default class DataStore {
         this.filters = d.filter(filter => !DataStore.excludedLabels.includes(filter.name));
         if(localStorage) localStorage.setItem("filters", JSON.stringify(this.filters));
 
+        this.emitter.emit("update-selected-filters");
         this.emitter.emit("update");
       }, () => {
         console.log("failed");
@@ -197,6 +204,13 @@ export default class DataStore {
         } catch(E) {
           localStorage.removeItem("selected-filters");
           console.error("error while parsing selected filters")
+        }
+      } else {
+        // default
+        let sf = this.getStaticFilters();
+        if(sf != undefined && sf.length > 0) {
+          console.log("selected-filters not set. default to first static filter.")
+          this.setSelectedFilters([sf[0]])
         }
       }
     

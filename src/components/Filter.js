@@ -11,20 +11,8 @@ import { withRouter, Link } from 'react-router-dom';
 class Filter extends Component {
   constructor(props) {
     super(props);
-    
-    this.clickHandler = this.clickHandler.bind(this);
   }
   
-  
-  clickHandler(label, e) {
-    e.preventDefault();
-    
-    this.props.setSelectedFilters(label)
-    
-    if(this.props.showStaticFilters) {
-      this.props.history.push("/");
-    }  
-  }
   
   render() {
     return <FilterList {...this.props} />
@@ -35,4 +23,4 @@ class Filter extends Component {
 
 
 
-export default withRouter(withData(Filter,(DataStore, props) => DataStore.getFilters()));
+export default withRouter(withData(Filter,(dataStore, props) => dataStore.getFilters()));

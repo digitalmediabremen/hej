@@ -69,4 +69,4 @@ class QuestionItem extends Component {
   }
 }
 
-export default withRouter(withData(QuestionItem, (DataStore, props) => DataStore.getQuestion(props.number)));
+export default withRouter(withData(QuestionItem, (dataStore, props) => dataStore.getQuestion(props.number)));
