@@ -89,5 +89,4 @@ function areFiltersInArray(filters1, filters2) {
 }
 
 
-
 export {githubApiRequest, githubApiPost, isFilterInArray, isFilterNameInArray, areFiltersInArray, githubApiResourceChanged};

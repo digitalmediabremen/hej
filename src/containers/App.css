@@ -1,14 +1,22 @@
-
 /* APP ============================================ */
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 :root {
-  --primary: 0,0,0; 
-  --secondary: 255, 246, 151;
-  --contrast: 255, 232, 0;
-
+    /* YELLOW */
+    --primary: 0, 0, 0;
+    --secondary: 255, 255, 255;
+    --contrast: 255, 232, 0;
+    /* MINT */
+    /* --primary: 0, 0, 0;
+    --secondary: 255, 128, 0;
+    --contrast: 179, 232, 194; */
+    /* PETROL */
+    /* --primary: 0,0,0; 
+  --contrast: 224, 172, 157;
+  --secondary: 117, 185, 190;  */
 }
 
 body {
@@ -17,446 +25,446 @@ body {
 }
 
 .wrapper {
-  padding: 2em 1em 1em 1em;
-  min-height: 100vh;
-  font-family: "Times New Roman";
-  letter-spacing: 0.02em;
-  font-size: 16px;
-}
-
-@media only screen and (min-width : 768px) {
-  .wrapper {
     padding: 2em 1em 1em 1em;
-    font-size: 22px;
-  }
+    min-height: 100vh;
+    font-family: "Times New Roman";
+    letter-spacing: 0.02em;
+    font-size: 16px;
 }
 
-
-@media only screen and (min-width : 768px) {
-  .wrapper {
-    width: 680px;
-    margin: 0 auto;
-  }
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        padding: 2em 1em 1em 1em;
+        font-size: 22px;
+    }
 }
 
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        width: 680px;
+        margin: 0 auto;
+    }
+}
 
 .noscroll {
-  overflow: hidden;
+    overflow: hidden;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: "Inconsolata",monospace;
-  font-weight: normal;
-  padding: 0;
-  margin: 0.1em 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Inconsolata", monospace;
+    font-weight: normal;
+    padding: 0;
+    margin: 0.1em 0;
 }
 
 h1 {
-  font-size: 1.2em;
-  font-family: "Times New Roman";
-  text-decoration: underline;
-  text-align: center;
-  font-style: italic;
-  letter-spacing: 0.02em;
-
+    font-size: 1.2em;
+    font-family: "Times New Roman";
+    text-decoration: underline;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 0.02em;
 }
 
 h2 {
-  font-size: 1.1em;
-/*  letter-spacing: -0.02em;*/
-
+    font-size: 1.1em;
+    /*  letter-spacing: -0.02em;*/
 }
 
-.app-name {
-}
+.app-name {}
 
 .intro p {
-  font-family: "Times New Roman";
-  font-style: italic;
-  text-align: center;
-  font-size: 0.7em;
+    font-family: "Times New Roman";
+    font-style: italic;
+    text-align: center;
+    font-size: 0.7em;
 }
 
 .intro {
-  padding-bottom: 1em;
+    padding-bottom: 1em;
 }
 
-.main {
-}
+.main {}
 
 img {
-  width: 100%;
+    width: 100%;
 }
 
 .button {
-  display: block;
-  font-style: italic;
-  text-decoration: underline;
-  width: 100%;
-  text-align: center;
-  padding: .5em;
+    display: block;
+    font-style: italic;
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+    padding: .5em;
 }
 
 .button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .button.disabled {
-  color: #555;
-  cursor: default;
+    color: #555;
+    cursor: default;
 }
 
 /* FEED ============================================ */
 
-
 /* FILTER ============================================ */
 
 .side {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  display: none;
-  align-items: center;
-  padding-left: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    align-items: center;
+    padding-left: 1em;
 }
 
-@media only screen and (min-width : 768px) {
-  .side {
-    display: flex;
-  }
+@media only screen and (min-width: 768px) {
+    .side {
+        display: flex;
+    }
 }
 
-a, a:hover, a:visited, a:active {
-  color: black;
-  text-decoration: none;
+a,
+a:hover,
+a:visited,
+a:active {
+    color: black;
+    text-decoration: none;
 }
 
-.answer a, a:visited, a:active {
-  text-decoration: underline;
-
+.answer a,
+a:visited,
+a:active {
+    text-decoration: underline;
 }
 
 .filter {
-  text-decoration: none;
-  font-style: italic;
-  display: inline;
+    text-decoration: none;
+    font-style: italic;
+    display: inline;
 }
 
 .filter-list .filter {
-  background: rgb(var(--secondary));
-  width: fit-content;
+    background: rgba(var(--secondary), 0.6);
+    width: fit-content;
 }
 
-.filter-toggle .filter {
-
-}
+.filter-toggle .filter {}
 
 .filter a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .filter-list .filter.selected {
-  /* font-weight: bold; */
-  text-decoration: none;
-  background: #fff;
+    /* font-weight: bold; */
+    text-decoration: none;
+    background: rgba(var(--secondary), 1);
 }
 
 .filter-list .filter.selected a:after {
-  content: "𝕏";
-  font-style: normal;
-  padding-left: 1em;
-  font-size: 0.7em;
-  display: inline-block;
-
+    content: "𝕏";
+    font-style: normal;
+    padding-left: 1em;
+    font-size: 0.7em;
+    display: inline-block;
 }
 
 .filter.selected a:after:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .filter-list {
-  vertical-align: middle;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 0.8em;
-  line-height: 0.8em;
+    vertical-align: middle;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+    line-height: 0.8em;
 }
 
-
-
 .filter-list.inline {
-  display: inline;
+    display: inline;
 }
 
 .filter-list.block .filter {
-  padding: 0.3em 0.4em;
-  margin-bottom: 0.4em;
-  display: block;
+    padding: 0.3em 0.4em;
+    margin-bottom: 0.4em;
+    display: block;
 }
 
 .filter-list.inline .filter {
-  padding: 0em 0.2em;
-  margin-right: 0.4em;
+    padding: 0em 0.2em;
+    margin-right: 0.4em;
 }
 
 .filter-toggle {
-  padding-top: 1em;
-  display: inline-block;
+    padding-top: 1em;
+    display: inline-block;
 }
 
 /* QUESTION ============================================ */
 
 .question-title.en {
-  font-style: italic;
+    font-style: italic;
 }
-
-
 
 .question.list-item {
-  margin: 0 0 1.5em 0;
+    margin: 0 0 1.5em 0;
 }
 
-
 .question h2::before {
-  font-size: 0.8em;
-  padding-right: 0.5em;
-  display: inline-block;
+    font-size: 0.8em;
+    padding-right: 0.5em;
+    display: inline-block;
 }
 
 .question h2:hover::before {
-
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .question.pinned h2::before {
-  content: "📌 "
+    content: "📌 "
+}
+
+.question.schedule h2::before {
+    content: "🗒 "
 }
 
 .question.pinned:not(.has-answers) h2::before {
-  content: "📌 ";
+    content: "📌 ";
 }
 
 .question:not(.has-answers) h2 {
-  font-size: 0.9em;
-  text-transform: uppercase;
-  font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .question:not(.has-answers) h2::before {
-  font-size: 1em;
+    font-size: 1em;
 }
 
 @keyframes fade-in-tiny {
-  0% {
-    transform: translateY( 2vw);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY( 0vw);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY( 2vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY( 0vw);
+        opacity: 1;
+    }
 }
 
-@media only screen and (min-width : 768px) {
-  .question.list-item {
-    margin: 0 0 2em 0;
-    animation: fade-in-tiny 0.8s;
-  }
-
-  .question.list-item.has-answers:hover h2 {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
+@media only screen and (min-width: 768px) {
+    .question.list-item {
+        margin: 0 0 2em 0;
+        animation: fade-in-tiny 0.8s;
+    }
+    .question.list-item.has-answers:hover h2 {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
-
 
 .question.full {
-
-  min-height: 100%;
-  background-color: rgb(var(--contrast));
+    min-height: 100%;
+    background-color: rgb(var(--contrast));
 }
 
-
 .question.full h2 {
-  margin-bottom: 2em;
-  border-bottom: 1px solid black;
+    margin-bottom: 2em;
+    border-bottom: 1px solid black;
 }
 
 .question .button {
-  width: 100%;
-  text-align: center;
-  padding: .5em;
+    width: 100%;
+    text-align: center;
+    padding: .5em;
 }
 
 /* ANSWER ============================================ */
 
+@media only screen and (min-width: 768px) {
+    .answer-list.vertical {
+        display: flex;
+        justify-content: space-between;
+    }
+    .answer-list.vertical .answer {
+        margin-right: 1.5em;
+    }
+    .answer-list.vertical .answer:last-child {
+        margin-right: 0em;
+    }
+}
+
 .answer-date {
-  font-style: italic;
-  font-size: 0.8em;
-  color: rgba(var(--primary), 0.4);
-  display: block;
+    font-style: italic;
+    font-size: 0.8em;
+    color: rgba(var(--primary), 0.4);
+    display: block;
 }
 
 .answer {
-  margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .answer p {
-  margin: 0 0 1em 0;
-  line-height: 1.3em;
+    margin: 0 0 1em 0;
+    line-height: 1.3em;
 }
 
 .answer p:last-child {
-  margin: 0;
+    margin: 0;
 }
 
 /* INPUT ============================================ */
 
 .input-placeholder {
-  padding: 0.5em 1em;
-  border-top: 2px dashed rgba(var(--primary), 0.2);
-  border-bottom: 2px dashed rgba(var(--primary), 0.2);
+    padding: 0.5em 1em;
+    border-top: 2px dashed rgba(var(--primary), 0.2);
+    border-bottom: 2px dashed rgba(var(--primary), 0.2);
+    margin: 0 -1em 1.5em -1em;
+    color: rgba(var(--primary), 0.4);
+}
 
-  margin: 0 -1em 1.5em -1em;
-  color: rgba(var(--primary), 0.4);
+.input-placeholder.thanks {
+    color: rgb(var(--primary));
 }
 
 .input-placeholder:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-@media only screen and (min-width : 768px) {
-  .input-placeholder {
-    border-left: 2px dashed rgba(var(--primary), 0.2);
-    border-right: 2px dashed rgba(var(--primary), 0.2);
-  }
+@media only screen and (min-width: 768px) {
+    .input-placeholder {
+        border-left: 2px dashed rgba(var(--primary), 0.2);
+        border-right: 2px dashed rgba(var(--primary), 0.2);
+    }
 }
 
 .input-placeholder h2 {
-  margin-bottom: 0.2em;
+    margin-bottom: 0.2em;
 }
 
 .input-placeholder p {
-  font-size: 0.8em;
-  margin: 0px;
-  font-style: italic;
+    font-size: 0.8em;
+    margin: 0px;
+    font-style: italic;
 }
 
 .fullscreen {
-  width: 100vw;
-  min-height: 100vh;
+    width: 100vw;
+    min-height: 100vh;
 }
 
 .input {
-  background-color: #000;
-  color: #ddd;
-  z-index: 100;
+    background-color: #000;
+    color: #ddd;
+    z-index: 100;
 }
 
 .fade-in {
-  animation: 0.4s fade-in;
+    animation: 0.4s fade-in;
 }
+
 @keyframes fade-in {
-  10% {
-    transform: translateY( 10vw);
-  }
-  100% {
-    transform: translateY( 0vw);
-  }
+    10% {
+        transform: translateY( 10vw);
+    }
+    100% {
+        transform: translateY( 0vw);
+    }
 }
-
-
 
 .input-area {
-  width: 100%;
-  border: none;
-  outline: none;
-  color: white;
-  background: black;
-  font-size: 1.3em;
-  font-family: "Inconsolata",monospace;
-  color: rgb(255,232,0);
-  margin: 2em 0;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: white;
+    background: black;
+    font-size: 1.3em;
+    font-family: "Inconsolata", monospace;
+    color: rgb(var(--secondary));
+    margin: 2em 0;
 }
 
-.button-send {
-
-}
+.button-send {}
 
 /* PRESELECT ========================================= */
 
 .preselect {
-  background: #000;
-  color: rgb(var(--contrast));
+    background: #000;
+    color: rgb(var(--contrast));
 }
 
 .preselect a {
-  color: rgb(var(--contrast));
-  font-size: 8em;
+    color: rgb(var(--contrast));
+    font-size: 8em;
 }
 
 .change-track-link {
-  display: block;
-  padding-top: 20px;
+    display: block;
+    padding-top: 20px;
 }
-
 
 .change-track-link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
-
 
 /* BUTTON ============================================ */
 
-
 .close {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 /* ANIMATION ============================================ */
 
 .questionmark-animation {
-  position: absolute;
-  top: 0;
-  perspective: 500px;
-  perspective-origin: 50% 50%;
+    position: absolute;
+    top: 0;
+    perspective: 500px;
+    perspective-origin: 50% 50%;
 }
 
 .questionmark-animation span {
-  display: none;
-  position: absolute;
-  color: #fff;
+    display: none;
+    position: absolute;
+    color: #fff;
 }
 
-
 .questionmark-animation.play span {
-  display: block;
-  animation: 3s raise ease-out calc(var(--d) * 2s);
-  animation-fill-mode: both;
+    display: block;
+    animation: 3s raise ease-out calc(var(--d) * 2s);
+    animation-fill-mode: both;
 }
 
 .questionmark-animation span:after {
-  font-family: 'Times New Roman', Times, serif;
-  content: "?";
-  font-size: 20em;
-  display: block;
-  transform: translate3d(-50%, -50%, 0);
+    font-family: 'Times New Roman', Times, serif;
+    content: "?";
+    font-size: 20em;
+    display: block;
+    transform: translate3d(-50%, -50%, 0);
 }
 
 @keyframes raise {
-  0% {
-    transform: translate3d(50vw, 300vh, calc(var(--z) * -600px)) ;
-    opacity: 1;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  100% {
-
-    opacity: 0;
-    transform: translate3d(calc( 50vw + var(--x) * 100vw), -20vh, calc(var(--z) * -600px));
-  }
+    0% {
+        transform: translate3d(50vw, 300vh, calc(var(--z) * -600px));
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(calc( 50vw + var(--x) * 100vw), -20vh, calc(var(--z) * -600px));
+    }
 }

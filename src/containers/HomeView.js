@@ -13,11 +13,13 @@ import withData from "utils/withData.js";
 class HomeView extends Component {
   constructor() {
     super();
+
     this.state = {
       requestFailed: false,
     }
 
     this.requestFailedHandler = this.requestFailedHandler.bind(this);
+    this.thanksHandler = this.thanksHandler.bind(this)
   }
 
   requestFailedHandler() {
@@ -27,6 +29,16 @@ class HomeView extends Component {
   }
 
   componentDidMount() {
+    let thanks = !!this.props.location.state && this.props.location.state.thanks;
+    this.setState({
+      thanks: thanks
+    })
+  }
+
+  thanksHandler() {
+    this.setState({
+      thanks: false
+    })
   }
 
   render() {
@@ -44,13 +56,16 @@ class HomeView extends Component {
             <div className="intro">
               <h1>Welcome to your first week of digital media. 🚀</h1>
               <p>
-                Nice to have you! This programme is your guide into the orientation days of studying digital media. We are happy to answer your questions here and share them with everybody.<br />Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br />Have a great start and a lot of fun!
+                Nice to have you! This programme is your guide into the orientation days of studying digital media.
+                We are happy to answer your questions here and share them with everybody.<br />
+                Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br />
+                Have a great start and a lot of fun!
               <br />
                 <b><StaticFilterToggle /></b>
               </p>
 
             </div>
-            <InputPlaceholder></InputPlaceholder>
+            <InputPlaceholder thanks={this.state.thanks} />
             <QuestionList></QuestionList>
           </div>
         </div>

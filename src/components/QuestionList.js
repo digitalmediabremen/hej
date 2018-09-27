@@ -9,8 +9,8 @@ import withSelectedFilters from "utils/withSelectedFilters.js";
 class QuestionList extends Component {
   
   sortQuestions(q1, q2) {
-    let q1Pinned = 0 <= q1.labels.findIndex(l => l.name === "pinned") ? true : false;
-    let q2Pinned = 0 <= q2.labels.findIndex(l => l.name === "pinned") ? true : false;
+    let q1Pinned = 0 <= q1.labels.findIndex(l => l.name === ".pinned") ? true : false;
+    let q2Pinned = 0 <= q2.labels.findIndex(l => l.name === ".pinned") ? true : false;
     
     return q1Pinned === q2Pinned ? 0 : (q1Pinned ? -1 : 1);
   } 
@@ -20,7 +20,6 @@ class QuestionList extends Component {
 
     let filteredQuestions = this.props.data
       .filter(q => areFiltersInArray(this.props.filters, q.labels));
-    
     
     if(filteredQuestions.length === 0) {
       return (this.props.filters.length === 0) ? <p>no questions found.</p> : <p>no questions found for filter <span className="filter">{this.props.filters[0].name}</span></p>;

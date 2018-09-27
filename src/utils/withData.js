@@ -11,9 +11,17 @@ export default function withData(WrappedComponent, selectData) {
       this.dataStore = DataStore.getInstance();
       
       
-      this.state = {
-        data: selectData(this.dataStore, this.props),
-        initialLoading: true
+      try {
+        this.state = {
+          data: selectData(this.dataStore, this.props),
+          notFound: false
+        } 
+      } catch(err) {
+        console.error(err)
+        this.state = {
+          data: undefined,
+          notFound: true
+        }
       }
     }
     
@@ -26,13 +34,23 @@ export default function withData(WrappedComponent, selectData) {
     }
     
     handleChange() {
-      this.setState({
-        data: selectData(this.dataStore, this.props)
-      });
+      try {
+        this.setState({
+          data: selectData(this.dataStore, this.props),
+          notFound: false
+        });
+      } catch(err) {
+        console.error(err.message)
+        this.setState({
+          data: undefined,
+          notFound: true
+        })
+      }
+      
     }
 
     render() {
-      return <WrappedComponent data={this.state.data} {...this.props} />;
+      return <WrappedComponent data={this.state.data} notFound={this.state.notFound} {...this.props} />;
     }
   }
   

@@ -19,7 +19,11 @@ class Question extends Component {
   }
 
   isPinned() {
-    return isFilterNameInArray(this.props.data.labels, "pinned");
+    return isFilterNameInArray(this.props.data.labels, ".pinned");
+  }
+
+  isTypeSchedule() {
+    return isFilterNameInArray(this.props.data.labels, ".type-schedule");
   }
 
   closeHandler() {
@@ -42,7 +46,21 @@ class Question extends Component {
     var styleClass = "question full"
     if (this.hasAnswers()) styleClass += " has-answers"
     if (this.isPinned()) styleClass += " pinned"
+    if (this.isTypeSchedule()) styleClass += " schedule"
 
+
+    return styleClass
+  }
+
+  getWrapperClassName() {
+    var styleClass = "wrapper"
+    if (this.isTypeSchedule()) styleClass += " fullscreen"
+    return styleClass
+  }
+
+  getAnswerListClassName() {
+    var styleClass = "answer-list"
+    if (this.isTypeSchedule()) styleClass += " vertical"
     return styleClass
   }
 
@@ -51,6 +69,7 @@ class Question extends Component {
   }
 
   render() {
+    if (this.props.notFound) return <div className="wrapper"><p>Not found.</p></div>; 
     if (!this.props.data) return <div className="wrapper"><p>loading...</p></div>;
 
     let answerList = this.props.data.answers.map((c) => {
@@ -60,11 +79,10 @@ class Question extends Component {
 
 
     return (
-      <div className="wrapper" key="main">
-
+      <div className={this.getWrapperClassName()} key="main">
         <div className={this.getClassName()}>
           <h2 className="question-title de">{this.getTitle()}</h2>
-          {(this.hasAnswers()) && <div className="answer-list">{answerList}</div>}
+          {(this.hasAnswers()) && <div className={this.getAnswerListClassName()}>{answerList}</div>}
           <Button text="back to the list" onPress={this.closeHandler}></Button>
         </div>
       </div>

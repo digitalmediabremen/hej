@@ -65,7 +65,7 @@ class Input extends Component {
             focused: false,
             sending: false
           })
-          this.props.history.push("/");
+          this.props.history.push("/thanks");
         }, 3000)
 
       }, () => {

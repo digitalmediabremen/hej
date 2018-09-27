@@ -26,7 +26,11 @@ class QuestionItem extends Component {
   }
 
   isPinned() {
-    return isFilterNameInArray(this.props.data.labels, "pinned");
+    return isFilterNameInArray(this.props.data.labels, ".pinned");
+  }
+
+  isTypeSchedule() {
+    return isFilterNameInArray(this.props.data.labels, ".type-schedule");
   }
   
   hasAnswers() {
@@ -43,7 +47,8 @@ class QuestionItem extends Component {
     var styleClass = "question list-item"
     if(this.hasAnswers()) styleClass += " has-answers" 
     if(this.isPinned()) styleClass += " pinned"
-  
+    if (this.isTypeSchedule()) styleClass += " schedule"
+
     return styleClass
   }
   
@@ -54,8 +59,7 @@ class QuestionItem extends Component {
   render() {
     if(!this.props.data) return <p>loading...</p>
     let labels = this.props.data.labels;
-    let exclude = DataStore.excludedLabels.concat(DataStore.staticLabels)
-    let filteredLabels =  labels.filter(filter => !exclude.includes(filter.name));
+    let filteredLabels = DataStore.cleanFilters(labels, DataStore.staticLabels)
     let FilterListWithData = withData(FilterList,(DataStore, props) => filteredLabels);
    
     return (

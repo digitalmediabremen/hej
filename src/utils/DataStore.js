@@ -8,7 +8,7 @@ export default class DataStore {
   static myInstance = null;
   static defaultPollInterval = 30;
   static lastFailedPollInterval = 10;
-  static excludedLabels = ["public", "pinned"];
+  static excludedLabels = [];
   static staticLabels = ["bachelor", "master"];
 
 
@@ -42,7 +42,10 @@ export default class DataStore {
 
   getQuestion(number) {
     if(!this.questions) return;
-    return this.questions.filter(q => q.number === parseInt(number, 10))[0];
+    let q = this.questions.filter(q => q.number === parseInt(number, 10))[0];
+
+    if(!!q) return q 
+    else throw("Question not found.")
   }
 
   getQuestionIdByNumber(number) {
@@ -67,9 +70,16 @@ export default class DataStore {
 
   getFilters() {
     if(!this.filters) return undefined;
-    return this.filters.filter(filter => !DataStore.staticLabels.includes(filter.name));
+    return DataStore.cleanFilters(this.filters, DataStore.staticLabels);
   }
 
+  static cleanFilters(_filters, _excludes) {
+    let defaultExcludes = DataStore.excludedLabels;
+    if(_excludes != undefined) defaultExcludes = defaultExcludes.concat(_excludes)
+
+    return _filters.filter(filter => !defaultExcludes.includes(filter.name) && !filter.name.startsWith("."));
+  }
+  
   getStaticFilters() {
     if(!this.filters) return undefined;
     return this.filters.filter(filter => DataStore.staticLabels.includes(filter.name));
@@ -135,7 +145,7 @@ export default class DataStore {
   updateQuestions() {
     var promises = [];
 
-    githubApiRequest("issues", "?labels=public&" + Date.now().toString())
+    githubApiRequest("issues", "?labels=.public&" + Date.now().toString())
       .then(d => {
         d.forEach(q => {
           promises.push( 
@@ -161,7 +171,7 @@ export default class DataStore {
     githubApiRequest("labels", "?sort=issues&" + Date.now().toString())
       .then(d => {
         //filter public tag
-        this.filters = d.filter(filter => !DataStore.excludedLabels.includes(filter.name));
+        this.filters = DataStore.cleanFilters(d, [])
         if(localStorage) localStorage.setItem("filters", JSON.stringify(this.filters));
 
         this.emitter.emit("update-selected-filters");
