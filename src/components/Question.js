@@ -48,7 +48,6 @@ class Question extends Component {
     if (this.isPinned()) styleClass += " pinned"
     if (this.isTypeSchedule()) styleClass += " schedule"
 
-
     return styleClass
   }
 

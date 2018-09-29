@@ -32,7 +32,7 @@ class HomeView extends Component {
     let thanks = !!this.props.location.state && this.props.location.state.thanks;
     this.setState({
       thanks: thanks
-    })
+    })  
   }
 
   thanksHandler() {
