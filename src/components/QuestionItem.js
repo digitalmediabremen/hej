@@ -19,10 +19,16 @@ class QuestionItem extends Component {
 
   }
 
+  getSlug() {
+    let slug = this.props.data.labels.map(l => l.name).filter(l => l.startsWith(".slug-"))
+    console.log(slug)
+    return slug.length > 0 ? slug[0].substring(6) : this.props.data.number
+  }
+
   clickHandler(e) {
     if(!this.hasAnswers()) return;
     //this.props.onQuestionSelected(this.props.data.number);
-    this.props.history.push("/" + this.props.data.number);
+    this.props.history.push("/" + this.getSlug());
   }
 
   isPinned() {

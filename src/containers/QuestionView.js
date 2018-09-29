@@ -8,6 +8,7 @@ export default class QuestionView extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
+
   render() {
     return (
       <div className="fullscreen fade-in" key="main">

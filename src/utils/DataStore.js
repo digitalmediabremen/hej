@@ -1,7 +1,7 @@
 import "babel-polyfill";
 
-import {EventEmitter} from 'events';
-import {githubApiRequest, githubApiResourceChanged,isFilterInArray} from 'utils/Helpers.js';
+import { EventEmitter } from 'events';
+import { githubApiRequest, githubApiResourceChanged, isFilterInArray } from 'utils/Helpers.js';
 
 
 export default class DataStore {
@@ -12,25 +12,25 @@ export default class DataStore {
   static staticLabels = ["bachelor", "master"];
 
 
-  
+
   constructor() {
     this.emitter = new EventEmitter();
     this.emitter.setMaxListeners(100);
     this.questions = undefined;
     this.filters = undefined;
-  
-   
+
+
     this.selectedFilters = [];
     this.selectedStaticFilters = [];
-        
+
     this.updateData = this.updateData.bind(this);
-    
+
     this.initData();
   }
 
   static getInstance() {
     if (this.myInstance == null) {
-        this.myInstance = new DataStore();
+      this.myInstance = new DataStore();
     }
 
     return this.myInstance;
@@ -40,22 +40,31 @@ export default class DataStore {
     return this.questions;
   }
 
-  getQuestion(number) {
-    if(!this.questions) return;
-    let q = this.questions.filter(q => q.number === parseInt(number, 10))[0];
+  getQuestion(qid) {
+    if (!this.questions) return;
+    // check for slugs
 
-    if(!!q) return q 
-    else throw("Question not found.")
-  }
+    let q = this.questions.filter(q => q.number === parseInt(qid, 10))[0];
 
-  getQuestionIdByNumber(number) {
-    return this.questions.filter(q => q.number === parseInt(number, 10))[0].id;
+    if (!q) {
+      let qs = this.questions.filter((q) => {
+        return q.labels.map(l => l.name).includes(".slug-" + qid)
+      })[0]
+
+      if (!!qs) {
+        return qs
+      } else {
+        throw ("Question not found.")
+      }
+    } else {
+      return q
+    }
   }
 
   addChangeListener(callback) {
     this.emitter.addListener('update', callback);
   }
- 
+
   removeChangeListener(callback) {
     this.emitter.removeListener('update', callback);
   }
@@ -63,82 +72,82 @@ export default class DataStore {
   addFilterChangeListener(callback) {
     this.emitter.addListener('update-selected-filters', callback);
   }
- 
+
   removeFilterChangeListener(callback) {
     this.emitter.removeListener('update-selected-filters', callback);
   }
 
   getFilters() {
-    if(!this.filters) return undefined;
+    if (!this.filters) return undefined;
     return DataStore.cleanFilters(this.filters, DataStore.staticLabels);
   }
 
   static cleanFilters(_filters, _excludes) {
     let defaultExcludes = DataStore.excludedLabels;
-    if(_excludes != undefined) defaultExcludes = defaultExcludes.concat(_excludes)
+    if (_excludes != undefined) defaultExcludes = defaultExcludes.concat(_excludes)
 
     return _filters.filter(filter => !defaultExcludes.includes(filter.name) && !filter.name.startsWith("."));
   }
-  
+
   getStaticFilters() {
-    if(!this.filters) return undefined;
+    if (!this.filters) return undefined;
     return this.filters.filter(filter => DataStore.staticLabels.includes(filter.name));
   }
 
   getAllSelectedFilters() {
-    if(!this.filters) return undefined;
+    if (!this.filters) return undefined;
     return this.selectedFilters.concat(this.selectedStaticFilters);
   }
 
   getSelectedStaticFilters() {
-    if(!this.filters) return undefined;
+    if (!this.filters) return undefined;
     return this.selectedStaticFilters;
   }
 
   getSelectedFilters() {
-    if(!this.filters) return undefined;
+    if (!this.filters) return undefined;
     return this.selectedFilters;
   }
 
-  setSelectedFilters(selectedFilters) {  
-    if(!this.filters) return undefined;
+  setSelectedFilters(selectedFilters) {
+    if (!this.filters) return undefined;
 
     let newSelectedStaticFilters = []
     let newSelectedFilters = []
-    
+
     selectedFilters.forEach((newFilter) => {
       let isStatic = 0 <= DataStore.staticLabels.findIndex(f => f === newFilter.name)
-      
-      if(isStatic) {
+
+      if (isStatic) {
         newSelectedStaticFilters.push(newFilter)
         this.selectedStaticFilters = newSelectedStaticFilters;
       } else {
         newSelectedFilters.push(newFilter)
         this.selectedFilters = newSelectedFilters;
       }
-    }) 
-    
+    })
+
     this.emitter.emit("update-selected-filters");
 
     //only save static filters
-    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
+    if (localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
   }
 
   removeSelectedFilters(filters) {
-    if(!this.filters) return undefined;
+    if (!this.filters) return undefined;
 
     filters.forEach((newFilter) => {
       let isStatic = 0 <= DataStore.staticLabels.findIndex(f => f === newFilter.name)
 
-      if(isStatic) {
+      if (isStatic) {
         this.selectedStaticFilters = [];
       } else {
         this.selectedFilters = [];
       }
-    }) 
-    
+    })
+
     this.emitter.emit("update-selected-filters");
-    if(localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
+    if (localStorage) localStorage.setItem("selected-filters", JSON.stringify(this.getSelectedStaticFilters()))
   }
 
 
@@ -148,23 +157,23 @@ export default class DataStore {
     githubApiRequest("issues", "?labels=.public&" + Date.now().toString())
       .then(d => {
         d.forEach(q => {
-          promises.push( 
+          promises.push(
             githubApiRequest(q.comments_url, "?" + Date.now().toString()).then(a => {
-              q.answers = a; 
+              q.answers = a;
               return q;
             })
           )
         });
         Promise.all(promises).then(d => {
           this.questions = d;
-          if(localStorage) localStorage.setItem("questions", JSON.stringify(d));
+          if (localStorage) localStorage.setItem("questions", JSON.stringify(d));
           this.emitter.emit("update");
         }, () => {
           console.log("failed");
-        });  
+        });
       }, () => {
         console.log("failed");
-    });
+      });
   }
 
   updateFilters() {
@@ -172,7 +181,7 @@ export default class DataStore {
       .then(d => {
         //filter public tag
         this.filters = DataStore.cleanFilters(d, [])
-        if(localStorage) localStorage.setItem("filters", JSON.stringify(this.filters));
+        if (localStorage) localStorage.setItem("filters", JSON.stringify(this.filters));
 
         this.emitter.emit("update-selected-filters");
         this.emitter.emit("update");
@@ -183,15 +192,15 @@ export default class DataStore {
 
   initData() {
     //load directly if localstorage is not supported
-    if(!localStorage) {
+    if (!localStorage) {
       this.updateQuestions()
       this.updateFilters()
-      
+
       setTimeout(this.updateData, 60 * 1000);
     }
-    
+
     //try to load from cache 
-    if(localStorage.getItem("filters") && localStorage.getItem("questions")) {
+    if (localStorage.getItem("filters") && localStorage.getItem("questions")) {
       //load from cache
 
       try {
@@ -199,35 +208,35 @@ export default class DataStore {
 
         this.questions = JSON.parse(localStorage.getItem("questions"));
         this.filters = JSON.parse(localStorage.getItem("filters"));
-      } catch(E) {
+      } catch (E) {
         localStorage.removeItem("questions");
         localStorage.removeItem("filters");
 
         console.error("error while parsing questions and filters filters")
       }
-      
-      if(localStorage.getItem("selected-filters") !== null) {
+
+      if (localStorage.getItem("selected-filters") !== null) {
 
         try {
           console.log("selected-filters from cache")
           this.setSelectedFilters(JSON.parse(localStorage.getItem("selected-filters")))
-        } catch(E) {
+        } catch (E) {
           localStorage.removeItem("selected-filters");
           console.error("error while parsing selected filters")
         }
       } else {
         // default
         let sf = this.getStaticFilters();
-        if(sf != undefined && sf.length > 0) {
+        if (sf != undefined && sf.length > 0) {
           console.log("selected-filters not set. default to first static filter.")
           this.setSelectedFilters([sf[0]])
         }
       }
-    
+
       //fire data changed event
       this.emitter.emit("update");
       this.emitter.emit("update-selected-filters");
-      
+
       //directly check for a newer version
       this.updateData();
 
@@ -235,7 +244,7 @@ export default class DataStore {
       console.log("data from api")
 
       //load from remote resource
-      
+
       //clear e-tag in case of inconsistencies in cache
       localStorage.setItem("e-tag", undefined)
       this.updateData();
@@ -246,22 +255,22 @@ export default class DataStore {
     githubApiResourceChanged("issues/events", localStorage.getItem("e-tag"), (eTag, interval) => {
       localStorage.setItem("e-tag", eTag);
       let nextInterval = interval !== null ? interval : DataStore.defaultPollInterval;
-      
+
       console.log("changes detected: data from api")
 
       this.updateQuestions();
       this.updateFilters();
-      
+
       setTimeout(this.updateData, nextInterval * 1000)
     }, (interval) => {
       let nextInterval = interval !== null ? interval : DataStore.defaultPollInterval;
-      
+
       setTimeout(this.updateData, nextInterval * 1000)
-    }).then(() => {}, () => {
+    }).then(() => { }, () => {
       setTimeout(this.updateData, DataStore.lastFailedPollInterval * 1000);
 
     })
-    
+
   }
 
 }
