@@ -100,6 +100,18 @@ img {
     width: 100%;
 }
 
+.gif {
+    width: 300px;
+    height: 0;
+    padding-bottom: 300px;
+    position: relative;
+    max-width: 300px;
+}
+
+.gif iframe {
+    position: absolute;
+}
+
 .button {
     display: block;
     font-style: italic;
@@ -215,7 +227,6 @@ a:active {
     padding: 0em 0.2em;
     margin-right: 0.4em;
 }
-
 
 .filter-toggle {
     padding-top: 1em;
@@ -394,7 +405,7 @@ a:active {
         transform: translateY( -4vw);
     }
     100% {
-      opacity: 1;
+        opacity: 1;
         transform: translateY( 0vw);
     }
 }

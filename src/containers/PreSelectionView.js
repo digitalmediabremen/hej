@@ -11,6 +11,10 @@ export default class InputView extends Component {
         <div className="wrapper">
           <div className="main">
             <div className="intro big">
+              <div className="gif">
+              <iframe src="https://giphy.com/embed/8TFtMzqmrRkCJ7uGLg" width="100%" height="100%" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+              </div>
+              <br />
               <h1> Welcome to your first week of digital media. 🚀</h1>
               <p>
                 Nice to have you! This programme is your guide into the orientation days of studying digital media.
@@ -19,8 +23,8 @@ export default class InputView extends Component {
                 Have a great start and a lot of fun!
               </p>
               <br />
-              <span style={{"lineHeight":"1.5em"}}>Now choose your type of study: <StaticFilter /></span>
-              
+              <span style={{ "lineHeight": "1.5em" }}>Now choose your type of study: <StaticFilter /></span>
+
 
 
 
