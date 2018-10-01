@@ -2,6 +2,8 @@ import "babel-polyfill";
 
 import { EventEmitter } from 'events';
 import { githubApiRequest, githubApiResourceChanged, isFilterInArray } from 'utils/Helpers.js';
+import {areFiltersInArray} from 'utils/Helpers.js';
+
 
 
 export default class DataStore {
@@ -40,24 +42,32 @@ export default class DataStore {
     return this.questions;
   }
 
-  getQuestion(qid) {
+  getQuestionByNumber(number) {
+    return this.questions.filter(q => q.number === number)[0];
+  }
+
+  getQuestionBySlugWithFilters(slug, selectedStaticFilters) {
+    return this.questions.filter((q) => {
+      return areFiltersInArray(selectedStaticFilters, q.labels) &&
+        q.labels.map(l => l.name).includes(".slug-" + slug)
+    })[0]
+  }
+
+  getQuestion(qid, selectedStaticFilters) {
     if (!this.questions) return;
     // check for slugs
+    let q = undefined;
 
-    let q = this.questions.filter(q => q.number === parseInt(qid, 10))[0];
-
-    if (!q) {
-      let qs = this.questions.filter((q) => {
-        return q.labels.map(l => l.name).includes(".slug-" + qid)
-      })[0]
-
-      if (!!qs) {
-        return qs
-      } else {
-        throw ("Question not found.")
-      }
+    if (!isNaN(qid)) {
+      q = this.getQuestionByNumber(parseInt(qid))
     } else {
+      q = this.getQuestionBySlugWithFilters(qid, selectedStaticFilters)
+    }
+
+    if (!!q) {
       return q
+    } else {
+      throw ("Question not found.")
     }
   }
 
@@ -229,7 +239,7 @@ export default class DataStore {
         let sf = this.getStaticFilters();
         if (sf != undefined && sf.length > 0) {
           console.log("selected-filters not set. default to first static filter.")
-          this.setSelectedFilters([sf[0]])
+          //this.setSelectedFilters([sf[0]])
         }
       }
 

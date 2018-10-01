@@ -24,7 +24,7 @@ class FilterList extends Component {
   }
   
   render() {
-    if(!this.props.data) return <p>...</p>
+    if(!this.props.data) return <span>...</span>
 
     let c = !!this.props.styleClass ? this.props.styleClass : "inline"
     

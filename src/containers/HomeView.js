@@ -53,9 +53,9 @@ class HomeView extends Component {
             <Filter styleClass="block" />
           </div>
           <div className="main">
-            <div className="intro">
-              <h1>Welcome to your first week of digital media. 🚀</h1>
-              <p>
+            <div className="intro small">
+              <h1 className="center">Welcome to your first week of digital media. 🚀</h1>
+              <p className="center">
                 Nice to have you! This programme is your guide into the orientation days of studying digital media.
                 We are happy to answer your questions here and share them with everybody.<br />
                 Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br />

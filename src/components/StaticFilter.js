@@ -17,11 +17,11 @@ class StaticFilter extends Component {
   
   
   selectFilterHandler(label) {
-    this.props.history.push("/"); 
+    //this.props.history.push("/"); 
   }
   
   render() {
-    return <FilterList {...this.props} onFilterSelected={this.selectFilterHandler} />
+    return <FilterList {...this.props} styleClass="inline pre-select" onFilterSelected={this.selectFilterHandler} />
   }
 }
 

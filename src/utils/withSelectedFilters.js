@@ -43,7 +43,7 @@ export default function withSelectedFilters(WrappedComponent) {
       let staticFilters = this.dataStore.getStaticFilters()
       if(!selectedStaticFilters || !staticFilters) return undefined
       else if(staticFilters.length == 0) return undefined 
-      else if(selectedStaticFilters.length == 0) return this.dataStore.getStaticFilters()[0];
+      //else if(selectedStaticFilters.length == 0) return this.dataStore.getStaticFilters()[0];
       
       return selectedStaticFilters[0]
     }

@@ -6,6 +6,7 @@ import Button from 'components/Button.js'
 import { isFilterNameInArray } from 'utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
 import withData from 'utils/withData.js';
+import withSelectedFilters from "utils/withSelectedFilters.js";
 
 
 
@@ -68,7 +69,7 @@ class Question extends Component {
   }
 
   render() {
-    if (this.props.notFound) return <div className="wrapper"><p>Not found.</p></div>; 
+    if (this.props.notFound) return <div className="wrapper"><p>Not found.</p></div>;
     if (!this.props.data) return <div className="wrapper"><p>loading...</p></div>;
 
     let answerList = this.props.data.answers.map((c) => {
@@ -85,9 +86,9 @@ class Question extends Component {
           <Button text="back to the list" onPress={this.closeHandler}></Button>
         </div>
       </div>
-      
+
     )
   }
 }
 
-export default withRouter(withData(Question, (DataStore, props) => DataStore.getQuestion(props.number)));
+export default withRouter(withSelectedFilters(withData(Question, (DataStore, props) => DataStore.getQuestion(props.number, [props.getSelectedStaticFilter()]))));
