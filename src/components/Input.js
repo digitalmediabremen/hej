@@ -123,7 +123,7 @@ class Input extends Component {
 
     return (
       <div className="wrapper">
-        <h1>{this.getHeadlineText()}</h1>
+        <h2 className="dashed-underline">{this.getHeadlineText()}</h2>
         <textarea rows="5" autoFocus style={{ resize: "none" }} className="input-area" placeholder="" value={this.state.input} onChange={this.changeHandler} type="text"></textarea>
         {this.checkInput() && <Button onPress={this.submitHandler} styleClass="button-send" disabled={this.getSendButtonStatus()} text={this.getSendButtonText()}></Button>}
         {!this.checkInput() && <Button onPress={this.closeHandler} disabled={this.getCancelButtonStatus()} text="back to the list"></Button>}

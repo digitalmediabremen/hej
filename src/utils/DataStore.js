@@ -12,6 +12,7 @@ export default class DataStore {
   static lastFailedPollInterval = 10;
   static excludedLabels = [];
   static staticLabels = ["bachelor", "master"];
+  static studentNames = ["Jette","Julian","Simon","Alex","Mosharrafa","Wei","Abida","Niko","Tobias","Nazmul Hossain","Farin","Ayasha","Zahra","Ana Rita","Xiaojun","Warda","Janis","Mahdi","Umair","Gaurav","Piyal","Farhana","Anindya","Olta","Akash","Kamela","Alexander","Lisa-Marie","Moritz","Kai","Rami Magdi Fouad","Victor","Christine","Nicolò","Karolina Ewa","Shorouk Ahmed Nabih","Felix Pankraz","Thomas","Farzad","Farina","Thomas Alexander Larkin","Icaro","Iulia-Miruna","Daria","Pablo","Adrijan Georg Stefan","Lara","Joris","Xuyan","Keno Mattes","Elizaveta","Khaled","Mohamed","Abdelaziz","Daria","Junghi","Shuyi","Jingyu","Haya","Denys","Shahab","Adnane","Reza","Henriette","Robert","Luca","Jeffrey","Niklas","Tom","Gürkan","Hilmar","Catharina","Simay","Carla","Kai","Robin","Katja","Gino","Julian","Fynn Linus","Carlotta","Evangeline","Daniel","Jarmo","Kevin","Joshua","Daniela","Monika","Yvonne","Melisa","Christof","Lina","Svenja","Nelly","Jakob","Teetje","Rebecca","Aileen","Tom","Leon","Raisa","Jennifer","Antonia","Jan","Riem","Svetlana","Lukas","Nico","Maurice","Franziska","Eileen","Tristan-Maximilian","Leo Maximilian","Fabian","Talina","Robin","Preben","Madeline","Umut","Najung","Louis","Simon Sebastian","Pico","Anna Katalin","Julia","Tim","Lennard","Hyunji","Lisa","Felix","Chiara"]
 
 
 

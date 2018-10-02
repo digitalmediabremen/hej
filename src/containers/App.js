@@ -13,7 +13,6 @@ import withSelectedFilters from "utils/withSelectedFilters.js";
 class App extends Component {
 
   render() {
-    console.log(this.props.getSelectedStaticFilter())
     return (
       <BrowserRouter onUpdate={() => { window.scrollTo(0, 0); console.log("sdsd"); }}>
         <div className="App">

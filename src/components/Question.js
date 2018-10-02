@@ -81,7 +81,7 @@ class Question extends Component {
     return (
       <div className={this.getWrapperClassName()} key="main">
         <div className={this.getClassName()}>
-          <h2 className="question-title de">{this.getTitle()}</h2>
+          <h2 className="question-title de dashed-underline">{this.getTitle()}</h2>
           {(this.hasAnswers()) && <div className={this.getAnswerListClassName()}>{answerList}</div>}
           <Button text="back to the list" onPress={this.closeHandler}></Button>
         </div>

@@ -8,6 +8,9 @@ import { withRouter, Link } from 'react-router-dom';
 import withSelectedFilters from "utils/withSelectedFilters.js";
 import FilterToggle from "components/FilterToggle.js"
 import withData from "utils/withData.js";
+import Typed from 'react-typed';
+import DataStore from "utils/DataStore"
+
 
 
 class HomeView extends Component {
@@ -32,7 +35,7 @@ class HomeView extends Component {
     let thanks = !!this.props.location.state && this.props.location.state.thanks;
     this.setState({
       thanks: thanks
-    })  
+    })
   }
 
   thanksHandler() {
@@ -53,15 +56,20 @@ class HomeView extends Component {
             <Filter styleClass="block" />
           </div>
           <div className="main">
-            <div className="intro small">
-              <h1 className="center">Welcome to your first week of digital media. 🚀</h1>
-              <p className="center">
-                Nice to have you! This programme is your guide into the orientation days of studying digital media.
-                We are happy to answer your questions here and share them with everybody.<br />
-                Something urgent? Call us at <a href="tel:+4942195951304">+49 (0)421 9595-1304</a>.<br />
-                Have a great start and a lot of fun!
-              <br />
-                <b><StaticFilterToggle /></b>
+            <div className="intro">
+              <h1 className="">
+              Hej, <Typed 
+                    strings={DataStore.studentNames} 
+                    typeSpeed={80} 
+                    shuffle={true}
+              />.</h1>
+              <p className="small">
+                You have made it! We have prepared this cybernetic place and a busy first week for you:
+                Ask us anything here, and we will post an answer to you and your fellow students as fast as fibre optics allow.
+                We will keep you posted with updates all week long.
+                Got lost? <a href="tel:+4942195951304">Call +49 (0)421 9595-1304</a>
+                <br />
+                <StaticFilterToggle />
               </p>
 
             </div>

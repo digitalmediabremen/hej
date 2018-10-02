@@ -20,6 +20,7 @@ class Button extends Component {
   
   
   clickHandler(e) {
+    e.preventDefault();
     if(this.props.disabled) return;
     this.props.onPress();
   }
@@ -30,9 +31,9 @@ class Button extends Component {
   
   render() {   
     return (
-      <span className={this.getClassName() + " " + this.props.styleClass} onClick={this.clickHandler}>
+      <a href="#" className={this.getClassName() + " " + this.props.styleClass} onClick={this.clickHandler}>
         {this.props.text}
-      </span>
+      </a>
     )
   }
 }
