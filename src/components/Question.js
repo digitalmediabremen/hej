@@ -54,13 +54,13 @@ class Question extends Component {
 
   getWrapperClassName() {
     var styleClass = "wrapper"
-    if (this.isTypeSchedule()) styleClass += " fullscreen"
+    // if (this.isTypeSchedule()) styleClass += " fullscreen"
     return styleClass
   }
 
   getAnswerListClassName() {
     var styleClass = "answer-list"
-    if (this.isTypeSchedule()) styleClass += " vertical"
+    //if (this.isTypeSchedule()) styleClass += " vertical"
     return styleClass
   }
 

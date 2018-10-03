@@ -32,7 +32,7 @@ class FilterToggle extends Component {
         let label =
             <span className="filter-toggle">
                 <span className="filter">
-                    <a href="#filter" onClick={(evt) => this.clickHandler(nextF, evt)}>change track: {f.name}</a>
+                    <a href="#filter" onClick={(evt) => this.clickHandler(nextF, evt)}>current track: {f.name}</a>
                 </span>
             </span>
 

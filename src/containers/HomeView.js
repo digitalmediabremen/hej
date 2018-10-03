@@ -62,12 +62,13 @@ class HomeView extends Component {
                     strings={DataStore.studentNames} 
                     typeSpeed={80} 
                     shuffle={true}
+                    loop={true}
               />.</h1>
               <p className="small">
                 You have made it! We have prepared this cybernetic place and a busy first week for you:
                 Ask us anything here, and we will post an answer to you and your fellow students as fast as fibre optics allow.
                 We will keep you posted with updates all week long.
-                Got lost? <a href="tel:+4942195951304">Call +49 (0)421 9595-1304</a>
+                Got lost? <a href="tel:+4942195951304">Call +49 (0)421 9595-1336</a>
                 <br />
                 <StaticFilterToggle />
               </p>
