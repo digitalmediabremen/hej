@@ -425,7 +425,24 @@ a:hover {
     margin-bottom: 4em;
 }
 
-.schedule .answer code {
+/* new styling */
+
+.answer blockquote {
+    color: rgb(var(--filter));
+    margin: 1em 0;
+}
+
+.answer blockquote p {
+    font-size: .8em;
+}
+
+.answer blockquote:last-child {
+    margin-bottom: .5em;
+}
+
+/* deprecated old styling */
+
+.answer code {
     color: rgb(var(--filter));
     font-size: .8em;
     line-height: .8em;
@@ -433,16 +450,16 @@ a:hover {
     display: inline;
 }
 
-.schedule .answer pre:last-child {
+.answer pre:last-child {
     margin-bottom: 0;
 }
 
-.schedule .answer h4 em, .schedule .answer h3 em {
+.answer h4 em, .schedule .answer h3 em {
     font-weight: normal;
     font-size: inherit;
 }
 
-.schedule .answer h3 {
+.answer h3 {
     color: rgb(var(--headline));
     text-transform: uppercase;
     font-size: 1.1em;
@@ -450,15 +467,11 @@ a:hover {
     text-decoration: underline;
 }
 
-.schedule .answer h4 {
+.answer h4 {
     color: rgb(var(--headline));
     font-size: 1em;
     line-height: inherit;
     font-weight: bold;
-}
-
-.schedule .answer strong {
-    color: rgb(var(--headline));
 }
 
 /* INPUT ============================================ */

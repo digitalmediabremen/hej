@@ -18,6 +18,6 @@
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "NODE_PATH=src react-scripts eject",
-    "deploy": "npm run build && mv ./build/index.html ./build/200.html && surge ./build hej.digital"
+    "deploy": "npm run build && mv ./build/index.html ./build/200.html && surge --add moin@jelkoarnds.com ./build hej.digital"
   }
 }

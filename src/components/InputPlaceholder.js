@@ -14,7 +14,17 @@ class InputPlaceholder extends Component {
       "Can a person be motivated by desires that are not–ultimately–selfish?",
       "What is the relationship between beauty and truth?",
       "Why, if two wrongs don't make a right, do two negatives make a positive in mathematics?",
-      "Does thought require language?"
+      "Does thought require language?",
+      "Who closes the bus door once the bus driver gets off?",
+      "Why is there a \"d\" in \"fridge\" but not in \"refrigerator\"?",
+      "If you drop soap on the floor is the floor clean or the soap dirty?",
+      "Would Lightning McQueen buy car insurance or life insurance?",
+      "Who put the alphabet in alphabetical order?",
+      "Is there a synonym for \"synonym\"?",
+      "If your shirt isn't tucked into your pants, are your pants tucked into your shirt?",
+      "Why is it called \"quick sand\" if you sink slowly in it?",
+      "If I try to fail, but succeed, which one did I do?",
+      "Are eyebrows considered facial hair?"
     ]
   }
 
