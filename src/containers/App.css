@@ -436,6 +436,10 @@ a:hover {
     font-size: .8em;
 }
 
+.answer blockquote p a {
+    text-decoration: underline;
+}
+
 .answer blockquote:last-child {
     margin-bottom: .5em;
 }
