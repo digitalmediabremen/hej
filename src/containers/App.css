@@ -402,6 +402,7 @@ a:hover {
 .answer-date {
     font-style: italic;
     font-size: 0.8em;
+    margin-top: 0.5em;
     display: block;
 }
 
