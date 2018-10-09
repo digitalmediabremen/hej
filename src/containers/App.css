@@ -570,9 +570,9 @@ a:hover {
     outline: none;
     background: inherit;
     font-size: 1.3em;
-    font-family: "Inconsolata", monospace;
     color: rgb(var(--text));
     margin: 2em 0;
+    font-family: "Pressura", monospace;
 }
 
 .button-send {}
