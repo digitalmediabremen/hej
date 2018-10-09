@@ -15,8 +15,6 @@ class QuestionList extends Component {
     let q1Date = q1.answers.length > 0 ? new Date(q1.answers[q1.answers.length - 1].updated_at) : new Date(q1.updated_at)
     let q2Date = q2.answers.length > 0 ? new Date(q2.answers[q2.answers.length - 1].updated_at) : new Date(q2.updated_at)
 
-    console.log(q2Date.getTime())
-
     if (q1Pinned || q2Pinned) {
       if (q1Pinned && q2Pinned) {
         return q1Date.getTime() < q2Date.getTime()
