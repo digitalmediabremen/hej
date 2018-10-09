@@ -12,8 +12,8 @@ class QuestionList extends Component {
     let q1Pinned = 0 <= q1.labels.findIndex(l => l.name === ".pinned") ? true : false;
     let q2Pinned = 0 <= q2.labels.findIndex(l => l.name === ".pinned") ? true : false;
 
-    let q1Date = q1.answers.length > 0 ? new Date(q1.answers[q1.answers.length - 1].updated_at) : Date(q1.updated_at)
-    let q2Date = q2.answers.length > 0 ? new Date(q2.answers[q2.answers.length - 1].updated_at) : Date(q2.updated_at)
+    let q1Date = q1.answers.length > 0 ? new Date(q1.answers[q1.answers.length - 1].updated_at) : new Date(q1.updated_at)
+    let q2Date = q2.answers.length > 0 ? new Date(q2.answers[q2.answers.length - 1].updated_at) : new Date(q2.updated_at)
 
     console.log(q2Date.getTime())
 
