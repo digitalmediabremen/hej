@@ -28,12 +28,12 @@ Be aware that you will be asked for credentials and therefore need to have a sur
 move over to the issues tab in this github project. 
 the web app fetches all questions with the designated label and creates new ones.
 
-### tags
+### labels
 
-tags are important to structure content but in our case also to attach meta information. 
-tags starting with a dot eg `.public` are meta tags, all other tags structure content visible to the user.
+lables are important to structure content but in our case also to attach meta information. 
+labels starting with a dot eg `.public` are meta-labels, all other tags structure content visible to the user.
 
-there are two static labels, `master` and `bachelor`. as we are adressing questions in two languages we decided to split content in half. so also attach either one of those tags.
+there are two static labels, `master` and `bachelor`. as we are adressing questions in two languages we decided to split content in half. so also attach either one of those labels.
 
-the meta-tag `.public` makes a post visible to the public.
-other meta-tags are `.pinned` which pins a post to the top and tags starting with `.slug-` which makes a direct link in our tool possible. eg. `.slug-schedule` maps to `hej.digital/schedule`. please only use this meta-tag on special occasions and really important posts.
+the meta-label `.public` makes a post visible to the public.
+other meta-labels are `.pinned` which pins a post to the top and labels starting with `.slug-` which makes a direct link in our tool possible. eg. `.slug-schedule` maps to `hej.digital/schedule`. please only use this meta-label on special occasions and really important posts.
