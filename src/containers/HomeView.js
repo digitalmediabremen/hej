@@ -65,10 +65,9 @@ class HomeView extends Component {
                     loop={true}
               />.</h1>
               <p className="small">
-                You have made it! We have prepared this cybernetic place and a busy first week for you:
-                Ask us anything here, and we will post an answer to you and your fellow students as fast as fibre optics allow.
-                We will keep you posted with updates all week long.
-                Got lost? <a href="tel:+4942195951336">Call +49 (0)421 9595-1336</a>
+                It was nice to spend the first week with you. We will continue to update this website here for a few more weeks, as a good referance to get you going. 
+                Feel free to ask questions here or in person. <br/><br/>Please share your feedback and comments to <a href="mailto:hej@digitalmedia-bremen.de">hej@digitalmedia-bremen.de</a>.
+                Also reach out if you missed the introduction week, we can help.
                 <br />
                 <StaticFilterToggle />
               </p>
