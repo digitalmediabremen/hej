@@ -8,8 +8,8 @@ import { withRouter, Link } from 'react-router-dom';
 import withSelectedFilters from "utils/withSelectedFilters.js";
 import FilterToggle from "components/FilterToggle.js"
 import withData from "utils/withData.js";
-import Typed from 'react-typed';
-import DataStore from "utils/DataStore"
+import Disclaimer from "../components/Disclaimer";
+import Header from "../components/Header";
 
 
 
@@ -47,8 +47,6 @@ class HomeView extends Component {
   render() {
     if (this.state.requestFailed) return <h2>Network Error.</h2>
 
-    const StaticFilterToggle = withData(FilterToggle, (dataStore, props) => dataStore.getStaticFilters());
-
     return (
       <div className="fullscreen" key="main">
         <div className="wrapper">
@@ -56,27 +54,12 @@ class HomeView extends Component {
             <Filter styleClass="block" />
           </div>
           <div className="main">
-            <div className="intro">
-              <h1 className="">
-              Hej, <Typed 
-                    strings={DataStore.studentNames} 
-                    typeSpeed={80} 
-                    shuffle={true}
-                    loop={true}
-              />.</h1>
-              <p className="small">
-                It was nice to spend the first week with you. We will continue to update this website here for a few more weeks, as a good referance to get you going. 
-                Feel free to ask questions here or in person. <br/><br/>Please share your feedback and comments to <a href="mailto:hej@digitalmedia-bremen.de">hej@digitalmedia-bremen.de</a>.
-                Also reach out if you missed the introduction week, we can help.
-                <br />
-                <StaticFilterToggle />
-              </p>
-
-            </div>
+            <Header />
             <InputPlaceholder thanks={this.state.thanks} />
             <QuestionList></QuestionList>
           </div>
         </div>
+        <Disclaimer />
       </div>
     );
   }
