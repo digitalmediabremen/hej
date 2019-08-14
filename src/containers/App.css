@@ -37,39 +37,43 @@
 }
 
 :root {
-    /* YELLOW */
-    /* --headline: 0, 0, 0;
-    --filter: 255, 255, 255;
-    --background: 255, 232, 0; */
-    /* MINT */
-    /* --headline: 0, 0, 0;
-    --filter: 255, 128, 0;
-    --background: 179, 232, 194; */
-    /* ESO18 */
     --headline: 255, 232, 0;
     --text: 255,255,255;
     --filter: 109, 195, 196;
     --background: 52, 52, 52;
+    --font: "Pressura", monospace
 }
 
 body {
     background-color: rgb(var(--background));
     color: rgb(var(--text));
-    font-family: "Pressura", monospace;
+    font-family: var(--font);
     letter-spacing: 0.03em;
-
+    font-size: 16px;
 }
 
 .wrapper {
     padding: 2em 1em 1em 1em;
-    min-height: 100vh;
+    min-height: calc(100vh - 1.5em);
     /* font-family: "Times New Roman"; */
-    font-size: 16px;
+}
+
+.disclaimer {
+    line-height: 1.5em;
+    overflow: hidden;
+    text-align: center;
+}
+
+.disclaimer span {
+    line-height: 1em;
 }
 
 @media only screen and (min-width: 768px) {
     .wrapper {
         padding: 2em 1em 1em 1em;
+    }
+
+    body {
         font-size: 22px;
     }
 }
@@ -91,7 +95,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Pressura", monospace;
+    font-family: var(--font);
     font-weight: bold;
     padding: 0;
     margin: 0.1em 0;
@@ -454,7 +458,7 @@ a:hover {
     color: rgb(var(--filter));
     font-size: .8em;
     line-height: .8em;
-    font-family: "Pressura", monospace;
+    font-family: var(--font);
     display: inline;
 }
 
@@ -572,7 +576,7 @@ a:hover {
     font-size: 1.3em;
     color: rgb(var(--text));
     margin: 2em 0;
-    font-family: "Pressura", monospace;
+    font-family: var(--font);
 }
 
 .button-send {}
