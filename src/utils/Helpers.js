@@ -1,16 +1,12 @@
-import "babel-polyfill";
-
-let apiBaseUrl = "https://api.github.com/repos/digitalmediabremen/hej/";
-//spoil githubs token detection
-// eslint-disable-next-line
-let oAuthToken = "00f69af9fb63058d73" + "" + "d9eb7cc6ba43e9d6410bd8";
+import "babel-polyfill"; 
+import { API_BASE_URL, OAUTH_TOKEN } from "../config";
 
 function githubApiRequest(endpoint, params = "", headers = {}, headerCallback) {
-  let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint;
+  let url = (endpoint.startsWith("http")) ? endpoint : API_BASE_URL + endpoint;
   
   headers = Object.assign({
     Accept: "application/vnd.github.v3.html+json",
-    Authorization: "token " + oAuthToken
+    Authorization: "token " + OAUTH_TOKEN
   }, headers);
 
   return fetch(url + params, {
@@ -28,11 +24,11 @@ function githubApiRequest(endpoint, params = "", headers = {}, headerCallback) {
 }
 
 function githubApiResourceChanged(endpoint, eTag, callbackYes, callbackNo) { 
-  let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint;
+  let url = (endpoint.startsWith("http")) ? endpoint : API_BASE_URL + endpoint;
   
   let headers = {
     Accept: "application/vnd.github.v3.html+json",
-    Authorization: "token " + oAuthToken,
+    Authorization: "token " + OAUTH_TOKEN,
     "If-None-Match": eTag
   }
 
@@ -51,12 +47,12 @@ function githubApiResourceChanged(endpoint, eTag, callbackYes, callbackNo) {
 }
 
 function githubApiPost(endpoint, payload) {
-  let url = (endpoint.startsWith("http")) ? endpoint : apiBaseUrl + endpoint
+  let url = (endpoint.startsWith("http")) ? endpoint : API_BASE_URL + endpoint
   return fetch(url, {
     headers: {
       Accept: "application/vnd.github.v3.html+json",
       // write access key!!! dangerous as fuck
-      Authorization: "token " + oAuthToken
+      Authorization: "token " + OAUTH_TOKEN
     },
     method: "post",
     body: JSON.stringify(payload)
