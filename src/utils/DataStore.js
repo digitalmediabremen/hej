@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 import { EventEmitter } from 'events';
 import { githubApiRequest, githubApiResourceChanged, isFilterInArray } from 'utils/Helpers.js';
 import {areFiltersInArray} from 'utils/Helpers.js';

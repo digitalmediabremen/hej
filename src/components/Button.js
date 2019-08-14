@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 import React, { Component } from 'react';
 
 

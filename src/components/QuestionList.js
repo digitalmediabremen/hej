@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 import React, { Component } from 'react';
 import QuestionItem from 'components/QuestionItem.js';
 import { areFiltersInArray } from 'utils/Helpers.js';

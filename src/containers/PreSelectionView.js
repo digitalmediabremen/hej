@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import React, { Component } from 'react';
 import StaticFilter from "components/StaticFilter.js"
 import Typed from 'react-typed';

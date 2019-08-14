@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 import React, { Component } from 'react';
 import withSelectedFilters from "utils/withSelectedFilters.js";
 import { withRouter, Link } from 'react-router-dom';

@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 import React, { Component } from 'react';
 import TimeAgo from 'react-timeago'
 import {isFilterNameInArray} from 'utils/Helpers.js';

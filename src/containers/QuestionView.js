@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import React, { Component } from 'react';
 import Question from 'components/Question.js'
 

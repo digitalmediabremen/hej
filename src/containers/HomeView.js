@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 import React, { Component } from 'react';
 import QuestionList from 'components/QuestionList.js';
 import Filter from 'components/Filter.js';

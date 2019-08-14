@@ -1,4 +1,3 @@
-import "babel-polyfill"; 
 import { API_BASE_URL, OAUTH_TOKEN } from "../config";
 
 function githubApiRequest(endpoint, params = "", headers = {}, headerCallback) {

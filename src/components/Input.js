@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import React, { Component } from 'react';
 import Button from 'components/Button.js'
 import { githubApiPost } from 'utils/Helpers.js';
