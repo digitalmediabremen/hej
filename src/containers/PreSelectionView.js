@@ -13,7 +13,7 @@ export default class InputView extends Component {
           <div className="main">
             <div className="intro big">
               <div className="gif">
-                <iframe src="https://giphy.com/embed/8TFtMzqmrRkCJ7uGLg" width="100%" height="100%" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+                <iframe src="https://giphy.com/gifs/ASd0Ukj0y3qMM/html5" width="100%" height="100%" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
               </div>
               <br />
               <h1 className="">
@@ -24,10 +24,7 @@ export default class InputView extends Component {
                     loop={true}
               />.</h1>
               <p>
-                Welcome to Digital Media at HfK + University Bremen. 🚀 <br />
-                You have made it! We have prepared this cybernetic place and a busy first week for you.
-                This website will help you getting started. We will keep you posted all week long.
-                Check the <a target="_blank" href="http://digitalmedia-bremen.de/owoche-2018/">programme website</a> for your invitation to this week and details for <a target="_blank" href="http://digitalmedia-bremen.de/profile/bachelor/program-structure/">Bachelor</a> and <a target="_blank" href="http://digitalmedia-bremen.de/profile/master/program-structure/">Master</a> later on. We are looking forward to meet you in person. See you Monday!
+                Hello. The internet gods blessed us with this website for Digital Media Studies.
               </p>
               <br />
               <span style={{ "lineHeight": "1.5em" }}>Now choose your type of study: <StaticFilter /></span>

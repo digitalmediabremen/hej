@@ -45,7 +45,7 @@ class InputPlaceholder extends Component {
       </div> :
       <div className="input-placeholder" onClick={this.focusHandler}>
         <h2>{this.pickPlaceHolder()}</h2>
-        <p>Ask us anything. Ask in german or english.</p>
+        <p>Ask anything. In English or German. We will answer here.</p>
       </div>
     return html;
   }

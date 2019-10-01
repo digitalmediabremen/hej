@@ -8,6 +8,8 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 @font-face {
     font-family: "pressura";
     src: url("/fonts/gt-pressura-regular.woff") format('woff');
@@ -37,11 +39,14 @@
 }
 
 :root {
-    --headline: 255, 232, 0;
-    --text: 255,255,255;
-    --filter: 109, 195, 196;
-    --background: 52, 52, 52;
-    --font: "Pressura", monospace
+    --headline:240,97,135;
+    
+
+    --text: 98,203,235;
+    --textFilter: 0,0,0;
+    --filter: 214,214,214;
+    --background:0,0,0;
+    --font: "pressura", monospace
 }
 
 body {
@@ -229,7 +234,7 @@ a:hover {
 }
 
 .filter a {
-    color: rgb(var(--background));
+    color: rgb(var(--textFilter));
 }
 
 .filter a:hover {

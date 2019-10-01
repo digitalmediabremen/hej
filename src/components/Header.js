@@ -17,10 +17,12 @@ const Header = (props) => {
                     loop={true}
                 />.</h1>
             <p className="small">
-                It was nice to spend the first week with you. We will continue to update this website here for a few more weeks, as a good referance to get you going.
-                Feel free to ask questions here or in person. <br /><br />Please share your feedback and comments to <a href="mailto:hej@digitalmedia-bremen.de">hej@digitalmedia-bremen.de</a>.
+               Welcome to Digital Media at HfK + University Bremen. 🚀 <br /><br />
+               You have made it! We have prepared this cybernetic place and a busy first week for you.
+               This website will help you getting started. We will keep you posted all week long.. <br /><br />
                 Also reach out if you missed the introduction week, we can help.
                 <br />
+                
                 <StaticFilterToggle />
             </p>
 
