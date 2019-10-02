@@ -474,6 +474,13 @@ a:hover {
 .answer h4 em, .schedule .answer h3 em {
     font-weight: normal;
     font-size: inherit;
+    
+}
+
+.schedule .answer em {
+    
+    color: rgb(var(--filter));
+    
 }
 
 .answer h3 {
