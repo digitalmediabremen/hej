@@ -42,16 +42,17 @@
     --headline:194, 81, 47;
     
 
-    --text: 98,203,215;
-    --textFilter: 0,0,0;
-    --filter: 218,218,218;
+    --text: 218,218,218;
+   
+    --textFilter: 38, 33, 29;
+    --filter: 98,203,215;
     --background:38, 33, 29;
     --font: "pressura", monospace
 }
 
 body {
     background-color: rgb(var(--background));
-    color: rgba(var(--text),0.8);
+    color: rgba(var(--text),0.93);
     font-family: var(--font);
     letter-spacing: 0.03em;
     font-size: 16px;
@@ -156,7 +157,7 @@ img {
 }
 
 .dashed-underline {
-    border-bottom: 0.1em dashed rgb(var(--filter));
+    border-bottom: 0.1em dashed rgba(var(--filter), 0.8);
 }
 
 .gif {
@@ -219,7 +220,7 @@ a,
 a:hover,
 a:visited,
 a:active {
-    color: rgb(var(--filter));
+    color: rgba(var(--filter), 0.8);
     text-decoration: none;
 }
 
@@ -243,12 +244,12 @@ a:hover {
 
 
 .filter-list .filter {
-    background: rgba(var(--filter), 1);
+    background: rgba(var(--filter), 0.8);
     width: fit-content;
 }
 
 .filter-toggle .filter a {
-    color: rgb(var(--filter));
+    color: rgba(var(--filter), 0.8);
 
 }
 
@@ -441,7 +442,7 @@ a:hover {
 /* new styling */
 
 .answer blockquote {
-    color: rgb(var(--filter));
+    color: rgba(var(--filter), 0.8);
     margin: 1em 0;
 }
 
@@ -460,7 +461,7 @@ a:hover {
 /* deprecated old styling */
 
 .answer code {
-    color: rgb(var(--filter));
+    color: rgba(var(--filter), 0.8);
     font-size: .8em;
     line-height: .8em;
     font-family: var(--font);
@@ -479,7 +480,7 @@ a:hover {
 
 .schedule .answer em {
     
-    color: rgb(var(--filter));
+    color: rgba(var(--filter), 0.8);
     
 }
 
@@ -502,18 +503,18 @@ a:hover {
 
 .input-placeholder {
     padding: 0.5em 1em;
-    border-color: rgb(var(--filter));
+    border-color: rgba(var(--filter), 0.8);
     border-style: dashed;
     border-width: 0.1em;
     border-left-width: 0;
     border-right-width: 0;
 
     margin: 0 -1em 1.5em -1em;
-    color: rgba(var(--text), 0.6);
+    color: rgba(var(--text), 0.93);
 }
 
 .input-placeholder.thanks {
-    color: rgba(var(--text),0.8);
+    color: rgba(var(--text), 0.93);
     border-color: white;
 }
 
@@ -541,7 +542,7 @@ a:hover {
     font-size: 0.8em;
     margin: 0px;
     font-style: italic;
-    color: rgba(var(--filter), 1);
+    color: rgba(var(--filter), 0.8);
 }
 
 .fullscreen {
@@ -586,7 +587,7 @@ a:hover {
     outline: none;
     background: inherit;
     font-size: 1.3em;
-    color: rgba(var(--text),0.8);
+    color: rgba(var(--text),0.93);
     margin: 2em 0;
     font-family: var(--font);
 }
