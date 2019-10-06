@@ -39,19 +39,19 @@
 }
 
 :root {
-    --headline:240,97,135;
+    --headline:194, 81, 47;
     
 
-    --text: 98,203,235;
+    --text: 98,203,215;
     --textFilter: 0,0,0;
     --filter: 218,218,218;
-    --background:0,0,0;
+    --background:38, 33, 29;
     --font: "pressura", monospace
 }
 
 body {
     background-color: rgb(var(--background));
-    color: rgb(var(--text));
+    color: rgba(var(--text),0.8);
     font-family: var(--font);
     letter-spacing: 0.03em;
     font-size: 16px;
@@ -256,7 +256,7 @@ a:hover {
 .filter-list .filter.selected {
     /* font-weight: bold; */
     text-decoration: none;
-    background: rgba(var(--text), 1);
+    background: rgba(var(--text),0.8);
 }
 
 .filter-list.block .filter.selected a:after {
@@ -513,7 +513,7 @@ a:hover {
 }
 
 .input-placeholder.thanks {
-    color: rgb(var(--text));
+    color: rgba(var(--text),0.8);
     border-color: white;
 }
 
@@ -586,7 +586,7 @@ a:hover {
     outline: none;
     background: inherit;
     font-size: 1.3em;
-    color: rgb(var(--text));
+    color: rgba(var(--text),0.8);
     margin: 2em 0;
     font-family: var(--font);
 }
