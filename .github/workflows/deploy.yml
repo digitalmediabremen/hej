@@ -29,6 +29,8 @@ jobs:
       if: steps.cache_node_modules.outputs.cache-hit != 'true'
       run: npm install
     - run: npm run build
+      env:
+         CI: ""
     - run: mv ./build/index.html ./build/200.html
     - run: npm install -g surge
     - run: surge ./build ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
