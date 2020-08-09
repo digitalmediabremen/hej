@@ -20,8 +20,8 @@ This should install and start a local development server accessible at [localhos
 
 ### deploy to live server
 
-After you have checked for errors in your local environment do `npm run deploy` to push the latest code to the server.
-Be aware that you will be asked for credentials and therefore need to have a surge.sh account with rights to publish to hej.digital. contact hi@leonat.de to get access.
+Every successfull build of the remote master branch will be deployed to hej.digital automatically. 
+If you work on a bigger feature use a seperate branch or avoid pushing to the remote master branch until you are done.
 
 ## How to use Hej
 
