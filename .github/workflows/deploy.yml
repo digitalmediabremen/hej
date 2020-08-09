@@ -17,6 +17,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14
+    - name: Cache node_modules/
+      uses: actions/cache@v1
+      id: cache_node_modules
+      with:
+        path: node_modules
+        key: node_modules-${{ hashFiles('frontend/package-lock.json') }}
+        restore-keys: node_modules-
+
+    - name: Install Dependencies
+      if: steps.cache_node_modules.outputs.cache-hit != 'true'
+      run: npm install
     - run: npm run build
     - run: mv ./build/index.html ./build/200.html
     - run: npm install -g surge
