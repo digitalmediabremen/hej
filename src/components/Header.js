@@ -13,7 +13,7 @@ const Header = (props) => {
                 Hej, <ReactTyped
                     strings={DataStore.studentNames}
                     typeSpeed={80}
-                    shuffle={false}
+                    shuffle={true}
                     loop={true}
                 />.</h1>
             <p className="small">

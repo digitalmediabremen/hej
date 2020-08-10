@@ -11,7 +11,7 @@ export default class DataStore {
   static lastFailedPollInterval = 10;
   static excludedLabels = EXCLUDED_LABELS;
   static staticLabels = STATIC_LABELS;
-  static studentNames = ["Tick", "Trick", "Track"]
+  static studentNames = ["Amadeus Leonardo","Daniel Johann","Mascha","Dennis","Sebastian Werner","Jacqueline","Jinchi","Jaeyun","Taeeun","Svetlana","Finn","Peng","Markus","Christopher","Lukas","David","Sunmi","Liudmila","Jana Sabeth","Monwadi","Sören","Aaron","Jiyeon","Hakeem","Bruno","George Adel George","Nathalie","Dennis","Timo Jan","Manana","Hui","Hanna","Jonghong","Benjamin Hermann","René","Franziska","Müge Pelin","Lukas","Chun Li","Julian","Ruidong","Julian","Wei","Miaoying","Oyebola Temiloluwa","Zarmeen Haseeb","Saleem","Myrat","Deeksha","Rajesh","Debaditya","Nadia Marcela","Fahad Ahmad","Samra","Mohnish","Enlik","Reza","Antonio","Muhammad Tanvir","And","Jatawan","Sara","Muhammad Zeeshan","Ying Ying","Zohair","Kelly","Ahmed Mohamed Awad Awadin","David","Haseeb","Angsumita","Ellina","Ifeanyi","Alimerdan","Golbon","Syawish A","Hasanur Jaman","Mohammad saad","Kashish","Varun","Xin","Kai Man","Rina","Bashar","Ziye","Usman","Iskra","Jana","Tiaden","Pascal","Helena","Nutsa","Zahra","Delishan","Raneem","Xianding","Felix","Finn Niklas","Onur","Kim","Jorin","Fabian","Paul","Marcus","Rico","Michael","Jeusa","Philipp","Charlotte","Erik","Maya","lsmail Can","Jan Niklas","Jonas","Alex","Hannes","Max","Nico","Johanna","Anika","Pauline","Aaron","Majoli","Daniel","Finnja","Tabea","Celina","Sandra","Aaron","Lara","Nora","Johanna","Gina","Dennis","Mariama","Kavlah","Sina","Mitja","Paul- Jasper","Layla","Andi","Mildred","Denise","Angelika","Tom Mathis"]
 
 
   constructor() {
