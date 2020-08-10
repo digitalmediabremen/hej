@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "NODE_PATH=src react-scripts start",
+    "start_windows": "set NODE_PATH=src&&react-scripts start",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "NODE_PATH=src react-scripts eject"
