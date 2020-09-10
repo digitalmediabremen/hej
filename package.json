@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "core-js": "^3.0.0",
+    "node_modules-path": "^2.0.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-history": "^0.18.2",
