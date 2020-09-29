@@ -41,11 +41,11 @@
 :root {
     --headline:214,  255, 58;
 
-    --text: 38,38,40;
+    --text: 208,208,208;
    
-    --textFilter: 208,208,208;
+    --textFilter: 38,38,40;
     --filter: 214,  255, 58;
-    --background:208,208,208;
+    --background:38,38,40;
     --font: "pressura", monospace
 }
 
