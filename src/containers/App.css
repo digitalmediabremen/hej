@@ -39,13 +39,13 @@
 }
 
 :root {
-    --headline:214,  255, 58;
+    --headline: 214,  255, 58;
 
-    --text: 208,208,208;
+    --text: 222, 222, 222;
    
-    --textFilter: 38,38,40;
+    --textFilter: 14, 50, 53;
     --filter: 214,  255, 58;
-    --background:38,38,40;
+    --background: 13, 46, 49;
     --font: "pressura", monospace
 }
 

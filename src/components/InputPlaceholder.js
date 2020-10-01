@@ -9,7 +9,6 @@ class InputPlaceholder extends Component {
 
     this.focusHandler = this.focusHandler.bind(this);
     this.placeholders = [
-      "How should I name things?",
       "Can a person be motivated by desires that are not–ultimately–selfish?",
       "What is the relationship between beauty and truth?",
       "Why, if two wrongs don't make a right, do two negatives make a positive in mathematics?",
@@ -23,7 +22,11 @@ class InputPlaceholder extends Component {
       "If your shirt isn't tucked into your pants, are your pants tucked into your shirt?",
       "Why is it called \"quick sand\" if you sink slowly in it?",
       "If I try to fail, but succeed, which one did I do?",
-      "Are eyebrows considered facial hair?"
+      "Why do I have to click \"Start\" to shut down Windows?",
+      "What would there be if there was nothing?",
+      "What can be cured with bleach?",
+      "If I water an apple tree with apple juice, is it  called cannibalism?",
+      "How the hell should I spell your name?"
     ]
   }
 
@@ -41,7 +44,7 @@ class InputPlaceholder extends Component {
     const html = this.props.thanks ?
       <div className="input-placeholder thanks" onClick={this.focusHandler}>
         <h2>Thanks for handing in your question! 👏👏👏</h2>
-        <p>We will soon answer, and post it here. Click to ask another.</p>
+        <p>We will soon answer, and post it here (Titles may change). Click to ask another.</p>
       </div> :
       <div className="input-placeholder" onClick={this.focusHandler}>
         <h2>{this.pickPlaceHolder()}</h2>

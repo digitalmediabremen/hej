@@ -18,10 +18,11 @@ const Header = (props) => {
                 />.</h1>
             <p className="small">
                Welcome to Digital Media at HfK + University Bremen. 🚀 <br /><br />
-               You have made it! We have prepared this cybernetic place for you and are 
-               currently organizing a busy first orientation week which will take place from 26.10 - 30.10.
-               These are crazy times so check back regulary - this website will help you getting started. 
-               We will publish the program an all important information here step by step. <br /><br />
+               You´ve made it! We have prepared this cybernetic place for you and are 
+               currently organizing a busy first orientation week which will take place from 26.10 - 30.10. 
+               These are crazy times so check back regularly. This website will help you getting started: 
+               What the fuck does hybrid mean? When will the important stuff happen? And are physical 
+               interactions a real thing?  <br /><br />
                 <br />
                 
                 <StaticFilterToggle />
