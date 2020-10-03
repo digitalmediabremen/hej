@@ -21,7 +21,7 @@ const Header = (props) => {
                You´ve made it! We have prepared this cybernetic place for you and are 
                currently organizing a busy first orientation week which will take place from 26.10 - 30.10. 
                These are crazy times so check back regularly. In this place all spread information is collected: 
-               What the fuck does hybrid mean? When will the important stuff happen?´And are physical 
+               What the fuck does hybrid mean? When will the important stuff happen? And are physical 
                interactions a real thing? Have a look below for the dates, links and information you need. 
                Otherwise just ask us!  <br /><br />
                 <br />
