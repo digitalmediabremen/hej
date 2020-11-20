@@ -11,7 +11,7 @@ export default class DataStore {
   static lastFailedPollInterval = 10;
   static excludedLabels = EXCLUDED_LABELS;
   static staticLabels = STATIC_LABELS;
-  static studentNames = ["Paul", "Yasmina", "Kairaba", "Md Rabiul", "Marcel", "Lukas", "Janis", "Salma Ferdous", "Sophie", "Henri", "Sopiko", "Kornél", "Md. Soleman", "Hyunwoo", "Valea", "Mira", "Cindy", "Jessica", "Aklima", "Dominik", "Jaysun", "Kai", "Dana", "Edward", "Fynn", "Kevin", "Sana", "Maik", "Philip", "Tammo", "Lea", "King Wai", "Magnus", "Herman", "Roberta", "Leila", "Timm", "Anna", "Farzad", "Aladham", "Qianxun", "Yongliang", "Chi Him", "Joshua", "Xiangyu", "Vassilissa", "Parastou", "Anastasiia", "Charley", "Ivett", "Hyejoon", "Mihye", "Cuong Huy", "Hiu Yan", "Sangbong", "Juan", "Nilufer", "Ziyafettin", "Kazuki", "Julia", "Jorin", "Viacheslav", "Feodor", "Soo Hyun", "Soumya", "Alberto", "Annelena", "Aysegül", "Hannah", "Mahmoud", "Lucca", "Erik"]
+  static studentNames = ["Hybrid", "Confusion", "Restart", "Studios", "Chateau Lu", "Cafeteria", "Radio Studio", "Workshops", "Chaos Office", "Speicher XI", "Excitement", "Sensibility", "Library", "Course rooms", "Coffee machine", "Segments", "Materials"]
 
   constructor() {
     this.emitter = new EventEmitter();

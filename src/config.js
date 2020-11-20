@@ -6,7 +6,7 @@ export const STATIC_LABELS = ["First semester aid", "Corona Info"];
 // manual exclusion of labels.
 // if you want to exclude labels automaticly,
 // let them start with a underscore '_'
-export const EXCLUDED_LABELS = [];
+export const EXCLUDED_LABELS = ["orientation week"];
 
 export const API_BASE_URL = "https://api.github.com/repos/digitalmediabremen/hej/";
 // the oauth access token of a github user.
