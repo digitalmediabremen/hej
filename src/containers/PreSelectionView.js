@@ -13,7 +13,7 @@ export default class InputView extends Component {
           <div className="main">
             <div className="intro big">
               <div className="gif">
-                <iframe src="https://giphy.com/gifs/ASd0Ukj0y3qMM/html5" width="100%" height="100%" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+                <iframe src="https://giphy.com/gifs/3ornk7abZRVc4jGU12/html5" width="200%" height="100%" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
               </div>
               <br />
               <h1 className="">
@@ -27,7 +27,7 @@ export default class InputView extends Component {
                 Hello. The internet gods blessed us with this website for Digital Media Studies.
               </p>
               <br />
-              <span style={{ "lineHeight": "1.5em" }}>Now choose your type of study: <StaticFilter /></span>
+              <span style={{ "lineHeight": "1.5em" }}>Things have changed, so choose your track: <StaticFilter /></span>
 
 
 

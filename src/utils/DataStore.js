@@ -11,7 +11,7 @@ export default class DataStore {
   static lastFailedPollInterval = 10;
   static excludedLabels = EXCLUDED_LABELS;
   static staticLabels = STATIC_LABELS;
-  static studentNames = ["Hybrid", "Confusion", "Restart", "Studios", "Chateau Lu", "Cafeteria", "Radio Studio", "Workshops", "Chaos Office", "Speicher XI", "Excitement", "Sensibility", "Library", "Course rooms", "Coffee machine", "Segments", "Materials"]
+  static studentNames = ["Hybrid", "Confusion", "Restart", "Studios", "Chateau Lu", "Cafeteria", "Radio Studio", "Workshops", "Chaos Office", "Speicher XI", "Excitement", "Library", "Course rooms", "Coffee machine", "Segments", "Materials", "Everyone", "See you soon!", "Here we are!", "Where are you?", "Where are you going?", "How are you?", "What's up?", "Do you feel it?"]
 
   constructor() {
     this.emitter = new EventEmitter();
