@@ -185,7 +185,7 @@ export default class DataStore {
   }
 
   updateFilters() {
-    githubApiRequest("labels", "?sort=issues&" + Date.now().toString())
+    githubApiRequest("labels", "?sort=issues&per_page=100&" + Date.now().toString())
       .then(d => {
         //filter public tag
         this.filters = DataStore.cleanFilters(d, [])
