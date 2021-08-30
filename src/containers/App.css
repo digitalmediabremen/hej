@@ -12,40 +12,40 @@
 
 @font-face {
     font-family: "pressura";
-    src: url("/fonts/gt-pressura-regular.woff") format('woff');
+    src: url("/fonts/happy-times-NG_regular_master_web.woff") format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "pressura";
-    src: url("/fonts/gt-pressura-regular-italic.woff") format('woff');
+    src: url("/fonts/happy-times-NG_italic_master_web.woff") format('woff');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: "pressura";
-    src: url("/fonts/gt-pressura-bold.woff") format('woff');
+    src: url("/fonts/happy-times-NG_bold_master_web.woff") format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: "pressura";
-    src: url("/fonts/gt-pressura-bold-italic.woff") format('woff');
+    src: url("/fonts/happy-times-NG_bold_master_web.woff") format('woff');
     font-weight: bold;
     font-style: italic;
 }
 
 :root {
-    --headline: 214,  255, 58;
+    --headline: 255,  255, 255;
 
-    --text: 222, 222, 222;
+    --text: 192, 192, 192;
    
-    --textFilter: 14, 50, 53;
-    --filter: 214,  255, 58;
-    --background: 13, 46, 49;
+    --textFilter: 20, 20, 20;
+    --filter: 255 ,  255, 255;
+    --background: 20, 20, 20;
     --font: "pressura", monospace
 }
 

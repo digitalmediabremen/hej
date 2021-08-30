@@ -17,13 +17,12 @@ const Header = (props) => {
                     loop={true}
                 />.</h1>
             <p className="small">
-               Welcome to the Digital Media hybrid experience at HfK + University Bremen. 🚀 <br /><br />
-               Glad you found this cybernetic place, perhaps you might already know it, but things have changed: 
-               You can now switch between the familiar first semester info and our brand-new digital media oriented Corona info page. 
-               So this is the place where everything is collected regarding pandemic digital media: 
-               how do I get into the studios?  Excuse me: Workshops? And still: What the fuck does hybrid mean? 
-               Have a look below for the links and information you need. 
-               Otherwise just ask!  <br /><br />
+               Welcome to the joint Digital Media program at HfK + University Bremen. 🚀 <br /><br />
+               Glad you found this cybernetic space. This website provides you with all the important information about the start of your studies, 
+               the orientation week and what is going on in Bremen in the upcoming weeks. Below you'll find a list of all important information. 
+               If you have any questions: Just ask us! The student hej team will update the missing pieces of information. By the way, 
+               the hej-team will also guide you through the entire orientation phase and beyond...
+               <br /><br />
                 <br />
                 
                 <StaticFilterToggle />

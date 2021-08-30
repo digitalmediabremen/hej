@@ -24,8 +24,9 @@ class InputPlaceholder extends Component {
       "What would there be if there was nothing?",
       "How the hell should I spell your name?",
       "How can the time move faster?",
-      "My girlfriend wants to break up, me too, what should we do?",
-      "Can we calculate the universe?"
+      "Can we calculate the universe?",
+      "What is the real difference between a utopia and a dystopia?",
+      "Is this sentence is incorrect?",
 
     ]
   }
