@@ -20,9 +20,10 @@ const Header = (props) => {
                Welcome to the joint Digital Media program at HfK + University Bremen. 🚀 <br /><br />
                Glad you found this cybernetic space. This website provides you with all the important information about the start of your studies, 
                the orientation week and what is going on in Bremen in the upcoming weeks. Below you'll find a list of all important information. 
-               If you have any questions: Just ask us! The student hej team will update the missing pieces of information. By the way, 
+               If you have any questions: Just ask us! The student hej-team will update the missing pieces of information. By the way, 
                the hej-team will also guide you through the entire orientation phase and beyond...
                <br /><br />
+               The orientation week of the entire Digital Media program will take place from the 11.10 - 15.10.
                 <br />
                 
                 <StaticFilterToggle />
