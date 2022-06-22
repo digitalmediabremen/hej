@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import QuestionItem from 'components/QuestionItem.js';
-import { areFiltersInArray } from 'utils/Helpers.js';
-import withData from "utils/withData.js";
-import withSelectedFilters from "utils/withSelectedFilters.js";
+import QuestionItem from '../components/QuestionItem.js';
+import { areFiltersInArray } from '../utils/Helpers.js';
+import withData from "../utils/withData.js";
+import withSelectedFilters from "../utils/withSelectedFilters.js";
 
 class QuestionList extends Component {
 

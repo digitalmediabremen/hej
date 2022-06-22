@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Button from 'components/Button.js'
-import { githubApiPost } from 'utils/Helpers.js';
+import Button from './Button.js'
+import { githubApiPost } from '../utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
 
 

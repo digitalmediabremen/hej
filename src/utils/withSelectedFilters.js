@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DataStore from "./DataStore.js";
-import {isFilterInArray} from 'utils/Helpers.js';
+import {isFilterInArray} from './Helpers.js';
 
 
 export default function withSelectedFilters(WrappedComponent) {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Answer from 'components/Answer.js';
-import Button from 'components/Button.js'
-import { isFilterNameInArray } from 'utils/Helpers.js';
+import Answer from './Answer.js';
+import Button from './Button.js'
+import { isFilterNameInArray } from '../utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
-import withData from 'utils/withData.js';
-import withSelectedFilters from "utils/withSelectedFilters.js";
+import withData from '../utils/withData.js';
+import withSelectedFilters from "../utils/withSelectedFilters.js";
 
 
 

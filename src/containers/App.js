@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import HomeView from 'containers/HomeView.js'
-import InputView from 'containers/InputView.js'
-import PreSelectionView from 'containers/PreSelectionView.js'
-import QuestionView from 'containers/QuestionView.js'
+import HomeView from './HomeView.js'
+import InputView from './InputView.js'
+import PreSelectionView from './PreSelectionView.js'
+import QuestionView from './QuestionView.js'
 import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom"
 import "./App.css"
-import withSelectedFilters from "utils/withSelectedFilters.js";
+import withSelectedFilters from "../utils/withSelectedFilters.js";
 
 
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import TimeAgo from 'react-timeago'
-import {isFilterNameInArray} from 'utils/Helpers.js';
+import {isFilterNameInArray} from '../utils/Helpers.js';
 import { withRouter } from 'react-router-dom';
-import withData from 'utils/withData.js'
-import FilterList from "components/FilterList.js";
-import DataStore from "utils/DataStore.js";
+import withData from '../utils/withData.js'
+import FilterList from "./FilterList.js";
+import DataStore from "../utils/DataStore.js";
 
 
 

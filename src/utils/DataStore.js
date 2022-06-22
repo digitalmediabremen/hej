@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import { githubApiRequest, githubApiResourceChanged, isFilterInArray } from 'utils/Helpers.js';
-import {areFiltersInArray} from 'utils/Helpers.js';
+import { githubApiRequest, githubApiResourceChanged, isFilterInArray } from './Helpers.js';
+import {areFiltersInArray} from './Helpers.js';
 import { STATIC_LABELS, EXCLUDED_LABELS } from "../config";
 
 

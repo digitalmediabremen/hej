@@ -1,7 +1,7 @@
 import React from 'react';
-import DataStore from 'utils/DataStore';
-import FilterToggle from "components/FilterToggle.js"
-import withData from "utils/withData.js";
+import DataStore from "../utils/DataStore.js";
+import FilterToggle from "./FilterToggle.js"
+import withData from "../utils/withData.js";
 import ReactTyped from 'react-typed';
 
 const Header = (props) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import StaticFilter from "components/StaticFilter.js"
+import StaticFilter from "../components/StaticFilter.js"
 import Typed from 'react-typed';
-import DataStore from "utils/DataStore"
+import DataStore from "../utils/DataStore"
 
 
 export default class InputView extends Component {

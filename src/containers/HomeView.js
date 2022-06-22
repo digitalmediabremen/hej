@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import QuestionList from 'components/QuestionList.js';
-import Filter from 'components/Filter.js';
-import InputPlaceholder from 'components/InputPlaceholder.js';
+import QuestionList from '../components/QuestionList.js';
+import Filter from '../components/Filter.js';
+import InputPlaceholder from '../components/InputPlaceholder.js';
 import { withRouter, Link } from 'react-router-dom';
-import withSelectedFilters from "utils/withSelectedFilters.js";
-import FilterToggle from "components/FilterToggle.js"
-import withData from "utils/withData.js";
+import withSelectedFilters from "../utils/withSelectedFilters.js";
+import FilterToggle from "../components/FilterToggle.js"
+import withData from "../utils/withData.js";
 import Disclaimer from "../components/Disclaimer";
 import Header from "../components/Header";
 

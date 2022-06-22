@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {isFilterInArray} from 'utils/Helpers.js';
-import withData from "utils/withData.js";
-import withSelectedFilters from "utils/withSelectedFilters.js";
-import FilterList from "components/FilterList.js"
+import {isFilterInArray} from '../utils/Helpers.js';
+import withData from "../utils/withData.js";
+import withSelectedFilters from "../utils/withSelectedFilters.js";
+import FilterList from "./FilterList.js"
 import { withRouter, Link } from 'react-router-dom';
 
 
