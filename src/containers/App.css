@@ -301,7 +301,7 @@ a:hover {
 }
 
 .question.pinned h2::before {
-  content: "📌 ";
+  content: "▶ ";
 }
 
 .question.schedule h2::before {
@@ -309,7 +309,7 @@ a:hover {
 }
 
 .question.pinned:not(.has-answers) h2::before {
-  content: "📌 ";
+  content: "▶ ";
 }
 
 .question:not(.has-answers) h2 {
