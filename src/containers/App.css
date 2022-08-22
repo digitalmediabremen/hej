@@ -11,11 +11,11 @@
 :root {
   --headline: 255, 255, 255;
 
-  --text: 200, 200, 200;
-  --highlight: 0, 200, 255;
+  --text: 225, 225, 225;
+  --highlight: 0, 200, 200;
   --textFilter: 255, 255, 255;
   --filter: 204, 102, 255;
-  --background: 0, 0, 0;
+  --background: 0, 0, 0, 0;
   --font: europa, sans-serif;
 }
 
@@ -101,7 +101,7 @@ h2 {
 }
 
 h2.dashed-underline {
-  padding-bottom: 0.2em;
+  padding-bottom: 0.4em;
   line-height: 1.2em;
 }
 
@@ -134,7 +134,7 @@ img {
 }
 
 .dashed-underline {
-  border-bottom: 0.1em dashed rgba(var(--filter), 0.8);
+  border-bottom: 0.1em dashed rgba(var(--filter));
 }
 
 .gif {
@@ -189,7 +189,7 @@ a,
 a:hover,
 a:visited,
 a:active {
-  color: rgba(var(--filter), 0.8);
+  color: rgba(var(--filter));
   text-decoration: none;
 }
 
@@ -212,7 +212,12 @@ a:hover {
 }
 
 .filter-list .filter {
-  background: rgba(var(--filter), 0.8);
+  background: rgba(var(--highlight), 0.35);
+  width: fit-content;
+}
+
+.filter-list .filter:nth-child(odd) {
+  background: rgba(var(--highlight), 0.5);
   width: fit-content;
 }
 
@@ -301,7 +306,7 @@ a:hover {
 }
 
 .question.pinned h2::before {
-  content: "▶ ";
+  content: "▻ ";
 }
 
 .question.schedule h2::before {
@@ -309,7 +314,7 @@ a:hover {
 }
 
 .question.pinned:not(.has-answers) h2::before {
-  content: "▶ ";
+  content: "▻ ";
 }
 
 .question:not(.has-answers) h2 {
@@ -350,7 +355,7 @@ a:hover {
 }
 
 .question.full h2 {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .question .button {
@@ -466,8 +471,8 @@ a:hover {
 
 .input-placeholder {
   padding: 0.5em 1em;
-  border-color: rgba(var(--highlight), 0.8);
-  border-style: dashed;
+  border-color: rgba(var(--highlight));
+  border-style: solid;
   border-width: 0.1em;
   border-left-width: 0;
   border-right-width: 0;
