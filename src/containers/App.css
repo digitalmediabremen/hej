@@ -430,12 +430,21 @@ a:hover {
 
 /* deprecated old styling */
 
-.answer code {
+.answer em {
   color: rgba(var(--filter), 0.8);
   font-size: 0.8em;
   line-height: 0.8em;
   font-family: var(--font);
   display: inline;
+}
+
+.answer em a {
+  color: rgba(var(--filter), 0.8);
+  text-decoration: underline;
+}
+
+.answer em a:hover {
+  color: rgba(var(--filter), 1);
 }
 
 .answer pre:last-child {
@@ -452,10 +461,19 @@ a:hover {
   color: rgba(var(--filter), 0.8);
 }
 
+.answer code {
+  color: rgba(var(--highlight), 1);
+  font-style: normal;
+}
+
+.answer code b {
+  font-style: italic;
+}
+
 .answer h3 {
   color: rgb(var(--headline));
   text-transform: uppercase;
-  font-size: 1.1em;
+  font-size: 1.25em;
   line-height: 1.2em;
   text-decoration: underline;
 }
