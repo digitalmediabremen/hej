@@ -485,6 +485,11 @@ a:hover {
   font-weight: bold;
 }
 
+h2.question-title.de.dashed-underline {
+  color: rgba(var(--headline));
+  font-size: 1.5em;
+}
+
 /* INPUT ============================================ */
 
 .input-placeholder {
