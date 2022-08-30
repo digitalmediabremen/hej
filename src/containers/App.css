@@ -48,7 +48,7 @@ body {
   line-height: 1em;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   .wrapper {
     padding: 2em 1em 1em 1em;
   }
@@ -58,7 +58,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   .wrapper {
     width: 680px;
     margin: 0 auto;
@@ -148,6 +148,21 @@ img {
   position: absolute;
 }
 
+img.animated-gif{
+  max-width: 7.2em;
+  height: auto;
+  float: left;
+  position: fixed;
+  top: 41px;
+  left: 7px;
+}
+
+@media screen and (max-width: 950px){
+  .animated-gif{
+    display: none;
+  }
+}
+
 .button {
   display: block;
   font-style: italic;
@@ -179,7 +194,7 @@ img {
   padding-left: 1em;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   .side {
     display: flex;
   }
@@ -338,7 +353,7 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   .question.list-item {
     margin: 0 0 2em 0;
     animation: fade-in-tiny 0.8s;
@@ -366,7 +381,7 @@ a:hover {
 
 /* ANSWER ============================================ */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   .answer-list.vertical {
     display: flex;
     justify-content: space-between;
@@ -520,7 +535,7 @@ h2.question-title.de.dashed-underline {
   text-decoration: underline;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 950px) {
   .input-placeholder {
     border-left-width: 0.1em;
     border-right-width: 0.1em;
