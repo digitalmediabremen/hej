@@ -4,7 +4,7 @@ const Disclaimer = (props) => {
     return (
         <div class="disclaimer">
             <span class="small">
-                Moderated by students of <a target="_blank" href="http://digitalmedia-bremen.de">digital media</a> at hfk. 
+                Moderated by students of <a target="_blank" href="http://digitalmedia-bremen.de">digital media</a> at HfK and Uni Bremen. 
             </span>
         </div>
     )

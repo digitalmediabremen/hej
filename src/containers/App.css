@@ -212,12 +212,12 @@ a:hover {
 }
 
 .filter-list .filter {
-  background: rgba(var(--highlight), 0.35);
+  background: rgba(var(--highlight), 0.45);
   width: fit-content;
 }
 
 .filter-list .filter:nth-child(odd) {
-  background: rgba(var(--highlight), 0.5);
+  background: rgba(var(--highlight), 0.55);
   width: fit-content;
 }
 
@@ -228,7 +228,7 @@ a:hover {
 .filter-list .filter.selected {
   /* font-weight: bold; */
   text-decoration: none;
-  background: rgba(var(--highlight), 0.8);
+  background: rgba(var(--filter), 0.8);
 }
 
 .filter-list.block .filter.selected a:after {
@@ -380,6 +380,7 @@ a:hover {
 }
 
 .answer-date {
+  color: rgba(var(--text), 0.35);
   font-style: italic;
   font-size: 0.8em;
   display: block;
@@ -471,15 +472,15 @@ a:hover {
 }
 
 .answer h3 {
-  color: rgb(var(--headline));
+  color: rgb(var(--text));
   text-transform: uppercase;
-  font-size: 1.25em;
+  font-size: 1.1em;
   line-height: 1.2em;
   text-decoration: underline;
 }
 
 .answer h4 {
-  color: rgb(var(--headline));
+  color: rgb(var(--text));
   font-size: 1em;
   line-height: inherit;
   font-weight: bold;
@@ -487,6 +488,7 @@ a:hover {
 
 h2.question-title.de.dashed-underline {
   color: rgba(var(--headline));
+  text-transform: uppercase;
   font-size: 1.5em;
 }
 
