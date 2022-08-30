@@ -433,7 +433,8 @@ a:hover {
 
 .answer em {
   color: rgba(var(--filter), 0.8);
-  font-size: 0.8em;
+  font-size: 1em;
+  font-style: normal;
   line-height: 0.8em;
   font-family: var(--font);
   display: inline;
