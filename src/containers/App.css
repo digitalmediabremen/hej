@@ -455,11 +455,6 @@ a:hover {
   display: inline;
 }
 
-.answer em a {
-  color: rgba(var(--filter), 0.8);
-  text-decoration: underline;
-}
-
 .answer em a:hover {
   color: rgba(var(--filter), 1);
 }
@@ -506,6 +501,11 @@ h2.question-title.de.dashed-underline {
   color: rgba(var(--headline));
   text-transform: uppercase;
   font-size: 1.5em;
+}
+
+.answer a {
+  color: rgba(var(--filter), 1);
+  text-decoration: underline;
 }
 
 /* INPUT ============================================ */
