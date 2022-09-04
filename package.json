@@ -9,7 +9,7 @@
     "react-dom": "^16.9.0",
     "react-history": "^0.18.2",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^2.1.3",
     "react-timeago": "^4.4.0",
     "react-typed": "^1.0.9",
     "recompose": "^0.17.0"
