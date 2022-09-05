@@ -20,11 +20,13 @@
 }
 
 body {
-  background-image: url("/public/background.png");
-  background-size: cover;
-  background-repeat: none;
+  background-image: url("/./background.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
   background-attachment: fixed;
-  /*background-color: rgb(var(--background));*/
+  /*background-color: rgba(var(--background));*/
+  background-color: black;
   color: rgba(var(--text), 0.93);
   font-family: var(--font);
   font-weight: 400;

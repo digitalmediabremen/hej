@@ -23,7 +23,7 @@ const Header = (props) => {
                If you have any questions: Just ask us! The student hej-team will update the missing pieces of information. By the way, 
                the hej-team will also guide you through the entire orientation phase and beyond...
                <br /><br />
-               The orientation week of the entire Digital Media program will take place from the 11.10 - 15.10.
+               The orientation week of the entire Digital Media program will take place from the 10.10 - 14.10.
                 <br />
                 
                 <StaticFilterToggle />

@@ -47,7 +47,7 @@ class HomeView extends Component {
 
     return (
       <div className="fullscreen" key="main">
-      <img class="animated-gif" src="/media/hej_glitch.gif"></img>
+      <img class="animated-gif" src="/media/hej_glitch.gif" alt=""></img>
         <div className="wrapper">
           <div className="side">
             <Filter styleClass="block" />
