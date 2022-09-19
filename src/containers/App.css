@@ -513,16 +513,13 @@ h2.question-title.de.dashed-underline {
 
   margin: 0 -1em 1.5em -1em;
   color: rgba(var(--text), 0.93);
-  border: 3px;
+  border-width: 0.15em;
+  border-left-width: 0;
+  border-right-width: 0;
   border-style: solid;
   border-image-source: linear-gradient(45deg, rgba(var(--filter)), rgba(var(--highlight)));
   border-image-slice: 1;
 
-}
-
-.input-placeholder p, 
-.input-placeholder h2 {
-  color: rgba(var(--text), 0.93) !important;
 }
 
 .input-placeholder.thanks {
@@ -540,22 +537,22 @@ h2.question-title.de.dashed-underline {
 
 @media only screen and (min-width: 950px) {
   .input-placeholder {
-    border-left-width: 0.1em;
-    border-right-width: 0.1em;
+    border-left-width: 0.15em;
+    border-right-width: 0.15em;
   }
 }
 
 .input-placeholder h2 {
   margin-bottom: 0.2em;
-  color: rgba(var(--dark));
+  color: rgba(var(--text), 0.93);
 }
 
 .input-placeholder p {
   font-size: 0.8em;
   margin: 0px;
   font-style: italic;
-  text-decoration: underline;
-  color: rgba(var(--dark));
+  /*text-decoration: underline;*/
+  color: rgba(var(--text), 0.93);
 }
 
 .fullscreen {
