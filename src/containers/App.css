@@ -414,7 +414,6 @@ a:hover {
 }
 
 .answer p {
-  margin: 0 0 1em 0;
   line-height: 1.3em;
 }
 
@@ -460,12 +459,8 @@ a:hover {
 
 .answer code {
   color: rgba(var(--highlight), 1);
+  font-family: var(--font);
   font-style: normal;
-}
-
-.answer code b {
-  font-family: inherit;
-  font-style: italic;
 }
 
 .answer h3 {
@@ -490,18 +485,20 @@ h2.question-title.de.dashed-underline {
 }
 
 .answer blockquote {
+  font-size: 1.25em;
   color: rgba(var(--dark));
-  margin: 1em 0;
+  margin: 0em;
+  margin-top: 1em;
   background: linear-gradient(45deg, rgba(var(--filter)) 0%, rgba(var(--highlight)) 100%);
-}
-
-.answer blockquote b {
-  font-weight: bold;
 }
 
 .answer a {
   color: rgba(var(--filter), 1);
   text-decoration: underline;
+}
+
+.answer .ul {
+  margin: 0em;
 }
 
 /* INPUT ============================================ */
