@@ -15,7 +15,8 @@
   --highlight: 0, 200, 200;
   --textFilter: 255, 255, 255;
   --filter: 204, 102, 255;
-  --background: 0, 0, 0, 0;
+  --background: 255, 255, 255, 0;
+  --dark:  25,25,25,255;
   --font: europa, sans-serif;
 }
 
@@ -158,7 +159,7 @@ img.animated-gif{
   float: left;
   position: fixed;
   top: 41px;
-  left: 7px;
+  left: 12px;
 }
 
 @media screen and (max-width: 950px){
@@ -230,24 +231,23 @@ a:hover {
   text-decoration: underline;
 }
 
-.filter-list .filter {
-  background: rgba(var(--highlight), 0.45);
+.filter-list.block .filter {
+  background: linear-gradient(45deg, rgba(var(--filter), 0.6) 0%, rgba(var(--highlight), 0.6) 100%);
   width: fit-content;
 }
 
-.filter-list .filter:nth-child(odd) {
-  background: rgba(var(--highlight), 0.55);
-  width: fit-content;
+.filter-list.inline .filter:not(.selected) {
+    background: rgba(var(--filter), 0.6);
 }
 
 .filter-toggle .filter a {
-  color: rgba(var(--filter), 0.8);
+  color: rgba(var(--filter), 0.6);
 }
 
 .filter-list .filter.selected {
   /* font-weight: bold; */
   text-decoration: none;
-  background: rgba(var(--filter), 0.8);
+  background: rgba(var(--highlight), 0.6);
 }
 
 .filter-list.block .filter.selected a:after {
@@ -429,25 +429,6 @@ a:hover {
   margin-bottom: 4em;
 }
 
-/* new styling */
-
-.answer blockquote {
-  color: rgba(var(--filter), 0.8);
-  margin: 1em 0;
-}
-
-.answer blockquote p {
-  font-size: 0.8em;
-}
-
-.answer blockquote p a {
-  text-decoration: underline;
-}
-
-.answer blockquote:last-child {
-  margin-bottom: 0.5em;
-}
-
 /* deprecated old styling */
 
 .answer em {
@@ -480,6 +461,12 @@ a:hover {
 .answer code {
   color: rgba(var(--highlight), 1);
   font-style: normal;
+}
+
+.answer blockquote {
+  color: rgba(var(--dark));
+  margin: 1em 0;
+  background: linear-gradient(45deg, rgba(var(--filter)) 0%, rgba(var(--highlight)) 100%);
 }
 
 .answer code b {
@@ -516,14 +503,11 @@ h2.question-title.de.dashed-underline {
 
 .input-placeholder {
   padding: 0.5em 1em;
-  border-color: rgba(var(--highlight));
-  border-style: solid;
-  border-width: 0.1em;
-  border-left-width: 0;
-  border-right-width: 0;
+
+  background: linear-gradient(45deg, rgba(var(--filter)) 0%, rgba(var(--highlight)) 100%);
 
   margin: 0 -1em 1.5em -1em;
-  color: rgba(var(--text), 0.93);
+  color: rgba(var(--background), 0.93);
 }
 
 .input-placeholder.thanks {
@@ -548,14 +532,15 @@ h2.question-title.de.dashed-underline {
 
 .input-placeholder h2 {
   margin-bottom: 0.2em;
-  color: inherit;
+  color: rgba(var(--dark));
 }
 
 .input-placeholder p {
   font-size: 0.8em;
   margin: 0px;
   font-style: italic;
-  color: rgba(var(--filter), 0.8);
+  text-decoration: underline;
+  color: rgba(var(--dark));
 }
 
 .fullscreen {
