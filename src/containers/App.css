@@ -489,12 +489,12 @@ h2.question-title.de.dashed-underline {
 
 .answer blockquote {
   font-size: 1.25em;
-  color: rgba(var(--dark));
+  color: rgba(var(--headline));
   margin: 0em;
   margin-top: 1em;
   padding-left: 0.2em;
   padding-bottom: 0.1em;
-  
+
   border-style: solid;
   border-width: 0.15em;
   border-left-width: 0;
