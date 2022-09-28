@@ -493,7 +493,15 @@ h2.question-title.de.dashed-underline {
   margin: 0em;
   margin-top: 1em;
   padding-left: 0.2em;
-  background: linear-gradient(45deg, rgba(var(--filter), 0.75) 0%, rgba(var(--highlight), 0.75) 100%);
+  padding-bottom: 0.1em;
+  
+  border-style: solid;
+  border-width: 0.15em;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-style: solid;
+  border-image-source: linear-gradient(45deg, rgba(var(--filter)), rgba(var(--highlight)));
+  border-image-slice: 1;
 }
 
 .answer a {
