@@ -17,7 +17,7 @@ const Header = (props) => {
                     loop={true}
                 />.</h1>
             <p className="small">
-               Welcome to the joint Digital Media program at HfK + University Bremen. 🚀 <br /><br />
+               Welcome to the joint Digital Media program at HfK + University Bremen. 👋 <br /><br />
                Glad you found this cybernetic space. This website provides you with all the important information about the start of your studies, 
                the orientation week and what is going on in Bremen in the upcoming weeks. Below you'll find a list of all important information. 
                If you have any questions: Just ask us! The student hej-team will update the missing pieces of information.
