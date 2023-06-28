@@ -14,9 +14,9 @@
     "react-typed": "^1.0.9",
     "recompose": "^0.17.0"
   },
-  "scripts": {
-    "start": "NODE_PATH=src react-scripts start",
-    "start_windows": "set NODE_PATH=src&&react-scripts start",
+  "scripts": { "start": "NODE_PATH=src react-scripts start",
+
+    "start_windows": "set NODE_PATH=src&&react-scripts --openssl-legacy-provider start    ",
     "build": "NODE_PATH=src react-scripts build",
     "test": "NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "NODE_PATH=src react-scripts eject"

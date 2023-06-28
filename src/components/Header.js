@@ -17,15 +17,19 @@ const Header = (props) => {
                     loop={true}
                 />.</h1>
             <p className="small">
-               Welcome to the joint Digital Media program at HfK + University Bremen. 👋 <br /><br />
-               Glad you found this cybernetic space. This website provides you with all the important information about the start of your studies, 
-               the orientation week and what is going on in Bremen in the upcoming weeks. Below you'll find a list of all important information. 
-               If you have any questions: Just ask us! The student hej-team will update the missing pieces of information.
+                
+               Welcome👋  Glad you found this cybernetic space! <br /><br />
+              This website is for the Digital Media orientation week for students at Uni and HfK Bremen.
+               Scroll down to find important information about the start of your studies and 
+               the orientation week.
+               <br></br>
+               If you have any questions: Just ask us in the box below or on Discord/Whatsapp! The student hej-digital-team will update the missing pieces of information.
                <br /><br />
-               Let's all meet on our <a target="blank" href="https://discord.gg/wcmZMHdTtb">Discord Server</a> or you can also join our Telegram Groups for <a target="blank" href="https://t.me/+TMdL5s9fJbo5NTk6">Bachelors</a> or <a target="blank" href="https://t.me/+vJ77E3qVp65kNzli">Masters</a>!
-               By the way, the hej-team will also guide you through the entire orientation phase and beyond...
-               <br /><br />
-               The orientation week of the entire Digital Media program will take place from the 10.10 - 14.10.
+               These groups will connect you with other students and guide you through the orientation week: 
+ <a target="blank" href="https://discord.gg/d9puneyYd" >Discord Server</a> 
+            <br></br>
+            <br></br>
+               The orientation week of the entire Digital Media program will take place from the 09.10 - 13.10.2023
                 <br />
                 
                 <StaticFilterToggle />
