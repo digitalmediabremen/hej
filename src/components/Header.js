@@ -23,16 +23,16 @@ const Header = (props) => {
                Scroll down to find important information about the start of your studies and 
                the orientation week.
                <br></br>
-               If you have any questions: Just ask us in the box below or on Discord/Whatsapp! The student hej-digital-team will update the missing pieces of information.
+               If you have any questions: Just ask us in the box below! The student hej-digital-team will update the missing pieces of information.
                <br /><br />
                These groups will connect you with other students and guide you through the orientation week: 
                 <ul type="square">
-                    <li> <a target="blank" href="https://discord.gg/59K3fVHeS" >Discord Server for all</a> </li>
+                    <li> <a target="blank" href="https://discord.gg/z8U9F7xf8G" >Discord Server for all</a> </li>
                     <li> <a target="blank" href="https://chat.whatsapp.com/CxgI8UypLP5IPA9p04HXoS" >Whatsapp Group for all Bachelor first semester students</a>  </li>
                     <li> <a target="blank" href="https://chat.whatsapp.com/EVxvVxfE6np6XYtjhHDGkE" >Whatsapp Group for all Master first semester students </a>  </li>
                 </ul>
             <br></br>
-               The orientation week of the entire Digital Media program will take place from the 09.10 - 13.10.2023
+               The next orientation week of the entire Digital Media program will take place in October 2024
                 <br />
                 
                 <StaticFilterToggle />
