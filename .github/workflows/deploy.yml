@@ -8,29 +8,34 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup Node 14
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14
-    - name: Cache node_modules/
-      uses: actions/cache@v1
-      id: cache_node_modules
-      with:
-        path: node_modules
-        key: node_modules-${{ hashFiles('frontend/package-lock.json') }}
-        restore-keys: node_modules-
+      - uses: actions/checkout@v4
 
-    - name: Install Dependencies
-      if: steps.cache_node_modules.outputs.cache-hit != 'true'
-      run: npm install
-    - run: npm run build
-      env:
-         CI: ""
-    - run: mv ./build/index.html ./build/200.html
-    - run: npm install -g surge
-    - run: surge ./build ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+      - name: Setup Node 14
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
+
+      - name: Cache node_modules/
+        uses: actions/cache@v4
+        id: cache_node_modules
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('frontend/package-lock.json') }}
+          restore-keys: node_modules-
+
+      - name: Install Dependencies
+        if: steps.cache_node_modules.outputs.cache-hit != 'true'
+        run: npm install
+
+      - run: npm run build
+        env:
+          CI: ""
+
+      - run: mv ./build/index.html ./build/200.html
+
+      - run: npm install -g surge
+
+      - run: surge ./build ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
