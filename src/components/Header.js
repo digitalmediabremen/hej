@@ -27,12 +27,11 @@ const Header = (props) => {
                <br /><br />
                These groups will connect you with other students and guide you through the orientation week: 
                 <ul type="square">
-                    <li> <a target="blank" href="http://dm-hb.de/ersti-discord" >Discord Server for all</a> </li>
-                    <li> <a target="blank" href="http://dm-hb.de/ersti-wp-ba" >Whatsapp Group for all Bachelor first semester students</a>  </li>
-                    <li> <a target="blank" href="http://dm-hb.de/ersti-wp-ma" >Whatsapp Group for all Master first semester students </a>  </li>
+                    <li> <a target="blank" href="https://signal.group/#CjQKIBLukXCpirpds8bgpqoAVg6IWQudGyQtsCqcWxdv89zhEhCeXapsYlSCPDogdHZLcMdC" >Signal group for all Bachelor first semester students</a>  </li>
+                    <li> <a target="blank" href="https://signal.group/#CjQKIO6ng2RFhNTIfRcEardwfefD6w0jegUzXRidAEnMLOHgEhDrsAJ0TYv7LQ12bWtvtkH7" >Signal group for all Master first semester students </a>  </li>
                 </ul>
             <br></br>
-               The next orientation week of the entire Digital Media program will take place in October 2024
+               The next orientation week of the entire Digital Media program will take place in October 2025
                 <br />
                 
                 <StaticFilterToggle />
