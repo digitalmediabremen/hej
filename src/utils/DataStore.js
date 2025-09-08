@@ -12,23 +12,24 @@ export default class DataStore {
   static excludedLabels = EXCLUDED_LABELS;
   static staticLabels = STATIC_LABELS;
   static studentNames = [
-    "Arman", "Muhammad", "Syed Gohar", "Abdülkerim", "Parsa", "Fares", "Santiago",
-    "Sarah", "Vanessa", "Matti", "Elina", "Paul", "Henry", "Celina", "Philipp",
-    "Ngoc Hien", "Alessandra Fabiana", "Hsi", "Harrith", "Ananya", "Esra", "Aleyna",
-    "Lisa", "Julia", "Ole Timon", "Jannatul", "Emma", "Gabriela", "Nico Daniel",
-    "Luca Leander", "Sabrina", "Julian", "Marie", "Niklas", "Jensi Jagdishbhai",
-    "Jesse", "Tahanur", "Lisa", "Celia", "Xiying", "Md Safiqul", "Abdul",
-    "Grace Jacob", "Ann-Sophie", "Joelle", "Beren", "Claudia", "Lauro", "Mohamma",
-    "David", "Alexander", "Philip", "Malte", "Julian", "Emma", "Hsuan-Ju", "Nick",
-    "Areesha", "Malin Franca", "Beeke", "Randy", "Aleyna", "Yewon", "Muhammad",
-    "Pranav", "Borislava", "Emmanuel Kebin", "Arne Miko", "Alihan", "Oscar",
-    "Jule", "Maryna", "Ijoma", "Unisha", "Kseniia", "Saira", "Emely",
-    "Sumaiya Chowdhury", "Hassan", "Jasmin", "Christian David", "Helena", "Selina",
-    "Tim", "Gian-Luca", "Lea", "Dana Marit", "Islam", "Aleksandra", "Yuna",
-    "Shrayash", "Nastasja", "Zoe", "Marie Christin", "Calvin", "Mohamed Yassine",
-    "Anna-Lena", "Kaung", "MUKESH", "Shu-Cheng", "Alexa", "Anna-Marie",
-    "Silja Malin", "Arian", "Bennet"
+  "Arman", "Muhammad", "Syed Gohar", "Abdülkerim", "Parsa", "Fares", "Santiago",
+  "Sarah", "Vanessa", "Matti", "Elina", "Paul", "Henry", "Celina", "Philipp",
+  "Ngoc Hien", "Alessandra Fabiana", "Hsi", "Harrith", "Ananya", "Esra", "Aleyna",
+  "Lisa", "Julia", "Ole Timon", "Jannatul", "Emma", "Gabriela", "Nico Daniel",
+  "Luca Leander", "Sabrina", "Julian", "Marie", "Niklas", "Jensi Jagdishbhai",
+  "Jesse", "Tahanur", "Lisa", "Celia", "Xiying", "Md Safiqul", "Abdul",
+  "Grace Jacob", "Ann-Sophie", "Joelle", "Beren", "Claudia", "Lauro", "Mohamma",
+  "David", "Alexander", "Philip", "Malte", "Julian", "Emma", "Hsuan-Ju", "Nick",
+  "Areesha", "Malin Franca", "Beeke", "Randy", "Aleyna", "Yewon", "Muhammad",
+  "Pranav", "Borislava", "Emmanuel Kebin", "Arne Miko", "Alihan", "Oscar",
+  "Jule", "Maryna", "Ijoma", "Unisha", "Kseniia", "Saira", "Emely",
+  "Sumaiya Chowdhury", "Hassan", "Jasmin", "Christian David", "Helena", "Selina",
+  "Tim", "Gian-Luca", "Lea", "Dana Marit", "Islam", "Aleksandra", "Yuna",
+  "Shrayash", "Nastasja", "Zoe", "Marie Christin", "Calvin", "Mohamed Yassine",
+  "Anna-Lena", "Kaung", "MUKESH", "Shu-Cheng", "Alexa", "Anna-Marie",
+  "Silja Malin", "Arian", "Bennet"
 ]
+
   constructor() {
     this.emitter = new EventEmitter();
     this.emitter.setMaxListeners(100);
