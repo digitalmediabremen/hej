@@ -11,8 +11,8 @@ export default class DataStore {
   static lastFailedPollInterval = 10;
   static excludedLabels = EXCLUDED_LABELS;
   static staticLabels = STATIC_LABELS;
-  static studentNames = ["Baiyu" , "Matteo" , "Chaline" , "Sara Ahmed Neyazy Khayry" , "Finn Lasse" , "Jerónimo" , "Delaina", "Cha" , "Anna" , "Karolina" , "Hiu Yan" , "PinHsien" , "Daniel" , "Tim" , "Soo Hyun" , "Indrayudh" , "Gabriella" , "Mahmoud" , "David Jo" , "Kate" , "Siyu" , "Jean-Patrick" , "Niilo" , "Jan" , "Selin" , "Helena" , "Jan-Felix" , "Nadine" , "Marit" , "Lauritz" , "Antonia" , "Stefanie" , "Lorenz" , "Tijani" , "Maximilian" , "Tim-Philipp" , "Sophia" , "Mette" , "Danial" , "Sarah" , "Ian" , "Fabienne" , "Alina" , "Henri", "Emma" , "Skadi" , "Timo" , "Sophia" , "Luka" , "Amelie" , "Sozdar" , "Aleksi" , "Melanie" , "Nikita" , "Anna" , "Konstantin" , "Malte" , "Tenzin Methok" , "Jona" , "Antje" , "Furkan" , "Fiete" , "Justus"]
-
+  static studentNames = ["Arman, Muhammad, Syed Gohar, Abdülkerim, Parsa, Fares, Santiago, Sarah, Vanessa, Matti, Elina, Paul, Henry, Celina, Philipp, Ngoc Hien, Alessandra Fabiana, Hsi, Harrith, Ananya, Esra, Aleyna, Lisa, Julia, Ole Timon, Jannatul, Emma, Gabriela, Nico Daniel, Luca Leander, Sabrina, Julian, Marie, Niklas, Jensi Jagdishbhai, Jesse, Tahanur, Lisa, Celia, Xiying, Md Safiqul, Abdul, Grace Jacob, Ann-Sophie, Joelle, Beren, Claudia, Lauro, Mohamma, David, Alexand
+]
   constructor() {
     this.emitter = new EventEmitter();
     this.emitter.setMaxListeners(100);
