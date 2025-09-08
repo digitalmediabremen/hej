@@ -11,9 +11,7 @@ export default class DataStore {
   static lastFailedPollInterval = 10;
   static excludedLabels = EXCLUDED_LABELS;
   static staticLabels = STATIC_LABELS;
-  static studentNames = [
-  "Arman", "Muhammad", "Syed Gohar", "Abdülkerim", "Parsa", "Fares", "Santiago",
-  "Sarah", "Vanessa", "Matti", "Elina", "Paul", "Henry", "Celina", "Philipp",
+  static studentNames = ["Arman", "Muhammad", "Syed Gohar", "Abdülkerim", "Parsa", "Fares", "Santiago", "Sarah", "Vanessa", "Matti", "Elina", "Paul", "Henry", "Celina", "Philipp",
   "Ngoc Hien", "Alessandra Fabiana", "Hsi", "Harrith", "Ananya", "Esra", "Aleyna",
   "Lisa", "Julia", "Ole Timon", "Jannatul", "Emma", "Gabriela", "Nico Daniel",
   "Luca Leander", "Sabrina", "Julian", "Marie", "Niklas", "Jensi Jagdishbhai",
