@@ -164,11 +164,11 @@ img.animated-gif {
   .animated-gif {
     display: none;
   }
-}
 
-body {
-    background-attachment: scroll; /* fallback for mobile */
+  body {
+    background-attachment: scroll;
   }
+}
 
 .button {
   display: block;
