@@ -11,7 +11,6 @@
 
 :root {
   --headline: 255, 255, 255;
-
   --text: 225, 225, 225;
   --highlight: 0, 200, 200;
   --textFilter: 255, 255, 255;
@@ -26,7 +25,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment: scroll;
+  background-attachment: fixed;
   /*background-color: rgba(var(--background));*/
   background-color: black;
   color: rgba(var(--text), 0.93);
@@ -166,6 +165,10 @@ img.animated-gif {
     display: none;
   }
 }
+
+body {
+    background-attachment: scroll; /* fallback for mobile */
+  }
 
 .button {
   display: block;
