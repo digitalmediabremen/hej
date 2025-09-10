@@ -39,7 +39,9 @@ body {
 
 @media (max-width: 950px) {
   body {
+  background-image: url("/public/background.png");
   background-attachment: scroll;
+}
 }
 
 .wrapper {
