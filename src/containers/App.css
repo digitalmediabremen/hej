@@ -37,6 +37,12 @@ body {
   overflow-x: hidden;
 }
 
+@media (max-width: 950px) {
+  body {
+    background-attachment: scroll; /* fallback for mobile */
+  }
+}
+
 .wrapper {
   padding: 2em 1em 1em 1em;
   min-height: calc(100vh - 1.5em);
