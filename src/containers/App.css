@@ -60,10 +60,11 @@ body {
     right: 0;
     bottom: 0;
 
-    background: url("/public/background.png") center / cover no-repeat;
+    background: url("/public/background_mobile.png") center / cover no-repeat;
+    background-color: black;
 
-    transform: rotate(90deg);
-    transform-origin: center center;
+    /*transform: rotate(90deg);
+    transform-origin: center center;*/
 
     z-index: -1;
     pointer-events: none;
