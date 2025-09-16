@@ -51,6 +51,29 @@ body {
   overflow-x: hidden;
 }
 
+@media screen and (max-width: 950px) {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: url("/background_mobile.png") center / cover no-repeat;
+
+    transform: rotate(90deg);  /* rotate background */
+    transform-origin: center center;
+
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  body {
+    background: none; /* prevent double background */
+  }
+}
+
 .wrapper {
   padding: 2em 1em 1em 1em;
   min-height: calc(100vh - 1.5em);
