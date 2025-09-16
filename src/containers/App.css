@@ -28,7 +28,7 @@ body::before {
   right: 0;
   bottom: 0;
 
-  background: url("/background.png") center / cover no-repeat;
+  background: url("/public/background.png") center / cover no-repeat;
 
   z-index: -1;            /* sit behind all content */
   pointer-events: none;   /* so it doesn’t block clicks/taps */
@@ -60,7 +60,7 @@ body {
     right: 0;
     bottom: 0;
 
-    background: url("public/background.png") center / cover no-repeat;
+    background: url("/public/background.png") center / cover no-repeat;
 
     transform: rotate(90deg);
     transform-origin: center center;
