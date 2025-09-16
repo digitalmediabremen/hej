@@ -60,7 +60,7 @@ body {
     right: 0;
     bottom: 0;
 
-    background: url("/background_mobile.png") center / cover no-repeat;
+    background: url("public/background_mobile.png") center / cover no-repeat;
 
     transform: rotate(90deg);  /* rotate background */
     transform-origin: center center;
