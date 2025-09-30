@@ -14,7 +14,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter onUpdate={() => { window.scrollTo(0, 0); console.log("sdsd"); }}>
+      <BrowserRouter basename="/hej" onUpdate={() => { window.scrollTo(0, 0); console.log("sdsd"); }}>
         <div className="App">
           <Switch>
             {this.props.getSelectedStaticFilter() == undefined &&
