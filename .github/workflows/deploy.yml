@@ -45,7 +45,7 @@ jobs:
       - run: npm run build
         env:
           CI: ""
-            - name: Setup Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
       - run: mv ./build/index.html ./build/404.html
       - name: Upload artifact
