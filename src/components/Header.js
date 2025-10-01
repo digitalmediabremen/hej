@@ -21,9 +21,11 @@ const Header = (props) => {
                Welcome👋  Glad you found this cybernetic space! <br /><br />
                This website is for the Digital Media orientation week for students at Uni and HfK Bremen.
                Scroll down to find important information about the start of your studies and 
-               the orientation week. We're currently working on making this page secure. In the meantime, you can you this link https://digitalmediabremen.github.io/hej/ for secure connection.
+               the orientation week. 
                    
-             <br />< br/>
+                   We're currently working on making this page secure. In the meantime, you can you this link https://digitalmediabremen.github.io/hej/ for secure connection.
+                   
+             <br></br>
                If you have any questions: Just ask us in the box below! The student hej-digital-team will update the missing pieces of information.
                <br /><br />
                These groups will connect you with other students and guide you through the orientation week: 
