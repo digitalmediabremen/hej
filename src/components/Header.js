@@ -61,8 +61,7 @@ const Header = (props) => {
           href="https://digitalmediabremen.github.io/hej/"
           target="_blank"
           rel="noopener noreferrer"
-        > 
-            this link 
+        > this link 
           </a> for a secure connection.
         <br />
         <StaticFilterToggle />
