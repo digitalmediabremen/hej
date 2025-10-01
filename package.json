@@ -2,7 +2,6 @@
   "name": "hej",
   "version": "0.3.0",
   "private": true,
-  "homepage": "https://digitalmediabremen.github.io/hej",
   "dependencies": {
     "core-js": "^3.0.0",
     "node_modules-path": "^2.0.5",
