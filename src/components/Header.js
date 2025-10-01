@@ -58,14 +58,14 @@ const Header = (props) => {
         <br /><br />
         <strong>⚠️ We're currently working on making this page secure.</strong>
         <br />
-        In the meantime, you can use this link:{" "}
+        In the meantime, you can use
         <a
           href="https://digitalmediabremen.github.io/hej/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://digitalmediabremen.github.io/hej/
-        </a>{" "}
+         this link
+        </a>
         for a secure connection.
         <br />
         <StaticFilterToggle />
