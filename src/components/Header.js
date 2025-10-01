@@ -57,7 +57,6 @@ const Header = (props) => {
         place in October 2025.
         <br /><br />
         <strong>⚠️ We're currently working on making this page secure.</strong>
-        <br />
         In the meantime, you can use
         <a
           href="https://digitalmediabremen.github.io/hej/"
