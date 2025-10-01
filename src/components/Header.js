@@ -22,8 +22,6 @@ const Header = (props) => {
                This website is for the Digital Media orientation week for students at Uni and HfK Bremen.
                Scroll down to find important information about the start of your studies and 
                the orientation week. 
-            
-                   
              <br></br>
                If you have any questions: Just ask us in the box below! The student hej-digital-team will update the missing pieces of information.
                <br /><br />
@@ -34,20 +32,16 @@ const Header = (props) => {
                 </ul>
             <br></br>
                The next orientation week of the entire Digital Media program will take place in October 2025
-                <br />
+             <br></br>
+             <strong>⚠️ We're currently working on making this page secure.</strong><br />
+               In the meantime, you can use this link: 
+               <a href="https://digitalmediabremen.github.io/hej/" target="_blank">
+                 https://digitalmediabremen.github.io/hej/
+               </a> 
+               for a secure connection.
                 
                 <StaticFilterToggle />
             </p>
-
-                   <p className="small">
-   <strong>⚠️ We're currently working on making this page secure.</strong><br />
-   In the meantime, you can use this link: 
-   <a href="https://digitalmediabremen.github.io/hej/" target="_blank">
-     https://digitalmediabremen.github.io/hej/
-   </a> 
-   for a secure connection.
-</p>
-
         </div>
     )
 }
