@@ -13,7 +13,7 @@ export default class InputView extends Component {
           <div className="main">
             <div className="intro big">
               <div className="gif">
-                <iframe src="/hej/media/giphy.gif"  width="100%" height="100%" frameBorder="0"></iframe>
+                <iframe src="/media/giphy.gif"  width="100%" height="100%" frameBorder="0"></iframe>
               </div>
               <br />
               <h1 className="">
