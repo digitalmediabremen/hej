@@ -23,7 +23,8 @@ const Header = (props) => {
                Scroll down to find important information about the start of your studies and 
                the orientation week. 
                    
-                   We're currently working on making this page secure. In the meantime, you can you this link https://digitalmediabremen.github.io/hej/ for secure connection.
+            We're currently working on making this page secure.
+            In the meantime, you can you this link https://digitalmediabremen.github.io/hej/ for secure connection. 
                    
              <br></br>
                If you have any questions: Just ask us in the box below! The student hej-digital-team will update the missing pieces of information.
