@@ -57,15 +57,15 @@ const Header = (props) => {
         place in October 2025.
         <br /><br />
         <strong>⚠️ We're currently working on making this page secure.</strong>
-        In the meantime, you can use
+         In the meantime, you can use
         <a
           href="https://digitalmediabremen.github.io/hej/"
           target="_blank"
           rel="noopener noreferrer"
         >
-         this link
+          this link 
         </a>
-        for a secure connection.
+         for a secure connection.
         <br />
         <StaticFilterToggle />
       </p>
