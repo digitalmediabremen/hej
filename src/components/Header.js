@@ -56,14 +56,7 @@ const Header = (props) => {
         The next orientation week of the entire Digital Media program will take
         place in October 2025.
         <br /><br />
-        ⚠️ We're currently working on making this page secure. In the meantime, you can use
-        <a
-          href="https://digitalmediabremen.github.io/hej/"
-          target="_blank"
-          rel="noopener noreferrer"
-        > this link 
-          </a> for a secure connection.
-        <br />
+       
         <StaticFilterToggle />
       </p>
     </div>
