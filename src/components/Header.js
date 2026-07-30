@@ -32,6 +32,7 @@ const Header = (props) => {
         If you have any questions: Just ask us in the box below! The student
         hej-digital-team will update the missing pieces of information.
         <br /><br />
+          /*
         These groups will connect you with other students and guide you through
         the orientation week:
         <ul type="square">
@@ -52,9 +53,10 @@ const Header = (props) => {
             </a>
           </li>
         </ul>
+        */
         <br />
         The next orientation week of the entire Digital Media program will take
-        place in October 2025.
+        place in October 2026.
         <br /><br />
        
         <StaticFilterToggle />
