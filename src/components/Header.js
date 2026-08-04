@@ -41,7 +41,7 @@ const Header = (props) => {
               target="_blank"
               href="https://signal.group/#CjQKIIUsvAzyRR0_sxvmGcs8v65IrURQywwPpgC4_LIfNnUHEhAhC0fJ462ZpA_Fy3JaJ0P5"
             >
-              Signal group for all Bachelor first semester students
+              Signal group for all Bachelor first semester students (WS 26/27)
             </a>
           </li>
           <li>
@@ -49,7 +49,7 @@ const Header = (props) => {
               target="_blank"
               href="https://signal.group/#CjQKINVcTLrIvWCjusXyFdNXYV68TMDqq1dYfCNF-uJf7IhFEhAH6PHSGaqwsHsfYwjERkbs"
             >
-              Signal group for all Master first semester students
+              Signal group for all Master first semester students (WS 26/27)
             </a>
           </li>
         </ul>
