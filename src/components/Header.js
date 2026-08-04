@@ -32,14 +32,14 @@ const Header = (props) => {
         If you have any questions: Just ask us in the box below! The student
         hej-digital-team will update the missing pieces of information.
         <br /><br />
-          /*
+          
         These groups will connect you with other students and guide you through
         the orientation week:
         <ul type="square">
           <li>
             <a
               target="_blank"
-              href="https://signal.group/#CjQKIBLukXCpirpds8bgpqoAVg6IWQudGyQtsCqcWxdv89zhEhCeXapsYlSCPDogdHZLcMdC"
+              href="https://signal.group/#CjQKIIUsvAzyRR0_sxvmGcs8v65IrURQywwPpgC4_LIfNnUHEhAhC0fJ462ZpA_Fy3JaJ0P5"
             >
               Signal group for all Bachelor first semester students
             </a>
@@ -47,13 +47,13 @@ const Header = (props) => {
           <li>
             <a
               target="_blank"
-              href="https://signal.group/#CjQKIO6ng2RFhNTIfRcEardwfefD6w0jegUzXRidAEnMLOHgEhDrsAJ0TYv7LQ12bWtvtkH7"
+              href="https://signal.group/#CjQKINVcTLrIvWCjusXyFdNXYV68TMDqq1dYfCNF-uJf7IhFEhAH6PHSGaqwsHsfYwjERkbs"
             >
               Signal group for all Master first semester students
             </a>
           </li>
         </ul>
-        */
+        
         <br />
         The next orientation week of the entire Digital Media program will take
         place in October 2026.
